@@ -7,6 +7,7 @@ import psutil
 import keyboard
 import os, sys
 import tkinter
+from win32api import GetSystemMetrics
 
 
 
@@ -40,6 +41,12 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                         img1 = Image.open(full_path)
                         img2 = Image.open(duplicate)
                         img = Image.fromarray(np.hstack((np.array(img1), np.array(img2))))
+                        ratio = img.size[0] / img.size[1]
+                        print(ratio)
+                        if ratio > 1 and img.size[0] >= Width_img:
+                            img = img.resize((Width_img, int(Width_img // ratio)), Image.ANTIALIAS)
+                        if ratio < 1 and img.size[1] >= Height_img:
+                            img = img.resize((int(Height_img * ratio), Height_img), Image.ANTIALIAS)
                         root.geometry('%dx%d' % (img.size[0], img.size[1]))
                         tkpi = ImageTk.PhotoImage(img)
                         label_image = tkinter.Label(root, image=tkpi)
@@ -47,7 +54,6 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                         root.title(duplicate)
                         root.update()
                         keyboard.wait(' ')
-                        label_image.destroy()
                         for proc in psutil.process_iter():
                             if proc.name() == "Photos":
                                 proc.kill()
@@ -57,13 +63,17 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
 
 
 
+Width = GetSystemMetrics(0)
+Height = GetSystemMetrics(1)
 
+print(Width, Height)
 
-
+Width_img = int(Width * 0.7)
+Height_img = int(Height * 0.7)
 
 root = tkinter.Tk()
 root.bind("<Button>", button_click_exit_mainloop)
-root.geometry('+%d+%d' % (100,100))
+root.geometry('+%d+%d' % (int(Width * 0.15), int(Height * 0.15)))
 
 file_type = ['jpg', 'png', 'gif', 'bmp', 'jpeg', 'tiff']
 check_for_duplicates(['e:\\einom\\Pictures', ])
