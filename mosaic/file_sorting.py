@@ -227,7 +227,7 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                         hashes[file_id] = full_path
                         try:
                             exif = photo_info(full_path)
-                            if exif[0] != 'Not Available':
+                            if exif[0] != 'Not Available' and int(exif[0][:4]) > 1972: #timestamp from 1970
                                 arranged_file_name = str(int(datetime.timestamp(datetime.strptime(exif[0],
                                                                                 "%Y-%m-%d %H:%M:%S"))))
                                 target_file = os.path.join(photo_with_exif, arranged_file_name +'.' + extension)
@@ -238,6 +238,7 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                                 target_file = os.path.join(pic_without_exif, filename)
                                 move_file(full_path, target_file)
                         except OSError:
+                            print(exif[0][:4])
                             pass
 
                     # keyboard.wait(' ')
