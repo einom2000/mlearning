@@ -252,7 +252,7 @@ height_img = int(screen_height * 0.5 -150)
 root = tkinter.Tk()
 root.bind("<Button>", button_click_exit_mainloop)
 
-target_dir = 'F:\\===================PIC TO CHECK\\PHOTOS'
+target_dir = 'F:\\===================PIC TO CHECK\\DCIM'  # F:\===================PIC TO CHECK\
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN'
