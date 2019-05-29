@@ -168,7 +168,7 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                 extension = os.path.splitext(filename)[1][1:]
                 full_path = os.path.join(dirpath, filename)
                 if extension.lower() in file_type:
-                    # try:
+                    try:
                         im = Image.open(full_path)
                         im.close()
                         hashobj = hash()
@@ -274,8 +274,8 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                                 target_file = os.path.join(pic_without_exif, filename)
                                 move_file(full_path, target_file)
                         # keyboard.wait(' ')
-                    # except OSError:
-                    #     pass
+                    except OSError:
+                        pass
                 count_text = str(count) + ' / ' + str(max_files_count)
                 mpt = tkinter.Label(progress_gui, text=count_text)
                 mpt2 = tkinter.Label(progress_gui, text=full_path)
