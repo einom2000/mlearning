@@ -14,13 +14,26 @@ import math
 import piexif
 import shutil
 import time
+from tkinter import ttk
+
+# 需要进度条，计算总数和在进行数
+# 要把1970的日期清空
+# 要做人脸识别，没有人脸和有人脸的 PHOTO / PIC
+# 做时间检测，同一天的照片，提供筛选 PHOTO
+# 没有人脸的照片。。。如何再区分
+# 有EXIF的，有人脸的，按人物归类， 有些归类文档可以添加GPS。
+
+
+def count_files(dir):
+    cpt = sum([len(files) for r, d, files in os.walk(dir)])
+    return cpt
 
 
 def move_file(src, tar):
     if os.path.isfile(tar):
         tar = os.path.splitext(tar)[0] + '_' + str(int(time.time())) \
                       + os.path.splitext(tar)[1]
-    shutil.move(src, tar)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
+    shutil.copy(src, tar)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
 
 
 def create_folder(folder):
@@ -129,7 +142,14 @@ def chunk_reader(fobj, chunk_size=1024):
 
 def check_for_duplicates(paths, hash=hashlib.sha1):
     hashes = {}
+
     for path in paths:
+        count = 1
+        max_files_count = count_files(path)
+        mpb = ttk.Progressbar(progress_gui, orient="horizontal", length=600, mode="determinate")
+        mpb.pack()
+        mpb["maximum"] = max_files_count
+        mpb["value"] = count
         for dirpath, dirnames, filenames in os.walk(path):
             for filename in filenames:
                 extension = os.path.splitext(filename)[1][1:]
@@ -164,6 +184,7 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                                 img = img.resize((width_img, int(width_img // ratio)), Image.ANTIALIAS)
                             start_x = int((screen_width - img.size[0]) / 2)
                             start_y = int((screen_height - img.size[1] - 150) / 2)
+                            root = tkinter.Tk()
                             root.geometry('+%d+%d' % (start_x, start_y))
                             root.geometry('%dx%d' % (img.size[0], img.size[1] + 150))
                             tkpi = ImageTk.PhotoImage(img)
@@ -240,8 +261,17 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                         except OSError:
                             print(exif[0][:4])
                             pass
-
                     # keyboard.wait(' ')
+                count_text = str(count) + ' / ' + str(max_files_count)
+                print(count_text)
+                mpt = tkinter.Label(progress_gui, text=count_text)
+                mpt2 = tkinter.Label(progress_gui, text= full_path)
+                mpt.place(x=300, y=40, anchor = tkinter.CENTER)
+                mpt2.place(x=300, y=60, anchor = tkinter.CENTER)
+                mpb["value"] += 1
+                count += 1
+                progress_gui.update()
+
 
 screen_width = GetSystemMetrics(0)
 screen_height = GetSystemMetrics(1)
@@ -249,10 +279,14 @@ screen_height = GetSystemMetrics(1)
 width_img = int(screen_width * 0.5)
 height_img = int(screen_height * 0.5 -150)
 
-root = tkinter.Tk()
-root.bind("<Button>", button_click_exit_mainloop)
 
-target_dir = 'F:\\===================PIC TO CHECK\\DCIM'  # F:\===================PIC TO CHECK\
+progress_gui = tkinter.Tk()
+progress_gui.geometry('%dx%d' % (600, 100))
+bar_x = int((screen_width - 600 ) / 2)
+progress_gui.geometry('+%d+%d' % (bar_x, 50))
+progress_gui.title('checking images')
+
+target_dir = 'F:\\===================PIC TO CHECK\\100NCD90'  # F:\===================PIC TO CHECK\100NCD90
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN'
@@ -264,8 +298,8 @@ create_folder(pic_without_exif)
 today = str(datetime.today().date())
 
 file_type = ['jpg', 'png', 'gif', 'bmp', 'jpeg', 'tiff']
-# check_for_duplicates(['e:\\einom\\Pictures', ])
 
 check_for_duplicates([target_dir, ])
+
 
 
