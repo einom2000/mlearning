@@ -340,7 +340,7 @@ bar_x = int((screen_width - 600 ) / 2)
 progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images')
 
-target_dir = 'F:\\===================PIC TO CHECK\\100NCD90'  # F:\===================PIC TO CHECK\100NCD90
+target_dir = 'F:\\BABY PIC_only_one_folder_first_edition_on 2019_01-08'  # F:\===================PIC TO CHECK\100NCD90
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN'
@@ -351,7 +351,7 @@ create_folder(photo_with_exif)
 create_folder(pic_without_exif)
 today = str(datetime.today().date())
 
-file_type = ['jpg', 'png', 'gif', 'bmp', 'jpeg', 'tiff']
+file_type = ['jpg', 'png', 'bmp', 'jpeg', 'tiff']
 
 check_for_duplicates([target_dir, ])
 # faced_file_dir = os.path.join(photo_with_exif, '\\photo_with_face')
