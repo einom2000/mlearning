@@ -15,12 +15,14 @@ import piexif
 import shutil
 import time
 from tkinter import ttk
+import cv2
 
-# 需要进度条，计算总数和在进行数
-# 要把1970的日期清空
+# 需要进度条，计算总数和在进行数                                                               ----done
+
 # 要做人脸识别，没有人脸和有人脸的 PHOTO / PIC
 # 做时间检测，同一天的照片，提供筛选 PHOTO
 # 没有人脸的照片。。。如何再区分
+# 要把1970的日期清空
 # 有EXIF的，有人脸的，按人物归类， 有些归类文档可以添加GPS。
 
 
@@ -29,11 +31,24 @@ def count_files(dir):
     return cpt
 
 
+def file_surffix(t, tar):
+    t += 1
+    if t < 1000:
+        tx = '0' * (3 - len(str(t))) + str(t)
+    else:
+        tx = str(t)
+    return os.path.splitext(tar)[0] + '_' + tx + os.path.splitext(tar)[1]
+
+
 def move_file(src, tar):
+    tar1 = tar
     if os.path.isfile(tar):
-        tar = os.path.splitext(tar)[0] + '_' + str(int(time.time())) \
-                      + os.path.splitext(tar)[1]
-    shutil.copy(src, tar)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
+        t = 0
+        tar1 = file_surffix(t, tar)
+        while os.path.isfile(tar1):
+            t += 1
+            tar1 = file_surffix(t, tar)
+    shutil.copy(src, tar1)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
 
 
 def create_folder(folder):
@@ -125,10 +140,6 @@ def photo_info(fn):
 
     ct, mt, sz = file_info(fn)
     return exif_datetime, s, str(gpsinfo), ct, mt, sz
-
-
-def button_click_exit_mainloop (event):
-    event.widget.quit() # this will cause mainloop to unblock.
 
 
 def chunk_reader(fobj, chunk_size=1024):
@@ -273,6 +284,47 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                 progress_gui.update()
 
 
+def face_recognition(pic_path):
+
+    image = cv2.imread(pic_path)
+
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # Detect faces in the image
+    faces = faceCascade.detectMultiScale(
+        gray,
+        scaleFactor=1.1,
+        minNeighbors=5,
+        minSize=(40, 40),
+        flags=cv2.CASCADE_SCALE_IMAGE
+    )
+    if len(faces) > 0:
+        for (x, y, w, h) in faces:
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 6)
+
+        height, width, channels = image.shape
+        images = cv2.resize(image, (800, int((800 / width) * height)))
+        cv2.imshow('face found', images)
+        cv2.waitKey(0)
+        return True
+    else:
+        return False
+
+
+def check_for_face(path):
+    for dirpath, dirnames, filenames in os.walk(path):
+        for filename in filenames:
+            checking_file_path = os.path.join(path, filename)
+            print(face_recognition(checking_file_path))
+
+
+
+
+
+# cascPath = "C:\\Users\\einom\\PycharmProjects\\mlearning\\mosaic\\opencv_lib\\haarcascade_frontalface_default.xml"
+cascPath = "C:\\Users\\einom\\PycharmProjects\\mlearning\\mosaic\\opencv_lib\\haarcascade_profileface.xml"
+# Create the haar cascade
+faceCascade = cv2.CascadeClassifier(cascPath)
+
 screen_width = GetSystemMetrics(0)
 screen_height = GetSystemMetrics(1)
 
@@ -300,6 +352,7 @@ today = str(datetime.today().date())
 file_type = ['jpg', 'png', 'gif', 'bmp', 'jpeg', 'tiff']
 
 check_for_duplicates([target_dir, ])
-
+# faced_file_dir = os.path.join(photo_with_exif, '\\photo_with_face')
+# check_for_face(photo_with_exif)
 
 
