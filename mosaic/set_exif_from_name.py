@@ -5,6 +5,8 @@ import shutil
 import keyboard
 
 
+# 根据文件名人肉判断并修复exif
+
 def create_folder(folder):
     if not os.path.exists(folder):
         os.makedirs(folder)

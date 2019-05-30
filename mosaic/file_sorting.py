@@ -17,13 +17,8 @@ import time
 from tkinter import ttk
 import cv2
 
-# 需要进度条，计算总数和在进行数                                                               ----done
 
-# 要做人脸识别，没有人脸和有人脸的 PHOTO / PIC
-# 做时间检测，同一天的照片，提供筛选 PHOTO
-# 没有人脸的照片。。。如何再区分
-# 要把1970的日期清空
-# 有EXIF的，有人脸的，按人物归类， 有些归类文档可以添加GPS。
+# 找出目录里有EXIF的图片，以及没有EXIF的图片，分别存放
 
 
 def count_files(dir):
