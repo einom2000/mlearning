@@ -250,9 +250,9 @@ progress_gui = tkinter.Tk()
 progress_gui.geometry('%dx%d' % (600, 100))
 bar_x = int((screen_width - 600 ) / 2)
 progress_gui.geometry('+%d+%d' % (bar_x, 50))
-progress_gui.title('checking images')
+progress_gui.title('checking images with exif out of those without')
 
-target_dir = 'F:\\from dowloaded on 2019_05_29_ all jpg'  # F:\===================PIC TO CHECK\100NCD90
+target_dir = 'F:\\整理，手工添加EXIF, 相册，唯一， 未更名 2019_05_30'  # F:\===================PIC TO CHECK\100NCD90
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN'
