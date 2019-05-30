@@ -115,11 +115,12 @@ def photo_info(fn):
 
     data = get_exif(fn)
 
+
     if data is not None:
         # 3 time stamps
-        time_keys = ['DateTimeOriginal',
-                     'DateTimeDigitized',
-                     'DateTime']
+        time_keys = ['DateTimeOriginal']#,
+                     # 'DateTimeDigitized',
+                     # 'DateTime']
 
         for key in time_keys:
             if key in data.keys():
@@ -153,9 +154,7 @@ def chunk_reader(fobj, chunk_size=1024):
         yield chunk
 
 
-def check_for_duplicates(paths, hash=hashlib.sha1):
-    hashes = {}
-
+def check_for_exif(paths, hash=hashlib.sha1):
     for path in paths:
         count = 1
         max_files_count = count_files(path)
@@ -171,109 +170,17 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                     try:
                         im = Image.open(full_path)
                         im.close()
-                        hashobj = hash()
-                        for chunk in chunk_reader(open(full_path, 'rb')):
-                            hashobj.update(chunk)
-                        file_id = (hashobj.digest(), os.path.getsize(full_path))
-                        duplicate = hashes.get(file_id, None)
-                        if duplicate:
-                            try:
-                                img1 = Image.open(full_path)
-                                img2 = Image.open(duplicate)
+                        exif = photo_info(full_path)
+                        if exif[0] != 'Not Available' and int(exif[0][:4]) > 1972: #timestamp from 1970
+                            arranged_file_name = str(int(datetime.timestamp(datetime.strptime(exif[0],
+                                                                            "%Y-%m-%d %H:%M:%S"))))
+                            target_file = os.path.join(photo_with_exif, arranged_file_name +'.' + extension)
+                            move_file(full_path, target_file)
 
-                                img1_path = full_path[len(path):]
-                                img2_path = duplicate[len(path):]
-
-                                # create seperating zone
-                                img3 = Image.new('RGB', (30, img1.size[1]), color='gray')
-                                # merge imgs
-                                # img = Image.fromarray(np.hstack((np.array(img1), np.array(img2))))
-                                img = Image.new('RGB', (img1.size[0] + 30 + img2.size[0], img1.size[1]))
-                                img.paste(img1, (0, 0))
-                                img.paste(img3, (img1.size[0], 0))
-                                img.paste(img2, (img1.size[0] + 30, 0))
-                                # resize to fit screen
-                                ratio = img.size[0] / img.size[1]
-                                if ratio < 1 and img.size[1] >= height_img:
-                                    img = img.resize((int(height_img * ratio), height_img), Image.ANTIALIAS)
-                                if ratio >= 1 and img.size[0] >= width_img:
-                                    img = img.resize((width_img, int(width_img // ratio)), Image.ANTIALIAS)
-                                start_x = int((screen_width - img.size[0]) / 2)
-                                start_y = int((screen_height - img.size[1] - 150) / 2)
-                                root = tkinter.Tk()
-                                root.geometry('+%d+%d' % (start_x, start_y))
-                                root.geometry('%dx%d' % (img.size[0], img.size[1] + 150))
-                                tkpi = ImageTk.PhotoImage(img)
-                                label_image = tkinter.Label(root, image=tkpi)
-                                label_image.place(x=0, y=0, width=img.size[0], height=img.size[1])
-                                # show exif info
-                                img1_data = photo_info(full_path)
-                                img2_data = photo_info(duplicate)
-                                info_title = 'exif_datetime: ' + '\n' \
-                                            + 'exif_size: ' + '\n' \
-                                            + 'GPS info: ' + '\n' \
-                                            + 'scan_dir: ' + '\n' \
-                                            + 'sub_dir:' + '\n' \
-                                            + 'create time: ' + '\n' \
-                                            + 'last modify: ' + '\n' \
-                                            + 'size:          '
-                                img1_info = img1_data[0] + '\n' \
-                                            + img1_data[1] + '\n' \
-                                            + img1_data[2] + '\n' \
-                                            + path + '\n' \
-                                            + img1_path + '\n' \
-                                            + img1_data[3]+ '\n' \
-                                            + img1_data[4]+ '\n' \
-                                            + img1_data[5]
-                                img2_info = img2_data[0] + '\n' \
-                                            + img2_data[1] + '\n' \
-                                            + img2_data[2] + '\n' \
-                                            + path + '\n' \
-                                            + img2_path + '\n' \
-                                            + img2_data[3]+ '\n' \
-                                            + img2_data[4]+ '\n' \
-                                            + img2_data[5]
-                                label_info_title = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
-                                                                 compound=tkinter.LEFT)
-                                label_info_title.place(x=0, y=img.size[1])
-                                label_info_title2 = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
-                                                                  compound=tkinter.LEFT)
-                                label_info_title2.place(x=int(img.size[0] / 2), y=img.size[1])
-                                lable_info_text = tkinter.Label(root, text=img1_info, justify=tkinter.LEFT,
-                                                                compound=tkinter.LEFT)
-                                lable_info_text.place(x=90, y=img.size[1])
-                                lable_info_text2 = tkinter.Label(root, text=img2_info, justify=tkinter.LEFT,
-                                                                 compound=tkinter.LEFT)
-                                lable_info_text2.place(x=int(img.size[0] / 2) + 90, y=img.size[1])
-
-                                # show big red cross
-                                label_delete = tkinter.Label(root, text='XX', fg='red', font=('Times', 40),
-                                                             justify=tkinter.LEFT, compound=tkinter.LEFT)
-                                label_delete.place(x=int(img.size[0] - 90), y=int(img.size[1]))
-                                root.title('重复图片_按空格删除移动右侧图片到垃圾箱')
-                                root.update()
-                                # keyboard.wait(' ')
-                                target_file = os.path.join(duplicated_trash_dir, filename)
-                                move_file(duplicate, target_file)
-                                # move file
-                                print("Duplicate found: %s and %s" % (full_path, duplicate))
-                                print('Dulplicated file: % s moved to %s ' % (duplicate, duplicated_trash_dir))
-                            except OSError:
-                               pass
+                            insert_exif(target_file, 'no duplicated copy before ' + today )
                         else:
-                            hashes[file_id] = full_path
-                            exif = photo_info(full_path)
-                            if exif[0] != 'Not Available' and int(exif[0][:4]) > 1972: #timestamp from 1970
-                                arranged_file_name = str(int(datetime.timestamp(datetime.strptime(exif[0],
-                                                                                "%Y-%m-%d %H:%M:%S"))))
-                                target_file = os.path.join(photo_with_exif, arranged_file_name +'.' + extension)
-                                move_file(full_path, target_file)
-
-                                insert_exif(target_file, 'no duplicated copy before ' + today )
-                            else:
-                                target_file = os.path.join(pic_without_exif, filename)
-                                move_file(full_path, target_file)
-                        # keyboard.wait(' ')
+                            target_file = os.path.join(pic_without_exif, filename)
+                            move_file(full_path, target_file)
                     except OSError:
                         pass
                 count_text = str(count) + ' / ' + str(max_files_count)
@@ -285,6 +192,12 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                 count += 1
                 progress_gui.update()
 
+        files_in_exif_folder = count_files(photo_with_exif)
+        files_in_non_exif_folder = count_files(pic_without_exif)
+        print('files in "' + target_dir + '\\" are ' + str(max_files_count) + ' files.')
+        print('files moved and renamed in "' + photo_with_exif + '\\" are ' + str(files_in_exif_folder) + ' files.')
+        print('files moved in "' + pic_without_exif + '\\" are ' + str(files_in_non_exif_folder) + ' files.')
+        print('total ' + str(files_in_exif_folder + files_in_non_exif_folder) + ' files moved!')
 
 def face_recognition(pic_path):
 
@@ -340,11 +253,11 @@ bar_x = int((screen_width - 600 ) / 2)
 progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images')
 
-target_dir = 'F:\\BABY PIC_only_one_folder_first_edition_on 2019_01-08'  # F:\===================PIC TO CHECK\100NCD90
+target_dir = 'F:\\________________WELL_ARRANGED_AND_TAGGED_PHOTOS'  # F:\===================PIC TO CHECK\100NCD90
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN'
-photo_with_exif = target_dir[0:3] + 'WELL_ARRANGED_AND_TAGGED_PHOTOS'
+photo_with_exif = target_dir[0:3] + 'PHOTO_WITH_EXIF'
 pic_without_exif = target_dir[0:3] + 'pic_without_exif'
 create_folder(duplicated_trash_dir)
 create_folder(photo_with_exif)
@@ -353,8 +266,5 @@ today = str(datetime.today().date())
 
 file_type = ['jpg', 'png', 'bmp', 'jpeg', 'tiff']
 
-check_for_duplicates([target_dir, ])
-# faced_file_dir = os.path.join(photo_with_exif, '\\photo_with_face')
-# check_for_face(photo_with_exif)
-
+check_for_exif([target_dir, ])
 
