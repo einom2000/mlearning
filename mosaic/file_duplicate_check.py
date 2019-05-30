@@ -125,7 +125,7 @@ def photo_info(fn):
 
         for key in time_keys:
             if key in data.keys():
-                d = datetime.strptime(data[key], "%Y:%m:%d %H:%M:%S")
+                d = datetime.strptime(data[key][:19], "%Y:%m:%d %H:%M:%S")
                 if exif_datetime == 'Not Available' or exif_datetime > d:
                     exif_datetime = d
         if exif_datetime != 'Not Available':
@@ -167,7 +167,7 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
         mpb["value"] = count
         for dirpath, dirnames, filenames in os.walk(path):
             for filename in filenames:
-                if True:  # int(filename[:5]) >= 14829:
+                if 2000 <= count < 4000:
                     extension = os.path.splitext(filename)[1][1:]
                     full_path = os.path.join(dirpath, filename)
                     if extension.lower() in file_type:
@@ -345,7 +345,7 @@ progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images')
 
 
-target_dir = 'F:\\________________pic_without_exif'  # F:\===================PIC TO CHECK\100NCD90
+target_dir = 'F:\\pic_without_exif'  # F:\===================PIC TO CHECK\100NCD90
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN_2'

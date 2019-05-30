@@ -1,5 +1,5 @@
 import piexif
-
+import datetime
 exif_dict = piexif.load("test_uni.jpg")
 # thumbnail = exif_dict.pop("thumbnail")
 # print(thumbnail)
@@ -16,7 +16,14 @@ for ifd_name in exif_dict:
             print(exif_dict[ifd_name][key])
     else:
         print('None')
-exif_dict['0th'][33432] = b'abcdefghijklmn'
+t = datetime.datetime.strftime(datetime.datetime.now(), "%Y:%m:%d %H:%M:%S")
+print(t)
+exif_ifd = {piexif.ExifIFD.DateTimeOriginal: t,
+            piexif.ExifIFD.LensMake: u"ManualSet",
+            piexif.ExifIFD.Sharpness: 65535,
+            piexif.ExifIFD.LensSpecification: ((1, 1), (1, 1), (1, 1), (1, 1)),
+            }
+exif_dict["Exif"] = exif_ifd
 print(exif_dict)
 exif_byte = piexif.dump(exif_dict)
 piexif.insert(exif_byte, 'test_uni.jpg')

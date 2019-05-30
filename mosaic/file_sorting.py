@@ -115,7 +115,6 @@ def photo_info(fn):
 
     data = get_exif(fn)
 
-
     if data is not None:
         # 3 time stamps
         time_keys = ['DateTimeOriginal']#,
@@ -124,7 +123,7 @@ def photo_info(fn):
 
         for key in time_keys:
             if key in data.keys():
-                d = datetime.strptime(data[key], "%Y:%m:%d %H:%M:%S")
+                d = datetime.strptime(data[key][:19], "%Y:%m:%d %H:%M:%S")
                 if exif_datetime == 'Not Available' or exif_datetime > d:
                     exif_datetime = d
         if exif_datetime != 'Not Available':
@@ -253,7 +252,7 @@ bar_x = int((screen_width - 600 ) / 2)
 progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images')
 
-target_dir = 'F:\\________________WELL_ARRANGED_AND_TAGGED_PHOTOS'  # F:\===================PIC TO CHECK\100NCD90
+target_dir = 'F:\\from dowloaded on 2019_05_29_ all jpg'  # F:\===================PIC TO CHECK\100NCD90
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN'
