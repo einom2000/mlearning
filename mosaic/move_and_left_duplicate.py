@@ -8,6 +8,27 @@ import math
 import json
 import shutil
 
+
+def file_surffix(t, tar):
+    t += 1
+    if t < 1000:
+        tx = '0' * (3 - len(str(t))) + str(t)
+    else:
+        tx = str(t)
+    return os.path.splitext(tar)[0] + '_' + tx + os.path.splitext(tar)[1]
+
+
+def move_file(src, tar):
+    tar1 = tar
+    if os.path.isfile(tar):
+        t = 0
+        tar1 = file_surffix(t, tar)
+        while os.path.isfile(tar1):
+            t += 1
+            tar1 = file_surffix(t, tar)
+    shutil.move(src, tar1)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
+
+
 def count_files(dir):
     cpt = sum([len(files) for r, d, files in os.walk(dir)])
     return cpt
@@ -16,7 +37,7 @@ def count_files(dir):
 def get_size_range(size_bytes):
     # [0, 100KB), [100KB, 200KB), [200KB, 300KB)....every 100KB
     k = math.ceil(size_bytes / (100 * 1000))
-    return k
+    return str(k)
 
 
 # make a dictionary by every 100KB,size
@@ -44,9 +65,57 @@ def build_dic(path):
         progress_gui.update()
 
 
+def chunk_reader(fobj, chunk_size=1024):
+    """Generator that reads a file in chunks of bytes"""
+    while True:
+        chunk = fobj.read(chunk_size)
+        if not chunk:
+            return
+        yield chunk
 
-mother_dir = 'F:\\test'  # F:\===================PIC TO CHECK\100NCD90
+
+def build_zone_hash(size, hash=hashlib.sha1):
+    hshs = {}
+    if size in mother_folder_dictionary.keys():
+        for file_path in mother_folder_dictionary[size]:
+            hashobj = hash()
+            for chunk in chunk_reader(open(file_path, 'rb')):
+                hashobj.update(chunk)
+            file_id = (hashobj.digest(), os.path.getsize(file_path))
+            hshs[file_id] = file_path
+    return hshs
+
+
+def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
+    global mother_folder_dictionary, count
+    hashs = {}
+    for dirpath, dirnames, filenames in os.walk(cld_dir):
+        for filename in filenames:
+            cld_path = os.path.join(child_dir, filename)
+            st = os.stat(cld_path)
+            size_zone = get_size_range(st.st_size)
+            # build associated dictionary of hash
+            hashs.clear()
+            hashs = build_zone_hash(size_zone)
+            # get current hash
+            hashobj = hash()
+            for chunk in chunk_reader(open(cld_path, 'rb')):
+                hashobj.update(chunk)
+            child_id = (hashobj.digest(), os.path.getsize(cld_path))
+            duplicate_in_mother_dir = hashs.get(child_id, None)
+            if duplicate_in_mother_dir:
+                print(cld_path + ' has already in ' + mth_dir)
+                print('identical file is ' + duplicate_in_mother_dir)
+            else:
+                move_file(cld_path, os.path.join(mth_dir, os.path.basename(cld_path)))
+                print('move ' + cld_path + ' to ' + os.path.join(mth_dir, os.path.basename(cld_path)))
+                count += 1
+
+
+mother_dir = 'E:\\test'  # F:\===================PIC TO CHECK\100NCD90
 mother_folder_dictionary = {}
+child_dir = 'E:\\test_child'
+count = 0
 
 screen_width = GetSystemMetrics(0)
 screen_height = GetSystemMetrics(1)
@@ -71,22 +140,24 @@ if os.path.isfile(dictionary_path):
         mother_folder_dictionary = json.load(fp)
     if mother_folder_dictionary['files'] != max_files_count:
         mother_folder_dictionary.clear()
-        shutil.
+        os.remove(dictionary_path)
 
-
-
-if not os.path.isfile(dictionary_path):
+if mother_folder_dictionary == {}:
     build_dic(mother_dir)
     # add file number to dic
     mother_folder_dictionary['files'] = max_files_count + 1  # 'cause one json file
     with open(dictionary_path, 'w') as write_file:
         json.dump(mother_folder_dictionary, write_file, ensure_ascii=False)
-    print(mother_folder_dictionary)
-else:
-    with open(dictionary_path, 'r') as fp:
 
-        mother_folder_dictionary = json.load(fp)
-        print(mother_folder_dictionary)
-        print('-----------------------------')
+max_child_files = count_files(child_dir)
 
+move_non_duplicated_file(child_dir, mother_dir)
+
+last_mother_files = count_files(mother_dir)
+last_child_files = count_files(child_dir)
+
+print(str(count) + ' files has been moved')
+print(mother_dir + ' from ' + str(max_files_count) + ' up to ' + str(last_mother_files) + ' files')
+print(child_dir + ' from ' + str(max_child_files) + ' down to ' + str(last_child_files) + ' files')
+print(str(max_child_files - last_child_files) + ' are identical ')
 
