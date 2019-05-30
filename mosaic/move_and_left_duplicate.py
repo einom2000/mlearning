@@ -7,6 +7,7 @@ from win32api import GetSystemMetrics
 import math
 import json
 import shutil
+import keyboard
 
 
 def file_surffix(t, tar):
@@ -43,7 +44,6 @@ def get_size_range(size_bytes):
 # make a dictionary by every 100KB,size
 def build_dic(path):
     global mother_folder_dictionary
-    count = 1
     mpb["maximum"] = max_files_count
     mpb["value"] = count
     for dirpath, dirnames, filenames in os.walk(path):
@@ -54,15 +54,6 @@ def build_dic(path):
             if size_range not in mother_folder_dictionary.keys():
                 mother_folder_dictionary[size_range] = []
             mother_folder_dictionary[size_range].append(full_path)
-            pass
-            count_text = str(count) + ' / ' + str(max_files_count)
-            mpt = tkinter.Label(progress_gui, text=count_text)
-            mpt2 = tkinter.Label(progress_gui, text=full_path)
-            mpt.place(x=300, y=40, anchor=tkinter.CENTER)
-            mpt2.place(x=300, y=60, anchor=tkinter.CENTER)
-        mpb["value"] += 1
-        count += 1
-        progress_gui.update()
 
 
 def chunk_reader(fobj, chunk_size=1024):
@@ -88,6 +79,7 @@ def build_zone_hash(size, hash=hashlib.sha1):
 
 def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
     global mother_folder_dictionary, count
+    number = 1
     hashs = {}
     for dirpath, dirnames, filenames in os.walk(cld_dir):
         for filename in filenames:
@@ -107,14 +99,29 @@ def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
                 print(cld_path + ' has already in ' + mth_dir)
                 print('identical file is ' + duplicate_in_mother_dir)
             else:
-                move_file(cld_path, os.path.join(mth_dir, os.path.basename(cld_path)))
-                print('move ' + cld_path + ' to ' + os.path.join(mth_dir, os.path.basename(cld_path)))
+                tar_path = os.path.join(mth_dir, os.path.basename(cld_path))
+                move_file(cld_path, tar_path)
+                print('move ' + cld_path + ' to ' + tar_path)
+                if size_zone in mother_folder_dictionary.keys():
+                    mother_folder_dictionary[size_zone].append(tar_path)
+                else:
+                    mother_folder_dictionary[size_zone] = tar_path
+                mother_folder_dictionary['files'] += 1
                 count += 1
 
+            number_text = str(number) + ' / ' + str(max_child_files)
+            mpt = tkinter.Label(progress_gui, text=number_text)
+            mpt2 = tkinter.Label(progress_gui, text=cld_path)
+            mpt.place(x=300, y=40, anchor=tkinter.CENTER)
+            mpt2.place(x=300, y=60, anchor=tkinter.CENTER)
+            mpb["value"] += 1
+            number += 1
+            progress_gui.update()
+# 2374
 
-mother_dir = 'E:\\test'  # F:\===================PIC TO CHECK\100NCD90
+mother_dir = 'E:\\未整理，未与归档比较，有EXIF_1'  # F:\===================PIC TO CHECK\100NCD90
 mother_folder_dictionary = {}
-child_dir = 'E:\\test_child'
+child_dir = 'E:\\未整理，未与归档比较，有EXIF__2'
 count = 0
 
 screen_width = GetSystemMetrics(0)
@@ -130,17 +137,18 @@ progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images to move out the dulipcate ones')
 
 max_files_count = count_files(mother_dir)
+max_child_files = count_files(child_dir)
 mpb = ttk.Progressbar(progress_gui, orient="horizontal", length=600, mode="determinate")
 mpb.pack()
 
 dictionary_path = os.path.join(mother_dir, 'size_zone.json')
 
 if os.path.isfile(dictionary_path):
-    with open(dictionary_path, 'r') as fp:
-        mother_folder_dictionary = json.load(fp)
-    if mother_folder_dictionary['files'] != max_files_count:
-        mother_folder_dictionary.clear()
-        os.remove(dictionary_path)
+#     with open(dictionary_path, 'r') as fp:
+#         mother_folder_dictionary = json.load(fp)
+#     if mother_folder_dictionary['files'] != max_files_count:
+#         mother_folder_dictionary.clear()
+    os.remove(dictionary_path)
 
 if mother_folder_dictionary == {}:
     build_dic(mother_dir)
@@ -149,7 +157,7 @@ if mother_folder_dictionary == {}:
     with open(dictionary_path, 'w') as write_file:
         json.dump(mother_folder_dictionary, write_file, ensure_ascii=False)
 
-max_child_files = count_files(child_dir)
+
 
 move_non_duplicated_file(child_dir, mother_dir)
 
@@ -159,5 +167,5 @@ last_child_files = count_files(child_dir)
 print(str(count) + ' files has been moved')
 print(mother_dir + ' from ' + str(max_files_count) + ' up to ' + str(last_mother_files) + ' files')
 print(child_dir + ' from ' + str(max_child_files) + ' down to ' + str(last_child_files) + ' files')
-print(str(max_child_files - last_child_files) + ' are identical ')
+print(str(max_child_files - last_child_files) + ' are unique ')
 
