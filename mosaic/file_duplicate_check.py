@@ -334,7 +334,7 @@ progress_gui = tkinter.Tk()
 progress_gui.geometry('%dx%d' % (600, 100))
 bar_x = int((screen_width - 600 ) / 2)
 progress_gui.geometry('+%d+%d' % (bar_x, 50))
-progress_gui.title('checking images')
+progress_gui.title('checking images to move out the dulipcate ones')
 
 
 target_dir = 'F:\\pic_without_exif'  # F:\===================PIC TO CHECK\100NCD90
