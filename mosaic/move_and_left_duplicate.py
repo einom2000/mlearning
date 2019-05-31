@@ -2,12 +2,83 @@ import os
 import hashlib
 import tkinter
 from PIL import Image, ImageTk
+from PIL.ExifTags import TAGS, GPSTAGS
 from tkinter import ttk
 from win32api import GetSystemMetrics
 import math
 import json
 import shutil
 import keyboard
+from PIL import Image, ImageTk
+from datetime import datetime
+import time
+
+def get_exif(fn):
+    ret = {}
+    i = Image.open(fn)
+    info = i._getexif()
+    if info is not None:
+        for tag, value in info.items():
+            decoded = TAGS.get(tag, tag)
+            ret[decoded] = value
+        return ret
+    else:
+        return None
+
+
+def convert_size(size_bytes):
+    if size_bytes == 0:
+        return "0B"
+    size_name = ("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
+    i = int(math.floor(math.log(size_bytes, 1024)))
+    p = math.pow(1024, i)
+    s = round(size_bytes / p, 2)
+    return "%s %s" % (s, size_name[i])
+
+
+def file_info(fn):
+    st = os.stat(fn)
+    size = convert_size(st.st_size)
+    return datetime.strftime(datetime.fromtimestamp(st.st_ctime), "%Y-%m-%d %H:%M:%S"), \
+           datetime.strftime(datetime.fromtimestamp(st.st_mtime), "%Y-%m-%d %H:%M:%S"), \
+           size
+
+
+def photo_info(fn):
+
+    exif_datetime = 'Not Available'
+    s = 'Not Available'
+    gpsinfo = 'Not Available'
+
+    data = get_exif(fn)
+
+    if data is not None:
+        # 3 time stamps
+        time_keys = ['DateTimeOriginal',
+                     'DateTimeDigitized',
+                     'DateTime']
+
+        for key in time_keys:
+            if key in data.keys():
+                d = datetime.strptime(data[key][:19], "%Y:%m:%d %H:%M:%S")
+                if exif_datetime == 'Not Available' or exif_datetime > d:
+                    exif_datetime = d
+        if exif_datetime != 'Not Available':
+            exif_datetime = exif_datetime.strftime("%Y-%m-%d %H:%M:%S")
+
+        # original size
+        exif_sizes = ['ExifImageWidth', 'ExifImageHeight']
+        if exif_sizes[0] in data.keys() and exif_sizes[1] in data.keys():
+            s = str(int(data[exif_sizes[0]])) + ' * ' + str(int(data[exif_sizes[1]]))
+
+        # GPS info
+        if 'GPSIno' in data.keys():
+            for key in data['GPSInfo'].keys():
+                decode = GPSTAGS.get(key, key)
+                gpsinfo[decode] = data['GPSInfo'][key]
+
+    ct, mt, sz = file_info(fn)
+    return exif_datetime, s, str(gpsinfo), ct, mt, sz
 
 
 def file_surffix(t, tar):
@@ -66,36 +137,108 @@ def chunk_reader(fobj, chunk_size=1024):
 
 
 def build_zone_hash(size, hash=hashlib.sha1):
-    hshs = {}
-    if size in mother_folder_dictionary.keys():
-        for file_path in mother_folder_dictionary[size]:
-            hashobj = hash()
-            for chunk in chunk_reader(open(file_path, 'rb')):
-                hashobj.update(chunk)
-            file_id = (hashobj.digest(), os.path.getsize(file_path))
-            hshs[file_id] = file_path
-    return hshs
+    global mother_folder_dictionary, hashes
+    if size not in hashes.keys():
+        hashes[size] = {}
+        if size in mother_folder_dictionary.keys():
+            for file_path in mother_folder_dictionary[size]:
+                hashobj = hash()
+                for chunk in chunk_reader(open(file_path, 'rb')):
+                    hashobj.update(chunk)
+                file_id = (hashobj.digest(), os.path.getsize(file_path))
+                if file_id not in hashes[size].keys():
+                    hashes[size][file_id] = file_path
 
 
 def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
-    global mother_folder_dictionary, count
+    global mother_folder_dictionary, count, hashes
     number = 1
-    hashs = {}
     for dirpath, dirnames, filenames in os.walk(cld_dir):
         for filename in filenames:
             cld_path = os.path.join(child_dir, filename)
             st = os.stat(cld_path)
             size_zone = get_size_range(st.st_size)
             # build associated dictionary of hash
-            hashs.clear()
-            hashs = build_zone_hash(size_zone)
+            build_zone_hash(size_zone)
             # get current hash
             hashobj = hash()
             for chunk in chunk_reader(open(cld_path, 'rb')):
                 hashobj.update(chunk)
             child_id = (hashobj.digest(), os.path.getsize(cld_path))
-            duplicate_in_mother_dir = hashs.get(child_id, None)
+            duplicate_in_mother_dir = hashes[size_zone].get(child_id, None)
             if duplicate_in_mother_dir:
+                if show_identical:
+                    img1 = Image.open(duplicate_in_mother_dir)
+                    img2 = Image.open(cld_path)
+                    img3 = Image.new('RGB', (30, img1.size[1]), color='gray')
+                    # merge imgs
+                    img = Image.new('RGB', (img1.size[0] + 30 + img2.size[0], img1.size[1]))
+                    img.paste(img1, (0, 0))
+                    img.paste(img3, (img1.size[0], 0))
+                    img.paste(img2, (img1.size[0] + 30, 0))
+                    # resize to fit screen
+                    ratio = img.size[0] / img.size[1]
+                    if ratio < 1 and img.size[1] >= height_img:
+                        img = img.resize((int(height_img * ratio), height_img), Image.ANTIALIAS)
+                    if ratio >= 1 and img.size[0] >= width_img:
+                        img = img.resize((width_img, int(width_img // ratio)), Image.ANTIALIAS)
+                    start_x = int((screen_width - img.size[0]) / 2)
+                    start_y = int((screen_height - img.size[1] - 150) / 2)
+
+                    root = tkinter.Toplevel()
+                    root.geometry('+%d+%d' % (start_x, start_y))
+                    root.geometry('%dx%d' % (img.size[0], img.size[1] + 150))
+                    tkpi = ImageTk.PhotoImage(img)
+                    label_image = tkinter.Label(root, image=tkpi)
+                    label_image.place(x=0, y=0, width=img.size[0], height=img.size[1])
+                    # show exif info
+                    img1_data = photo_info(duplicate_in_mother_dir)
+                    img2_data = photo_info(cld_path)
+                    info_title = 'exif_datetime: ' + '\n' \
+                                 + 'exif_size: ' + '\n' \
+                                 + 'GPS info: ' + '\n' \
+                                 + 'scan_dir: ' + '\n' \
+                                 + 'sub_dir:' + '\n' \
+                                 + 'create time: ' + '\n' \
+                                 + 'last modify: ' + '\n' \
+                                 + 'size:          '
+                    img1_info = img1_data[0] + '\n' \
+                                + img1_data[1] + '\n' \
+                                + img1_data[2] + '\n' \
+                                + mother_dir + '\n' \
+                                + duplicate_in_mother_dir + '\n' \
+                                + img1_data[3] + '\n' \
+                                + img1_data[4] + '\n' \
+                                + img1_data[5]
+                    img2_info = img2_data[0] + '\n' \
+                                + img2_data[1] + '\n' \
+                                + img2_data[2] + '\n' \
+                                + cld_dir + '\n' \
+                                + cld_path + '\n' \
+                                + img2_data[3] + '\n' \
+                                + img2_data[4] + '\n' \
+                                + img2_data[5]
+                    label_info_title = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
+                                                     compound=tkinter.LEFT)
+                    label_info_title.place(x=0, y=img.size[1])
+                    label_info_title2 = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
+                                                      compound=tkinter.LEFT)
+                    label_info_title2.place(x=int(img.size[0] / 2), y=img.size[1])
+                    lable_info_text = tkinter.Label(root, text=img1_info, justify=tkinter.LEFT,
+                                                    compound=tkinter.LEFT)
+                    lable_info_text.place(x=90, y=img.size[1])
+                    lable_info_text2 = tkinter.Label(root, text=img2_info, justify=tkinter.LEFT,
+                                                     compound=tkinter.LEFT)
+                    lable_info_text2.place(x=int(img.size[0] / 2) + 90, y=img.size[1])
+
+                    # show big red cross
+                    label_delete = tkinter.Label(root, text='XX', fg='red', font=('Times', 40),
+                                                 justify=tkinter.LEFT, compound=tkinter.LEFT)
+                    label_delete.place(x=int(img.size[0] - 90), y=int(img.size[1]))
+                    root.title('重复图片_')
+                    root.update()
+                    time.sleep(.3)
+                    root.destroy()
                 print(cld_path + ' has already in ' + mth_dir)
                 print('identical file is ' + duplicate_in_mother_dir)
             else:
@@ -119,20 +262,22 @@ def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
             progress_gui.update()
 # 2374
 
+
 mother_dir = 'E:\\未整理，未与归档比较，有EXIF_1'  # F:\===================PIC TO CHECK\100NCD90
 mother_folder_dictionary = {}
-child_dir = 'E:\\未整理，未与归档比较，有EXIF__2'
+child_dir = 'E:\未整理，未与归档比较，有EXIF_2'
 count = 0
+hashes = {}
+show_identical = False
 
 screen_width = GetSystemMetrics(0)
 screen_height = GetSystemMetrics(1)
 width_img = int(screen_width * 0.5)
-height_img = int(screen_height * 0.5 -150)
-
+height_img = int(screen_height * 0.5 - 150)
 
 progress_gui = tkinter.Tk()
 progress_gui.geometry('%dx%d' % (600, 100))
-bar_x = int((screen_width - 600 ) / 2)
+bar_x = int((screen_width - 600) / 2)
 progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images to move out the dulipcate ones')
 
@@ -144,10 +289,6 @@ mpb.pack()
 dictionary_path = os.path.join(mother_dir, 'size_zone.json')
 
 if os.path.isfile(dictionary_path):
-#     with open(dictionary_path, 'r') as fp:
-#         mother_folder_dictionary = json.load(fp)
-#     if mother_folder_dictionary['files'] != max_files_count:
-#         mother_folder_dictionary.clear()
     os.remove(dictionary_path)
 
 if mother_folder_dictionary == {}:
@@ -156,8 +297,6 @@ if mother_folder_dictionary == {}:
     mother_folder_dictionary['files'] = max_files_count + 1  # 'cause one json file
     with open(dictionary_path, 'w') as write_file:
         json.dump(mother_folder_dictionary, write_file, ensure_ascii=False)
-
-
 
 move_non_duplicated_file(child_dir, mother_dir)
 
