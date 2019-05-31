@@ -263,9 +263,9 @@ def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
 # 2374
 
 
-mother_dir = 'E:\\未整理，未与归档比较，有EXIF_1'  # F:\===================PIC TO CHECK\100NCD90
+mother_dir = 'E:\\已经备备_整理，更名，全EXIF相册，唯一'  # F:\===================PIC TO CHECK\100NCD90
 mother_folder_dictionary = {}
-child_dir = 'E:\未整理，未与归档比较，有EXIF_2'
+child_dir = 'E:\\已比较的重复部分'
 count = 0
 hashes = {}
 show_identical = False

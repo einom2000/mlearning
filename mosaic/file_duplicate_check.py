@@ -159,7 +159,7 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
         mpb["value"] = count
         for dirpath, dirnames, filenames in os.walk(path):
             for filename in filenames:
-                if 2000 <= count < 4000:
+                if 0 <= count :
                     extension = os.path.splitext(filename)[1][1:]
                     full_path = os.path.join(dirpath, filename)
                     if extension.lower() in file_type:
@@ -173,84 +173,86 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                             duplicate = hashes.get(file_id, None)
                             if duplicate:
                                 # try:
-                                    img1 = Image.open(duplicate)
-                                    img2 = Image.open(full_path)
+                                    if show_identical:
+                                        img1 = Image.open(duplicate)
+                                        img2 = Image.open(full_path)
 
-                                    img1_path = duplicate[len(path):]
-                                    img2_path = full_path[len(path):]
+                                        img1_path = duplicate[len(path):]
+                                        img2_path = full_path[len(path):]
 
-                                    # create seperating zone
-                                    img3 = Image.new('RGB', (30, img1.size[1]), color='gray')
-                                    # merge imgs
-                                    img = Image.new('RGB', (img1.size[0] + 30 + img2.size[0], img1.size[1]))
-                                    img.paste(img1, (0, 0))
-                                    img.paste(img3, (img1.size[0], 0))
-                                    img.paste(img2, (img1.size[0] + 30, 0))
-                                    # resize to fit screen
-                                    ratio = img.size[0] / img.size[1]
-                                    if ratio < 1 and img.size[1] >= height_img:
-                                        img = img.resize((int(height_img * ratio), height_img), Image.ANTIALIAS)
-                                    if ratio >= 1 and img.size[0] >= width_img:
-                                        img = img.resize((width_img, int(width_img // ratio)), Image.ANTIALIAS)
-                                    start_x = int((screen_width - img.size[0]) / 2)
-                                    start_y = int((screen_height - img.size[1] - 150) / 2)
+                                        # create seperating zone
+                                        img3 = Image.new('RGB', (30, img1.size[1]), color='gray')
+                                        # merge imgs
+                                        img = Image.new('RGB', (img1.size[0] + 30 + img2.size[0], img1.size[1]))
+                                        img.paste(img1, (0, 0))
+                                        img.paste(img3, (img1.size[0], 0))
+                                        img.paste(img2, (img1.size[0] + 30, 0))
+                                        # resize to fit screen
+                                        ratio = img.size[0] / img.size[1]
+                                        if ratio < 1 and img.size[1] >= height_img:
+                                            img = img.resize((int(height_img * ratio), height_img), Image.ANTIALIAS)
+                                        if ratio >= 1 and img.size[0] >= width_img:
+                                            img = img.resize((width_img, int(width_img // ratio)), Image.ANTIALIAS)
+                                        start_x = int((screen_width - img.size[0]) / 2)
+                                        start_y = int((screen_height - img.size[1] - 150) / 2)
 
-                                    root = tkinter.Toplevel()
-                                    root.geometry('+%d+%d' % (start_x, start_y))
-                                    root.geometry('%dx%d' % (img.size[0], img.size[1] + 150))
-                                    tkpi = ImageTk.PhotoImage(img)
-                                    label_image = tkinter.Label(root, image=tkpi)
-                                    label_image.place(x=0, y=0, width=img.size[0], height=img.size[1])
-                                    # show exif info
-                                    img1_data = photo_info(duplicate)
-                                    img2_data = photo_info(full_path)
-                                    info_title = 'exif_datetime: ' + '\n' \
-                                                + 'exif_size: ' + '\n' \
-                                                + 'GPS info: ' + '\n' \
-                                                + 'scan_dir: ' + '\n' \
-                                                + 'sub_dir:' + '\n' \
-                                                + 'create time: ' + '\n' \
-                                                + 'last modify: ' + '\n' \
-                                                + 'size:          '
-                                    img1_info = img1_data[0] + '\n' \
-                                                + img1_data[1] + '\n' \
-                                                + img1_data[2] + '\n' \
-                                                + path + '\n' \
-                                                + img1_path + '\n' \
-                                                + img1_data[3]+ '\n' \
-                                                + img1_data[4]+ '\n' \
-                                                + img1_data[5]
-                                    img2_info = img2_data[0] + '\n' \
-                                                + img2_data[1] + '\n' \
-                                                + img2_data[2] + '\n' \
-                                                + path + '\n' \
-                                                + img2_path + '\n' \
-                                                + img2_data[3]+ '\n' \
-                                                + img2_data[4]+ '\n' \
-                                                + img2_data[5]
-                                    label_info_title = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
-                                                                     compound=tkinter.LEFT)
-                                    label_info_title.place(x=0, y=img.size[1])
-                                    label_info_title2 = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
-                                                                      compound=tkinter.LEFT)
-                                    label_info_title2.place(x=int(img.size[0] / 2), y=img.size[1])
-                                    lable_info_text = tkinter.Label(root, text=img1_info, justify=tkinter.LEFT,
-                                                                    compound=tkinter.LEFT)
-                                    lable_info_text.place(x=90, y=img.size[1])
-                                    lable_info_text2 = tkinter.Label(root, text=img2_info, justify=tkinter.LEFT,
-                                                                     compound=tkinter.LEFT)
-                                    lable_info_text2.place(x=int(img.size[0] / 2) + 90, y=img.size[1])
+                                        root = tkinter.Toplevel()
+                                        root.geometry('+%d+%d' % (start_x, start_y))
+                                        root.geometry('%dx%d' % (img.size[0], img.size[1] + 150))
+                                        tkpi = ImageTk.PhotoImage(img)
+                                        label_image = tkinter.Label(root, image=tkpi)
+                                        label_image.place(x=0, y=0, width=img.size[0], height=img.size[1])
+                                        # show exif info
+                                        img1_data = photo_info(duplicate)
+                                        img2_data = photo_info(full_path)
+                                        info_title = 'exif_datetime: ' + '\n' \
+                                                    + 'exif_size: ' + '\n' \
+                                                    + 'GPS info: ' + '\n' \
+                                                    + 'scan_dir: ' + '\n' \
+                                                    + 'sub_dir:' + '\n' \
+                                                    + 'create time: ' + '\n' \
+                                                    + 'last modify: ' + '\n' \
+                                                    + 'size:          '
+                                        img1_info = img1_data[0] + '\n' \
+                                                    + img1_data[1] + '\n' \
+                                                    + img1_data[2] + '\n' \
+                                                    + path + '\n' \
+                                                    + img1_path + '\n' \
+                                                    + img1_data[3]+ '\n' \
+                                                    + img1_data[4]+ '\n' \
+                                                    + img1_data[5]
+                                        img2_info = img2_data[0] + '\n' \
+                                                    + img2_data[1] + '\n' \
+                                                    + img2_data[2] + '\n' \
+                                                    + path + '\n' \
+                                                    + img2_path + '\n' \
+                                                    + img2_data[3]+ '\n' \
+                                                    + img2_data[4]+ '\n' \
+                                                    + img2_data[5]
+                                        label_info_title = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
+                                                                         compound=tkinter.LEFT)
+                                        label_info_title.place(x=0, y=img.size[1])
+                                        label_info_title2 = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
+                                                                          compound=tkinter.LEFT)
+                                        label_info_title2.place(x=int(img.size[0] / 2), y=img.size[1])
+                                        lable_info_text = tkinter.Label(root, text=img1_info, justify=tkinter.LEFT,
+                                                                        compound=tkinter.LEFT)
+                                        lable_info_text.place(x=90, y=img.size[1])
+                                        lable_info_text2 = tkinter.Label(root, text=img2_info, justify=tkinter.LEFT,
+                                                                         compound=tkinter.LEFT)
+                                        lable_info_text2.place(x=int(img.size[0] / 2) + 90, y=img.size[1])
 
-                                    # show big red cross
-                                    label_delete = tkinter.Label(root, text='XX', fg='red', font=('Times', 40),
-                                                                 justify=tkinter.LEFT, compound=tkinter.LEFT)
-                                    label_delete.place(x=int(img.size[0] - 90), y=int(img.size[1]))
-                                    root.title('重复图片_按空格删除移动右侧图片到垃圾箱')
-                                    root.update()
+                                        # show big red cross
+                                        label_delete = tkinter.Label(root, text='XX', fg='red', font=('Times', 40),
+                                                                     justify=tkinter.LEFT, compound=tkinter.LEFT)
+                                        label_delete.place(x=int(img.size[0] - 90), y=int(img.size[1]))
+                                        root.title('重复图片_按空格删除移动右侧图片到垃圾箱')
+                                        root.update()
+                                        time.sleep(.2)
+                                        root.destroy()
                                     target_file = os.path.join(duplicated_trash_dir, filename)
                                     move_file(full_path, target_file)
-                                    time.sleep(.2)
-                                    root.destroy()
+
                                     # move file
                                     print("Duplicate found: %s and %s" % (full_path, duplicate))
                                     print('Dulplicated file: % s moved to %s ' % (duplicate, duplicated_trash_dir))
@@ -323,6 +325,8 @@ cascPath = "C:\\Users\\einom\\PycharmProjects\\mlearning\\mosaic\\opencv_lib\\ha
 # Create the haar cascade
 faceCascade = cv2.CascadeClassifier(cascPath)
 
+show_identical = False
+
 screen_width = GetSystemMetrics(0)
 screen_height = GetSystemMetrics(1)
 
@@ -337,7 +341,7 @@ progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images to move out the dulipcate ones')
 
 
-target_dir = 'E:\\未整理，未与归档比较，有EXIF_1'  # F:\===================PIC TO CHECK\100NCD90
+target_dir = 'E:\\PHOTO_WITH_EXIF_网盘全部下载部分'  # F:\===================PIC TO CHECK\100NCD90
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN_2'
