@@ -1,11 +1,23 @@
 import piexif
 import datetime
-exif_dict = piexif.load("test_uni.jpg")
-# thumbnail = exif_dict.pop("thumbnail")
-# print(thumbnail)
-# if thumbnail is not None:
-#     with open("thumbnail.jpg", "wb+") as f:
-#         f.write(thumbnail)
+import os
+
+
+dic = {
+        'Title': b'',
+        'Author': b'',
+        'CopyRight': b''
+       }
+
+tar_dir = 'F:\\test'
+
+
+for dirpath, dirnames, filenames in os.walk(tar_dir):
+    for filename in filenames:
+        if os.path.splitext(filename)[1][1:] == 'jpg':
+            full_path = os.p
+            exif_dict = piexif.load("test_uni.jpg")
+
 print(exif_dict)
 for ifd_name in exif_dict:
     print('=======================================')
@@ -18,14 +30,10 @@ for ifd_name in exif_dict:
         print('None')
 t = datetime.datetime.strftime(datetime.datetime.now(), "%Y:%m:%d %H:%M:%S")
 print(t)
-exif_ifd = {piexif.ExifIFD.DateTimeOriginal: t,
-            piexif.ExifIFD.LensMake: u"ManualSet",
-            piexif.ExifIFD.Sharpness: 65535,
-            piexif.ExifIFD.LensSpecification: ((1, 1), (1, 1), (1, 1), (1, 1)),
-            }
-exif_dict["Exif"] = exif_ifd
+
 exif_dict['0th'][270] = b'this is a test'
 exif_dict['0th'][33432] = b'this is a test too'
+exif_dict['0th'][315] = b' there is another place'
 print(exif_dict)
 exif_byte = piexif.dump(exif_dict)
 piexif.insert(exif_byte, 'test_uni.jpg')
