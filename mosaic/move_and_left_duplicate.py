@@ -13,6 +13,7 @@ from PIL import Image, ImageTk
 from datetime import datetime
 import time
 
+
 def get_exif(fn):
     ret = {}
     i = Image.open(fn)
@@ -99,7 +100,7 @@ def move_file(src, tar):
             t += 1
             tar1 = file_surffix(t, tar)
     shutil.move(src, tar1)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
-
+    return tar1
 
 def count_files(dir):
     cpt = sum([len(files) for r, d, files in os.walk(dir)])
@@ -115,7 +116,7 @@ def get_size_range(size_bytes):
 # make a dictionary by every 100KB,size
 def build_dic(path):
     global mother_folder_dictionary
-    mpb["maximum"] = max_files_count
+    mpb["maximum"] = max_child_files
     mpb["value"] = count
     for dirpath, dirnames, filenames in os.walk(path):
         for filename in filenames:
@@ -136,7 +137,7 @@ def chunk_reader(fobj, chunk_size=1024):
         yield chunk
 
 
-def build_zone_hash(size, hash=hashlib.sha1):
+def build_zone_hash(size, hash=hashlib.sha1, add_full_path=None):
     global mother_folder_dictionary, hashes
     if size not in hashes.keys():
         hashes[size] = {}
@@ -148,7 +149,13 @@ def build_zone_hash(size, hash=hashlib.sha1):
                 file_id = (hashobj.digest(), os.path.getsize(file_path))
                 if file_id not in hashes[size].keys():
                     hashes[size][file_id] = file_path
-
+    if add_full_path is not None:
+            hashobj = hash()
+            for chunk in chunk_reader(open(add_full_path, 'rb')):
+                hashobj.update(chunk)
+            file_id = (hashobj.digest(), os.path.getsize(add_full_path))
+            if file_id not in hashes[size].keys():
+                hashes[size][file_id] = add_full_path
 
 def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
     global mother_folder_dictionary, count, hashes
@@ -237,38 +244,38 @@ def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
                     label_delete.place(x=int(img.size[0] - 90), y=int(img.size[1]))
                     root.title('重复图片_')
                     root.update()
-                    time.sleep(.3)
+                    keyboard.wait(0)
                     root.destroy()
                 print(cld_path + ' has already in ' + mth_dir)
                 print('identical file is ' + duplicate_in_mother_dir)
             else:
                 tar_path = os.path.join(mth_dir, os.path.basename(cld_path))
-                move_file(cld_path, tar_path)
+                moved_tar = move_file(cld_path, tar_path)
                 print('move ' + cld_path + ' to ' + tar_path)
                 if size_zone in mother_folder_dictionary.keys():
-                    mother_folder_dictionary[size_zone].append(tar_path)
+                    mother_folder_dictionary[size_zone].append(moved_tar)
                 else:
-                    mother_folder_dictionary[size_zone] = tar_path
+                    mother_folder_dictionary[size_zone] = [moved_tar,]
+                build_zone_hash(size_zone, add_full_path=moved_tar)
                 mother_folder_dictionary['files'] += 1
-                count += 1
 
             number_text = str(number) + ' / ' + str(max_child_files)
             mpt = tkinter.Label(progress_gui, text=number_text)
-            mpt2 = tkinter.Label(progress_gui, text=cld_path)
+            mpt2 = tkinter.Label(progress_gui, text=' '* 30 + cld_path + ' ' * 30)
             mpt.place(x=300, y=40, anchor=tkinter.CENTER)
             mpt2.place(x=300, y=60, anchor=tkinter.CENTER)
-            mpb["value"] += 1
             number += 1
+            mpb["value"] = number
             progress_gui.update()
 # 2374
 
 
-mother_dir = 'E:\\已经备备_整理，更名，全EXIF相册，唯一'  # F:\===================PIC TO CHECK\100NCD90
+mother_dir = 'E:\\未备备_有添加合并_整理，更名，全EXIF相册，唯一'  # F:\===================PIC TO CHECK\100NCD90
 mother_folder_dictionary = {}
-child_dir = 'E:\\已比较的重复部分'
+child_dir = 'E:\\PHOTO_WITH_EXIF_网盘全部下载部分'
 count = 0
 hashes = {}
-show_identical = False
+show_identical = True
 
 screen_width = GetSystemMetrics(0)
 screen_height = GetSystemMetrics(1)
