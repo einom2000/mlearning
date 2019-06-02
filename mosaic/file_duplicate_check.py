@@ -325,7 +325,7 @@ cascPath = "C:\\Users\\einom\\PycharmProjects\\mlearning\\mosaic\\opencv_lib\\ha
 # Create the haar cascade
 faceCascade = cv2.CascadeClassifier(cascPath)
 
-show_identical = False
+show_identical = True
 
 screen_width = GetSystemMetrics(0)
 screen_height = GetSystemMetrics(1)
@@ -341,7 +341,7 @@ progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images to move out the dulipcate ones')
 
 
-target_dir = 'E:\\PHOTO_WITH_EXIF_网盘全部下载部分'  # F:\===================PIC TO CHECK\100NCD90
+target_dir = 'F:\\PHOTO_WITH_EXIF_网盘全部下载部分'  # F:\===================PIC TO CHECK\100NCD90
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
 duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN_2'
