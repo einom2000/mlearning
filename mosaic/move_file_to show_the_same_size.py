@@ -130,116 +130,136 @@ def chunk_reader(fobj, chunk_size=1024):
 
 
 def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
-    global mother_folder_dictionary, count, hashes
+    global mother_folder_dictionary, count
     number = 1
     for dirpath, dirnames, filenames in os.walk(cld_dir):
         for filename in filenames:
             cld_path = os.path.join(child_dir, filename)
-            st = os.stat(cld_path)
-            size_zone = get_size_range(st.st_size)
-            # build associated dictionary of hash
-            build_zone_hash(size_zone)
-            # get current hash
-            hashobj = hash()
-            for chunk in chunk_reader(open(cld_path, 'rb')):
-                hashobj.update(chunk)
-            child_id = (hashobj.digest(), os.path.getsize(cld_path))
-            duplicate_in_mother_dir = hashes[size_zone].get(child_id, None)
-            if duplicate_in_mother_dir:
-                if show_identical:
-                    img1 = Image.open(duplicate_in_mother_dir)
-                    img2 = Image.open(cld_path)
-                    img3 = Image.new('RGB', (30, img1.size[1]), color='gray')
-                    # merge imgs
-                    img = Image.new('RGB', (img1.size[0] + 30 + img2.size[0], img1.size[1]))
-                    img.paste(img1, (0, 0))
-                    img.paste(img3, (img1.size[0], 0))
-                    img.paste(img2, (img1.size[0] + 30, 0))
-                    # resize to fit screen
-                    ratio = img.size[0] / img.size[1]
-                    if ratio < 1 and img.size[1] >= height_img:
-                        img = img.resize((int(height_img * ratio), height_img), Image.ANTIALIAS)
-                    if ratio >= 1 and img.size[0] >= width_img:
-                        img = img.resize((width_img, int(width_img // ratio)), Image.ANTIALIAS)
-                    start_x = int((screen_width - img.size[0]) / 2)
-                    start_y = int((screen_height - img.size[1] - 150) / 2)
+            cld_size = os.path.getsize(cld_path)
+            if cld_size in mother_folder_dictionary.keys():
+                # get cld_hash
+                hashobj = hash()
+                for chunk in chunk_reader(open(cld_path, 'rb')):
+                    hashobj.update(chunk)
+                child_id = (hashobj.digest(), os.path.getsize(cld_path))
+                for existing_file in mother_folder_dictionary[cld_size]:
+                    hashobj = hash()
+                    for chunk in chunk_reader(open(existing_file, 'rb')):
+                        hashobj.update(chunk)
+                    existing_file_id = hashobj.digest()
+                    if existing_file_id == child_id:
+                        duplicate = True
+                        existing_file_path = existing_file
 
-                    root = tkinter.Toplevel()
-                    root.geometry('+%d+%d' % (start_x, start_y))
-                    root.geometry('%dx%d' % (img.size[0], img.size[1] + 150))
-                    tkpi = ImageTk.PhotoImage(img)
-                    label_image = tkinter.Label(root, image=tkpi)
-                    label_image.place(x=0, y=0, width=img.size[0], height=img.size[1])
-                    # show exif info
-                    img1_data = photo_info(duplicate_in_mother_dir)
-                    img2_data = photo_info(cld_path)
-                    info_title = 'exif_datetime: ' + '\n' \
-                                 + 'exif_size: ' + '\n' \
-                                 + 'GPS info: ' + '\n' \
-                                 + 'scan_dir: ' + '\n' \
-                                 + 'sub_dir:' + '\n' \
-                                 + 'create time: ' + '\n' \
-                                 + 'last modify: ' + '\n' \
-                                 + 'size:          '
-                    img1_info = img1_data[0] + '\n' \
-                                + img1_data[1] + '\n' \
-                                + img1_data[2] + '\n' \
-                                + mother_dir + '\n' \
-                                + duplicate_in_mother_dir + '\n' \
-                                + img1_data[3] + '\n' \
-                                + img1_data[4] + '\n' \
-                                + img1_data[5]
-                    img2_info = img2_data[0] + '\n' \
-                                + img2_data[1] + '\n' \
-                                + img2_data[2] + '\n' \
-                                + cld_dir + '\n' \
-                                + cld_path + '\n' \
-                                + img2_data[3] + '\n' \
-                                + img2_data[4] + '\n' \
-                                + img2_data[5]
-                    label_info_title = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
-                                                     compound=tkinter.LEFT)
-                    label_info_title.place(x=0, y=img.size[1])
-                    label_info_title2 = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
-                                                      compound=tkinter.LEFT)
-                    label_info_title2.place(x=int(img.size[0] / 2), y=img.size[1])
-                    lable_info_text = tkinter.Label(root, text=img1_info, justify=tkinter.LEFT,
-                                                    compound=tkinter.LEFT)
-                    lable_info_text.place(x=90, y=img.size[1])
-                    lable_info_text2 = tkinter.Label(root, text=img2_info, justify=tkinter.LEFT,
-                                                     compound=tkinter.LEFT)
-                    lable_info_text2.place(x=int(img.size[0] / 2) + 90, y=img.size[1])
+                if duplicate:
+                    # try:
+                    if show_identical:
+                        len1 = len(os.path.basename(existing_file_path))
+                        len2 = len(os.path.basename(full_path))
+                        if len1 > len2:
+                            existing_file_path, full_path = full_path, existing_file_path
+                        img1 = Image.open(existing_file_path)
+                        img2 = Image.open(full_path)
 
-                    # show big red cross
-                    label_delete = tkinter.Label(root, text='XX', fg='red', font=('Times', 40),
-                                                 justify=tkinter.LEFT, compound=tkinter.LEFT)
-                    label_delete.place(x=int(img.size[0] - 90), y=int(img.size[1]))
-                    root.title('重复图片_')
-                    root.update()
-                    keyboard.wait(0)
-                    root.destroy()
-                print(cld_path + ' has already in ' + mth_dir)
-                print('identical file is ' + duplicate_in_mother_dir)
+                        img1_path = existing_file_path[len(path):]
+                        img2_path = full_path[len(path):]
+
+                        # create seperating zone
+                        img3 = Image.new('RGB', (30, img1.size[1]), color='gray')
+                        # merge imgs
+                        img = Image.new('RGB', (img1.size[0] + 30 + img2.size[0], img1.size[1]))
+                        img.paste(img1, (0, 0))
+                        img.paste(img3, (img1.size[0], 0))
+                        img.paste(img2, (img1.size[0] + 30, 0))
+                        # resize to fit screen
+                        ratio = img.size[0] / img.size[1]
+                        if ratio < 1 and img.size[1] >= height_img:
+                            img = img.resize((int(height_img * ratio), height_img), Image.ANTIALIAS)
+                        if ratio >= 1 and img.size[0] >= width_img:
+                            img = img.resize((width_img, int(width_img // ratio)), Image.ANTIALIAS)
+                        start_x = int((screen_width - img.size[0]) / 2)
+                        start_y = int((screen_height - img.size[1] - 150) / 2)
+                        root = tkinter.Toplevel()
+                        root.geometry('+%d+%d' % (start_x, start_y))
+                        root.geometry('%dx%d' % (img.size[0], img.size[1] + 150))
+                        tkpi = ImageTk.PhotoImage(img)
+                        label_image = tkinter.Label(root, image=tkpi)
+                        label_image.place(x=0, y=0, width=img.size[0], height=img.size[1])
+                        # show exif info
+                        # img1_data = photo_info(existing_file_path)
+                        # img2_data = photo_info(full_path)
+                        # info_title = 'exif_datetime: ' + '\n' \
+                        #             + 'exif_size: ' + '\n' \
+                        #             + 'GPS info: ' + '\n' \
+                        #             + 'scan_dir: ' + '\n' \
+                        #             + 'sub_dir:' + '\n' \
+                        #             + 'create time: ' + '\n' \
+                        #             + 'last modify: ' + '\n' \
+                        #             + 'size:          '
+                        # img1_info = img1_data[0] + '\n' \
+                        #             + img1_data[1] + '\n' \
+                        #             + img1_data[2] + '\n' \
+                        #             + path + '\n' \
+                        #             + img1_path + '\n' \
+                        #             + img1_data[3]+ '\n' \
+                        #             + img1_data[4]+ '\n' \
+                        #             + img1_data[5]
+                        # img2_info = img2_data[0] + '\n' \
+                        #             + img2_data[1] + '\n' \
+                        #             + img2_data[2] + '\n' \
+                        #             + path + '\n' \
+                        #             + img2_path + '\n' \
+                        #             + img2_data[3]+ '\n' \
+                        #             + img2_data[4]+ '\n' \
+                        #             + img2_data[5]
+                        # label_info_title = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
+                        #                                  compound=tkinter.LEFT)
+                        # label_info_title.place(x=0, y=img.size[1])
+                        # label_info_title2 = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
+                        #                                   compound=tkinter.LEFT)
+                        # label_info_title2.place(x=int(img.size[0] / 2), y=img.size[1])
+                        # lable_info_text = tkinter.Label(root, text=img1_info, justify=tkinter.LEFT,
+                        #                                 compound=tkinter.LEFT)
+                        # lable_info_text.place(x=90, y=img.size[1])
+                        # lable_info_text2 = tkinter.Label(root, text=img2_info, justify=tkinter.LEFT,
+                        #                                  compound=tkinter.LEFT)
+                        # lable_info_text2.place(x=int(img.size[0] / 2) + 90, y=img.size[1])
+
+                        # show big red cross
+                        label_delete = tkinter.Label(root, text='XX', fg='red', font=('Times', 40),
+                                                     justify=tkinter.LEFT, compound=tkinter.LEFT)
+                        label_delete.place(x=int(img.size[0] - 90), y=int(img.size[1]))
+                        root.title('重复图片_按空格删除移动右侧图片到垃圾箱')
+                        root.update()
+                        time.sleep(1)
+                        root.destroy()
+                    target_file = os.path.join(duplicated_trash_dir, os.path.basename(full_path))
+                    print(target_file)
+                    move_file(full_path, target_file)
+
+                    # move file
+                    print("Duplicate found: %s and %s" % (full_path, existing_file_path))
+                    print('Dulplicated file: % s moved to %s ' % (full_path, duplicated_trash_dir))
+                    # except OSError:
+                    #    pass
+                    print(cld_path + ' has already in ' + mth_dir)
+                    print('identical file is ' + duplicate_in_mother_dir)
             else:
                 tar_path = os.path.join(mth_dir, os.path.basename(cld_path))
                 moved_tar = move_file(cld_path, tar_path)
                 print('move ' + cld_path + ' to ' + tar_path)
-                if size_zone in mother_folder_dictionary.keys():
-                    mother_folder_dictionary[size_zone].append(moved_tar)
-                else:
-                    mother_folder_dictionary[size_zone] = [moved_tar,]
-                build_zone_hash(size_zone, add_full_path=moved_tar)
+                mother_folder_dictionary[cld_size] = [moved_tar, ]
                 mother_folder_dictionary['files'] += 1
 
             number_text = str(number) + ' / ' + str(max_child_files)
             mpt = tkinter.Label(progress_gui, text=number_text)
-            mpt2 = tkinter.Label(progress_gui, text=' '* 30 + cld_path + ' ' * 30)
+            mpt2 = tkinter.Label(progress_gui, text=' ' * 20 + cld_path + ' ' * 20)
             mpt.place(x=300, y=40, anchor=tkinter.CENTER)
             mpt2.place(x=300, y=60, anchor=tkinter.CENTER)
             number += 1
             mpb["value"] = number
             progress_gui.update()
-# 2374
+# 12226
 
 
 mother_dir = 'F:\\test1'  # F:\===================PIC TO CHECK\100NCD90
@@ -277,15 +297,15 @@ if mother_folder_dictionary == {}:
     mother_folder_dictionary['files'] = max_files_count + 1 - k  # 'cause one json file
     with open(dictionary_path, 'w') as write_file:
         json.dump(mother_folder_dictionary, write_file, ensure_ascii=False)
-print(mother_folder_dictionary)
-#
-# move_non_duplicated_file(child_dir, mother_dir)
-#
-# last_mother_files = count_files(mother_dir)
-# last_child_files = count_files(child_dir)
-#
-# print(str(count) + ' files has been moved')
-# print(mother_dir + ' from ' + str(max_files_count) + ' up to ' + str(last_mother_files) + ' files')
-# print(child_dir + ' from ' + str(max_child_files) + ' down to ' + str(last_child_files) + ' files')
-# print(str(max_child_files - last_child_files) + ' are unique ')
+
+
+move_non_duplicated_file(child_dir, mother_dir)
+
+last_mother_files = count_files(mother_dir)
+last_child_files = count_files(child_dir)
+
+print(str(count) + ' files has been moved')
+print(mother_dir + ' from ' + str(max_files_count) + ' up to ' + str(last_mother_files) + ' files')
+print(child_dir + ' from ' + str(max_child_files) + ' down to ' + str(last_child_files) + ' files')
+print(str(max_child_files - last_child_files) + ' are unique ')
 

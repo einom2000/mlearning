@@ -186,13 +186,13 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                                 hashobj = hash()
                                 for chunk in chunk_reader(open(full_path, 'rb')):
                                     hashobj.update(chunk)
-                                file_id = (hashobj.digest(), os.path.getsize(full_path))
+                                file_id = hashobj.digest()
 
                                 for existing_file in dic[size]:
                                     hashobj = hash()
                                     for chunk in chunk_reader(open(existing_file, 'rb')):
                                         hashobj.update(chunk)
-                                    existing_file_id = (hashobj.digest(), os.path.getsize(full_path))
+                                    existing_file_id = hashobj.digest()
                                     if existing_file_id == file_id:
                                         duplicate = True
                                         existing_file_path = existing_file
