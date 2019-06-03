@@ -6,7 +6,7 @@ exif_dict = piexif.load("test_uni.jpg")
 # if thumbnail is not None:
 #     with open("thumbnail.jpg", "wb+") as f:
 #         f.write(thumbnail)
-print(exif_dict)
+
 for ifd_name in exif_dict:
     print('=======================================')
     print("\n{0} IFD:".format(ifd_name))
@@ -17,7 +17,7 @@ for ifd_name in exif_dict:
     else:
         print('None')
 t = datetime.datetime.strftime(datetime.datetime.now(), "%Y:%m:%d %H:%M:%S")
-print(t)
+
 exif_ifd = {piexif.ExifIFD.DateTimeOriginal: t,
             piexif.ExifIFD.LensMake: u"ManualSet",
             piexif.ExifIFD.Sharpness: 65535,

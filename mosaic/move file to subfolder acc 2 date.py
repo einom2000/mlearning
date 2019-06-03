@@ -45,7 +45,7 @@ def set_datetime_exif(fn, t):
     piexif.insert(exif_byte, fn)
 
 
-target_dir = 'F:\\已备备_整理，更名，全EXIF相册，唯一 -- 12283 files by 2019-06-03'
+target_dir = 'F:\\tmp2'
 
 
 pre_fix = 'OtherType'

@@ -45,10 +45,10 @@ def set_datetime_exif(fn, t):
     piexif.insert(exif_byte, fn)
 
 
-target_dir = 'F:\\整理，无EXIF相册，唯一， 未更名 2019_05_30'
-tmp_dir = 'F:\\tmp'
+target_dir = 'F:\\tmp'
+tmp_dir = 'F:\\tmp2'
 
-pre_fix = 'DSC_0024_mh'
+pre_fix = ''
 create_folder(tmp_dir)
 
 for dirpath, dirnames, filenames in os.walk(target_dir):
@@ -71,16 +71,21 @@ for dirpath, dirnames, filenames in os.walk(target_dir):
 
 
                 # following is name with timestamp without any prefix
-                # ts = float(filename[: 10])
-                # t = datetime.datetime.fromtimestamp(ts)
+                ts = float(filename[: 10])
+                t = datetime.datetime.fromtimestamp(ts)
 
                 original_path = os.path.join(target_dir, filename)
-                new_path = os.path.join(tmp_dir, filename)
+                ext = os.path.splitext(filename)[1]
+                if ext == '.jpeg':
+                    ext = '.jpg'
+                new_filename = str(int(datetime.datetime.timestamp(t))) + ext
+                new_path = os.path.join(tmp_dir, new_filename)
                 print(t)
                 print(original_path)
+                print(new_path)
 
-                # move_file(original_path, new_path)
-                # set_datetime_exif(new_path, t)
+                move_file(original_path, new_path)
+                set_datetime_exif(new_path, t)
 
             except TypeError:
                 pass

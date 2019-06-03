@@ -14,7 +14,7 @@ dic = {
         'CopyRight': 'singled and backuped on '
        }
 
-tar_dir = 'F:\\未备备_有添加合并_整理，更名，全EXIF相册，唯一'
+tar_dir = 'F:\\tmp'
 # tar_dir = 'f:\\test'
 
 count = 1
