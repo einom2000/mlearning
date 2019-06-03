@@ -102,6 +102,7 @@ def move_file(src, tar):
     shutil.move(src, tar1)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
     return tar1
 
+
 def count_files(dir):
     cpt = sum([len(files) for r, d, files in os.walk(dir)])
     return cpt
@@ -138,15 +139,20 @@ def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
             cld_size = os.path.getsize(cld_path)
             if cld_size in mother_folder_dictionary.keys():
                 # get cld_hash
+                print(cld_size, cld_path)
                 hashobj = hash()
                 for chunk in chunk_reader(open(cld_path, 'rb')):
                     hashobj.update(chunk)
-                child_id = (hashobj.digest(), os.path.getsize(cld_path))
+                child_id = hashobj.digest()
+                print(child_id)
+                duplicate = False
                 for existing_file in mother_folder_dictionary[cld_size]:
+                    print(existing_file)
                     hashobj = hash()
                     for chunk in chunk_reader(open(existing_file, 'rb')):
                         hashobj.update(chunk)
                     existing_file_id = hashobj.digest()
+                    print(existing_file_id)
                     if existing_file_id == child_id:
                         duplicate = True
                         existing_file_path = existing_file
@@ -154,15 +160,8 @@ def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
                 if duplicate:
                     # try:
                     if show_identical:
-                        len1 = len(os.path.basename(existing_file_path))
-                        len2 = len(os.path.basename(full_path))
-                        if len1 > len2:
-                            existing_file_path, full_path = full_path, existing_file_path
                         img1 = Image.open(existing_file_path)
-                        img2 = Image.open(full_path)
-
-                        img1_path = existing_file_path[len(path):]
-                        img2_path = full_path[len(path):]
+                        img2 = Image.open(cld_path)
 
                         # create seperating zone
                         img3 = Image.new('RGB', (30, img1.size[1]), color='gray')
@@ -185,71 +184,22 @@ def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
                         tkpi = ImageTk.PhotoImage(img)
                         label_image = tkinter.Label(root, image=tkpi)
                         label_image.place(x=0, y=0, width=img.size[0], height=img.size[1])
-                        # show exif info
-                        # img1_data = photo_info(existing_file_path)
-                        # img2_data = photo_info(full_path)
-                        # info_title = 'exif_datetime: ' + '\n' \
-                        #             + 'exif_size: ' + '\n' \
-                        #             + 'GPS info: ' + '\n' \
-                        #             + 'scan_dir: ' + '\n' \
-                        #             + 'sub_dir:' + '\n' \
-                        #             + 'create time: ' + '\n' \
-                        #             + 'last modify: ' + '\n' \
-                        #             + 'size:          '
-                        # img1_info = img1_data[0] + '\n' \
-                        #             + img1_data[1] + '\n' \
-                        #             + img1_data[2] + '\n' \
-                        #             + path + '\n' \
-                        #             + img1_path + '\n' \
-                        #             + img1_data[3]+ '\n' \
-                        #             + img1_data[4]+ '\n' \
-                        #             + img1_data[5]
-                        # img2_info = img2_data[0] + '\n' \
-                        #             + img2_data[1] + '\n' \
-                        #             + img2_data[2] + '\n' \
-                        #             + path + '\n' \
-                        #             + img2_path + '\n' \
-                        #             + img2_data[3]+ '\n' \
-                        #             + img2_data[4]+ '\n' \
-                        #             + img2_data[5]
-                        # label_info_title = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
-                        #                                  compound=tkinter.LEFT)
-                        # label_info_title.place(x=0, y=img.size[1])
-                        # label_info_title2 = tkinter.Label(root, text=info_title, justify=tkinter.LEFT,
-                        #                                   compound=tkinter.LEFT)
-                        # label_info_title2.place(x=int(img.size[0] / 2), y=img.size[1])
-                        # lable_info_text = tkinter.Label(root, text=img1_info, justify=tkinter.LEFT,
-                        #                                 compound=tkinter.LEFT)
-                        # lable_info_text.place(x=90, y=img.size[1])
-                        # lable_info_text2 = tkinter.Label(root, text=img2_info, justify=tkinter.LEFT,
-                        #                                  compound=tkinter.LEFT)
-                        # lable_info_text2.place(x=int(img.size[0] / 2) + 90, y=img.size[1])
-
-                        # show big red cross
                         label_delete = tkinter.Label(root, text='XX', fg='red', font=('Times', 40),
                                                      justify=tkinter.LEFT, compound=tkinter.LEFT)
                         label_delete.place(x=int(img.size[0] - 90), y=int(img.size[1]))
-                        root.title('重复图片_按空格删除移动右侧图片到垃圾箱')
+                        root.title('重复图片_右侧图片不移动')
                         root.update()
                         time.sleep(1)
                         root.destroy()
-                    target_file = os.path.join(duplicated_trash_dir, os.path.basename(full_path))
-                    print(target_file)
-                    move_file(full_path, target_file)
-
-                    # move file
-                    print("Duplicate found: %s and %s" % (full_path, existing_file_path))
-                    print('Dulplicated file: % s moved to %s ' % (full_path, duplicated_trash_dir))
-                    # except OSError:
-                    #    pass
                     print(cld_path + ' has already in ' + mth_dir)
-                    print('identical file is ' + duplicate_in_mother_dir)
+                    print('identical file is ' + existing_file_path)
             else:
                 tar_path = os.path.join(mth_dir, os.path.basename(cld_path))
-                moved_tar = move_file(cld_path, tar_path)
                 print('move ' + cld_path + ' to ' + tar_path)
-                mother_folder_dictionary[cld_size] = [moved_tar, ]
-                mother_folder_dictionary['files'] += 1
+                # moved_tar = move_file(cld_path, tar_path)
+                # mother_folder_dictionary[cld_size] = [moved_tar, ]
+                # mother_folder_dictionary['files'] += 1
+                count += 1
 
             number_text = str(number) + ' / ' + str(max_child_files)
             mpt = tkinter.Label(progress_gui, text=number_text)
@@ -262,9 +212,9 @@ def move_non_duplicated_file(cld_dir, mth_dir, hash=hashlib.sha1):
 # 12226
 
 
-mother_dir = 'F:\\test1'  # F:\===================PIC TO CHECK\100NCD90
+mother_dir = 'F:\\已备备_整理，更名，全EXIF相册，唯一'  # F:\===================PIC TO CHECK\100NCD90
 mother_folder_dictionary = {}
-child_dir = 'F:\\test2'
+child_dir = 'F:\\temp'
 count = 0
 show_identical = True
 
