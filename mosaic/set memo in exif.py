@@ -5,6 +5,8 @@ import time
 import tkinter
 from win32api import GetSystemMetrics
 from tkinter import ttk
+import sys
+import keyboard
 
 dic = {
         'Title': b'Familey Memo',
@@ -46,49 +48,55 @@ for dirpath, dirnames, filenames in os.walk(tar_dir):
                 or os.path.splitext(filename)[1][1:].lower() == 'jpeg':
             full_path = os.path.join(dirpath, filename)
             # print(full_path)
-            exif_dict = piexif.load(full_path)
+            try:
+                exif_dict = piexif.load(full_path)
 
-            # print(exif_dict)
-            if os.stat(full_path).st_mode == 33060:
-                os.chmod(full_path, 33206)
-            # print(os.stat(full_path).st_mode)
-            # for ifd_name in exif_dict:
-            #     # print('=======================================')
-            #     # print("\n{0} IFD:".format(ifd_name))
-            #     if exif_dict[ifd_name] is not None:
-            #         for key in exif_dict[ifd_name]:
-            #             # print(str(key) + ': ', end='')
-            #             # print(exif_dict[ifd_name][key])
-            #             pass
-            #     else:
-            #         print('None')
+                # print(exif_dict)
+                if os.stat(full_path).st_mode == 33060:
+                    os.chmod(full_path, 33206)
+                # print(os.stat(full_path).st_mode)
+                # for ifd_name in exif_dict:
+                #     # print('=======================================')
+                #     # print("\n{0} IFD:".format(ifd_name))
+                #     if exif_dict[ifd_name] is not None:
+                #         for key in exif_dict[ifd_name]:
+                #             # print(str(key) + ': ', end='')
+                #             # print(exif_dict[ifd_name][key])
+                #             pass
+                #     else:
+                #         print('None')
 
-            if '0th' not in exif_dict.keys():
-                exif_dict['0th'] = {}
-            if 270 not in exif_dict['0th'].keys():
-                exif_dict['0th'][270] = b''
-            if 315 not in exif_dict['0th'].keys():
-                exif_dict['0th'][315] = b''
-            if 33432 not in exif_dict['0th'].keys():
-                exif_dict['0th'][33432] = b''
-            if 'thumbnail' in exif_dict.keys():
-                _ = exif_dict.pop('thumbnail', None)
+                if '0th' not in exif_dict.keys():
+                    exif_dict['0th'] = {}
+                if 270 not in exif_dict['0th'].keys():
+                    exif_dict['0th'][270] = b''
+                if 315 not in exif_dict['0th'].keys():
+                    exif_dict['0th'][315] = b''
+                if 33432 not in exif_dict['0th'].keys():
+                    exif_dict['0th'][33432] = b''
+                if 'thumbnail' in exif_dict.keys():
+                    _ = exif_dict.pop('thumbnail', None)
 
 
-            if exif_dict['0th'][270] != dic['Title']:
-                today = datetime.datetime.strftime(datetime.datetime.now(), "%Y:%m:%d %H:%M:%S")
-                exif_dict['0th'][270] = dic['Title']
-                exif_dict['0th'][315] = dic['Author']
-                exif_dict['0th'][33432] = str.encode(dic['CopyRight'] + today)
-                exif_byte = piexif.dump(exif_dict)
-                piexif.insert(exif_byte, full_path)
+                if exif_dict['0th'][270] != dic['Title']:
+                    today = datetime.datetime.strftime(datetime.datetime.now(), "%Y:%m:%d %H:%M:%S")
+                    exif_dict['0th'][270] = dic['Title']
+                    exif_dict['0th'][315] = dic['Author']
+                    exif_dict['0th'][33432] = str.encode(dic['CopyRight'] + today)
+                    exif_byte = piexif.dump(exif_dict)
+                    piexif.insert(exif_byte, full_path)
+                    print(full_path)
+
+                count_text = str(count) + ' / ' + str(max_count)
+                mpt = tkinter.Label(progress_gui, text=count_text)
+                mpt2 = tkinter.Label(progress_gui, text=' ' * 20 +full_path + ' ' * 20)
+                mpt.place(x=300, y=40, anchor=tkinter.CENTER)
+                mpt2.place(x=300, y=60, anchor=tkinter.CENTER)
+                mpb["value"] += 1
+
+                progress_gui.update()
+            except:
                 print(full_path)
-
-            count_text = str(count) + ' / ' + str(max_count)
-            mpt = tkinter.Label(progress_gui, text=count_text)
-            mpt2 = tkinter.Label(progress_gui, text=full_path)
-            mpt.place(x=300, y=40, anchor=tkinter.CENTER)
-            mpt2.place(x=300, y=60, anchor=tkinter.CENTER)
-        mpb["value"] += 1
-
-        progress_gui.update()
+                print('press any key to delete')
+                # keyboard.wait(0)
+                continue
