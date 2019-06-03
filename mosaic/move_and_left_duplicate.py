@@ -295,13 +295,16 @@ mpb.pack()
 
 dictionary_path = os.path.join(mother_dir, 'size_zone.json')
 
+k = 0
+
 if os.path.isfile(dictionary_path):
+    k = 1
     os.remove(dictionary_path)
 
 if mother_folder_dictionary == {}:
     build_dic(mother_dir)
     # add file number to dic
-    mother_folder_dictionary['files'] = max_files_count + 1  # 'cause one json file
+    mother_folder_dictionary['files'] = max_files_count + 1 - k # 'cause one json file
     with open(dictionary_path, 'w') as write_file:
         json.dump(mother_folder_dictionary, write_file, ensure_ascii=False)
 
