@@ -32,20 +32,7 @@ def move_file(src, tar):
     shutil.move(src, tar1)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
 
 
-def set_datetime_exif(fn, t):
-    exif_dict = piexif.load(fn)
-    str_t = datetime.datetime.strftime(t, "%Y:%m:%d %H:%M:%S")
-    exif_ifd = {piexif.ExifIFD.DateTimeOriginal: str_t,
-                piexif.ExifIFD.LensMake: u"ManualSet",
-                piexif.ExifIFD.Sharpness: 65535,
-                piexif.ExifIFD.LensSpecification: ((1, 1), (1, 1), (1, 1), (1, 1)),
-                }
-    exif_dict["Exif"] = exif_ifd
-    exif_byte = piexif.dump(exif_dict)
-    piexif.insert(exif_byte, fn)
-
-
-target_dir = 'F:\\tmp2'
+target_dir = 'f:\\未备备，已更名，已经有CreateDate,唯一, 1534 files，mp4'
 
 
 pre_fix = 'OtherType'
