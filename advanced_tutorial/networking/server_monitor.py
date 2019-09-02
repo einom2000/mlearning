@@ -14,20 +14,17 @@ while True:
     print('waiting for handshake...', file=sys.stderr)
     connection, client_address = communication.server_accept(sock)
     print('connection from: ' + str(client_address), file=sys.stderr)
-    while True:
-        try:
-            communication.check_responce(connection, b'HELLO', 128)
-            communication.send(connection, b'OK')
-            data = communication.receiving_data(connection, 1024)
-            length = len(data)
-            print('Server received data at length of %d' % length)
-            with open(en_file, 'wb') as f:
-                f.write(data)
-            print('data saved!...')
-        finally:
-            pass
-
-    communication.close(connection)
+    try:
+        communication.check_responce(connection, b'HELLO', 128)
+        communication.send(connection, b'OK')
+        data = communication.receiving_data(connection, 1024)
+        length = len(data)
+        print('Server received data at length of %d' % length)
+        with open(en_file, 'wb') as f:
+            f.write(data)
+        print('data saved!...')
+    finally:
+        communication.close(connection)
 
 
 
