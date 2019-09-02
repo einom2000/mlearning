@@ -27,10 +27,16 @@ def sending(text, show_detail):
 
     communication.connect(sock, server_address)
 
-    communication.send(sock, b'HELLO', show_detail)
-    communication.check_responce(sock, b'OK', 128)
-    communication.send(sock, data, show_detail)
-    communication.close(sock)
+    communication.send(sock, b'SEND', show_detail)
+    response = communication.check_response(sock, b'OK', b'READY?', 128)
+    if response == 1:
+        communication.send(sock, data, show_detail)
+        communication.close(sock)
+        return None
+    if response == 2:
+        data = communication.receiving_data(sock, 1024)
+        communication.close(sock)
+        return data
 
 
 def main():

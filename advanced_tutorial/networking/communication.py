@@ -36,13 +36,15 @@ def send(sock, msg, show_message):  #msg = b''
         return
 
 
-def check_responce(sock, msg, length):  # msg = b''
+def check_response(sock, msg1, msg2, length):  # msg = b''
     while True:
         data = sock.recv(length)
-        if data and data == msg:
+        if data and data == msg1:
             print('received: %s' % data.decode('utf-8'), file=sys.stderr)
-            break
-    return
+            return 1
+        if data and data == msg2:
+            print('received: %s' % data.decode('utf-8'), file=sys.stderr)
+            return 2
 
 
 def receiving_data(sock, length):
