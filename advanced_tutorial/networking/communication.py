@@ -24,11 +24,14 @@ def server_accept(sock):
     return connection, client_address
 
 
-def send(sock, msg):  #msg = b''
+def send(sock, msg, show_message):  #msg = b''
     try:
         message = msg
-        print('sending %s' % message, file=sys.stderr)
         sock.sendall(message)
+        if show_message:
+            print('sending %s' % message, file=sys.stderr)
+        length = (len(message))
+        print('send data at length of %d' % length)
     finally:
         return
 

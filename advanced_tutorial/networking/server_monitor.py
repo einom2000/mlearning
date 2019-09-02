@@ -16,7 +16,7 @@ while True:
     print('connection from: ' + str(client_address), file=sys.stderr)
     try:
         communication.check_responce(connection, b'HELLO', 128)
-        communication.send(connection, b'OK')
+        communication.send(connection, b'OK', False)
         data = communication.receiving_data(connection, 1024)
         length = len(data)
         print('Server received data at length of %d' % length)

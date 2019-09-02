@@ -15,9 +15,10 @@ sock = communication.sock()
 
 communication.connect(sock, server_address)
 
-communication.send(sock, b'HELLO')
+communication.send(sock, b'HELLO', False)
 communication.check_responce(sock, b'OK', 128)
-communication.send(sock, data)
+communication.send(sock, data, False)
 communication.close(sock)
+
 
 
