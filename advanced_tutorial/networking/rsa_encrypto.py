@@ -3,7 +3,7 @@ from Crypto.Random import get_random_bytes
 from Crypto.Cipher import AES, PKCS1_OAEP
 
 
-def encryption(data, recipient_pub, crypted_file):
+def encryption(data, recipient_pub, crypted_file):  # key in PEM
     recipient_key = RSA.importKey(recipient_pub)
     session_key = get_random_bytes(16)
     cipher_rsa = PKCS1_OAEP.new(recipient_key)
@@ -16,7 +16,7 @@ def encryption(data, recipient_pub, crypted_file):
     return
 
 
-def decryption(crypted_file, local_pri):
+def decryption(crypted_file, local_pri): # key in PEM
     private_key = RSA.import_key(local_pri)
     with open(crypted_file, 'rb') as f:
         enc_s_key, nonce, tag, ciphered = [f.read(x) for x in (private_key.size_in_bytes(), 16, 16, -1) ]

@@ -1,7 +1,16 @@
 import communication
 import sys
+import json
+import rsa_encrypto
+
 
 en_file = 'en.bin'
+key_file = 'keys_here.json'
+
+with open(key_file) as f:
+    keys = json.load(f)
+
+local_pri = keys['PRIVATE_KEY']
 
 server_address = ('', 15200)
 
@@ -23,6 +32,9 @@ while True:
         with open(en_file, 'wb') as f:
             f.write(data)
         print('data saved!...')
+        data = rsa_encrypto.decryption(en_file, local_pri)
+        print('IT IS MEANS:....')
+        print(data)
     finally:
         communication.close(connection)
 
