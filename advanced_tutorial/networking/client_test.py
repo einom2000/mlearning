@@ -5,7 +5,7 @@ import time
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-server_address = ('144.202.93.164', 15200)  #
+server_address = ('144.202', 15200)  #
 print('connecting to %s port %s' % server_address, file=sys.stderr)
 sock.connect(server_address)
 

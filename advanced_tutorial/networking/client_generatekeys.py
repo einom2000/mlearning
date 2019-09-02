@@ -22,7 +22,7 @@ with open(keys_file) as f:
 keys.update({'PRIVATE_KEY': key.export_key(format='PEM').decode('utf-8')})
 keys.update({'CLIENT_PUB': publickey.decode('utf-8')})
 
-server_address = ('144.202.93.164', 15200)  #
+server_address = ('144.202', 15200)  #
 print('connecting to %s port %s' % server_address, file=sys.stderr)
 sock.connect(server_address)
 
