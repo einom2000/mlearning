@@ -17,8 +17,8 @@ while True:
     while True:
         try:
             communication.check_responce(connection, b'HELLO', 128)
-            communication.send(sock, b'OK')
-            data = communication.receiving_data(sock, 1024)
+            communication.send(connection, b'OK')
+            data = communication.receiving_data(connection, 1024)
             length = len(data)
             print('Server received data at length of %d' % length)
             with open(en_file, 'wb') as f:
