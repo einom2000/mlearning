@@ -31,7 +31,7 @@ def send(sock, msg, show_message):  #msg = b''
         if show_message:
             print('sending %s' % message, file=sys.stderr)
         length = (len(message))
-        print('send data at length of %d' % length)
+        print('send data at length of %d' % length, file=sys.stderr)
     finally:
         return
 
