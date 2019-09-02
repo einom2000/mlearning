@@ -7,7 +7,6 @@ from Crypto import Random
 import time
 
 
-
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = ('', 15200)
 

@@ -14,7 +14,7 @@ key = RSA.generate(1024, random_generator)
 
 publickey = key.publickey().export_key(format='PEM')
 
-keys_file= 'keys_here.json'
+keys_file= 'bin\\keys_here.json'
 
 with open(keys_file) as f:
     keys = json.load(f)
@@ -22,7 +22,7 @@ with open(keys_file) as f:
 keys.update({'PRIVATE_KEY': key.export_key(format='PEM').decode('utf-8')})
 keys.update({'CLIENT_PUB': publickey.decode('utf-8')})
 
-with open('server_ip.json') as f:
+with open('bin\\server_ip.json') as f:
     server = json.load(f)
 
 server_address = (server['server_ip'], server['server_port'])  #
