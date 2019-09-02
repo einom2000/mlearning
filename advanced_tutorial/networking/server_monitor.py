@@ -35,6 +35,13 @@ while True:
         data = rsa_encrypto.decryption(en_file, local_pri)
         print('IT IS MEANS:....')
         print(data)
+        with open('command.json', 'w') as f:
+            f.write(data)
+        with open('command.json') as f:
+            dict = json.load(f)
+        print('dictionary as :')
+        print(dict)
+
     finally:
         communication.close(connection)
 
