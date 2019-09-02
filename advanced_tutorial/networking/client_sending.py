@@ -39,6 +39,25 @@ def sending(text, show_detail):
         return data
 
 
+def get(show_detail):
+
+    server_file = 'bin\\server_ip.json'
+
+    with open(server_file) as f:
+        server = json.load(f)
+    server_address = (server['server_ip'], server['server_port'])
+
+    sock = communication.sock()
+
+    communication.connect(sock, server_address)
+
+    communication.send(sock, b'GET', show_detail)
+    response = communication.check_response(sock, b'OK', b'READY?', 128)
+    if response == 2:
+        data = communication.receiving_data(sock, 1024)
+        communication.close(sock)
+        return data
+
 def main():
     pass
 
