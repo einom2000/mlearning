@@ -25,7 +25,9 @@ while True:
                 f.write(data)
             print('data saved!...')
         finally:
-            communication.close(connection)
+            pass
+
+    communication.close(connection)
 
 
 
