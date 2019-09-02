@@ -8,6 +8,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 with open('server_ip.json') as f:
     server = json.load(f)
 
+print(server)
 server_address = (server['server_ip'], server['server_port'])
 print('connecting to %s port %s' % server_address, file=sys.stderr)
 sock.connect(server_address)
