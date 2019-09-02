@@ -1,7 +1,18 @@
 import communication
 import json
+import rsa_encrypto
 
 en_file= 'bin\\en.bin'
+key_file = 'keys_here.json'
+
+with open(key_file) as f:
+    keys = json.load(f)
+
+recipient_pub = keys['SERVER_PUB']
+
+TEXT = 'are you ready'
+
+rsa_encrypto.encryption(TEXT, recipient_pub,en_file)
 
 with open(en_file, 'rb') as f:
     data = f.read()
