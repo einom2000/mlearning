@@ -54,6 +54,6 @@ def librosa_vocal_remover(file, output_file, threshold_l=2, threshold_h=10,):
 
 
 if __name__ == '__main__':
-    librosa_vocal_remover('111.mp3', 'final_111.wav', 2.5, 10)
-
+    librosa_vocal_remover('111.mp3', '111_semi.wav', 2.5, 10)
+    librosa_vocal_remover('111_semi.wav', '111_final.wav', 1, 10)
 
