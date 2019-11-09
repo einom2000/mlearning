@@ -1,6 +1,6 @@
 import turtle
 import random
-
+from PIL import Image
 
 def generate_list(level):
     colors = ['red', 'green', 'blue', 'white', 'sky blue', 'pink', 'black', 'orange']
@@ -91,22 +91,28 @@ def draw_matrix(matrix, grid_x, grid_y):
 
 
 level = get_level()
-matrix = generate_list(level)
-wn = turtle.Screen()
-wn.bgcolor("white")
-wn.title("color_matrix")
-canvas_width = 1000
-canvas_height = 1000
-wn.setup(canvas_width, canvas_height)
-grid_width = canvas_width - 200
-grid_height = canvas_height - 200
+
+for k in range(5):
+    matrix = generate_list(level)
+    wn = turtle.Screen()
+    wn.bgcolor("white")
+    wn.title("color_matrix")
+    canvas_width = 1000
+    canvas_height = 1000
+    wn.setup(canvas_width, canvas_height)
+    grid_width = canvas_width - 200
+    grid_height = canvas_height - 200
 
 
-grid_x, grid_y = draw_grid()
-draw_matrix(matrix, grid_x, grid_y)
+    grid_x, grid_y = draw_grid()
+    draw_matrix(matrix, grid_x, grid_y)
 
-turtle.getscreen().getcanvas().postscript(file='11.ps')
-wn.exitonclick()
+    turtle.hideturtle()
+    turtle.getscreen().getcanvas().postscript(file='tmp.ps')
+
+    img = Image.open('tmp.ps')
+    img.save('test00' + str(k) + '.jpg')
+    wn.clear()
 
 
 
