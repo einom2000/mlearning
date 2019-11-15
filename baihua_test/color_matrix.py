@@ -5,6 +5,7 @@ import keyboard
 import sys
 import time
 
+
 def generate_list(level):
     colors = ['red', 'green', 'blue', 'white', 'sky blue', 'pink', 'black', 'orange']
     color_list = []
@@ -22,6 +23,11 @@ def generate_list(level):
         for j in range(4):
             tmp.append(color_list[i * 4 + j])
         matrix.append(tmp)
+
+    is_rotate = random.choice([True, False])
+    if is_rotate:
+        matrix = list(zip(*matrix))
+
     return matrix
 
 
@@ -115,7 +121,7 @@ def write_info2():
     turtle.penup()
 
 
-time_to_remember = 5
+time_to_remember = 30
 canvas_width = 600
 canvas_height = 600
 
@@ -136,13 +142,11 @@ style = ('Courier', 10, 'bold')
 k = 1
 
 level = get_level()
-matrix = generate_list(level)
-print(matrix)
-is_rotate = random.choice['True', 'False']
-if is_rotate:
-
 
 while True:
+
+    matrix = generate_list(level)
+
     grid_x, grid_y = draw_grid()
     draw_matrix(matrix, grid_x, grid_y)
 
@@ -164,7 +168,7 @@ while True:
             ct_pen.penup()
             ct_pen.setposition(0, (canvas_height // 2 - 70))
             ct_pen.pendown()
-            ct_pen.write(str(dt), font=ct_style, align='center')
+            ct_pen.write(str(time_to_remember - dt), font=ct_style, align='center')
             last_dt = dt
         if last_dt == time_to_remember:
             break
