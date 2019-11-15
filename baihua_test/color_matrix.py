@@ -1,6 +1,9 @@
 import turtle
 import random
 from PIL import Image
+import keyboard
+import sys
+import time
 
 def generate_list(level):
     colors = ['red', 'green', 'blue', 'white', 'sky blue', 'pink', 'black', 'orange']
@@ -75,7 +78,6 @@ def draw_matrix(matrix, grid_x, grid_y):
             square.penup()
             x = grid_x[j]
             step = abs(grid_x[1] - grid_x[0])
-            print(x, y)
             square.setposition(x, y)
             square.setheading(0)
             square.pendown()
@@ -87,32 +89,103 @@ def draw_matrix(matrix, grid_x, grid_y):
             square.penup()
 
 
+def write_info():
+    turtle.hideturtle()
+    turtle.penup()
+    turtle.goto(0, (canvas_height // 2 - 50) * (-1))
+    turtle.pendown()
+    turtle.color('black')
+    turtle.write('pleas press \'space\' to hide!', font=style, align='center')
+    turtle.penup()
+    turtle.goto(0, (canvas_height // 2 - 20) * (-1))
+    turtle.pendown()
+    turtle.write('or press \'q\' to quit', font=style, align='center')
 
 
+def write_info2():
+    turtle.hideturtle()
+    turtle.penup()
+    turtle.goto(0, 0)
+    turtle.pendown()
+    turtle.write('pleas press \'space\' to have a new pattern!', font=style, align='center')
+    turtle.penup()
+    turtle.goto(0, -100)
+    turtle.pendown()
+    turtle.write('or press \'q\' to quit', font=style, align='center')
+    turtle.penup()
+
+
+time_to_remember = 5
+canvas_width = 600
+canvas_height = 600
+
+wn = turtle.Screen()
+wn.bgcolor("white")
+wn.title("color_matrix")
+wn.setup(canvas_width, canvas_height)
+grid_width = canvas_width - 200
+grid_height = canvas_height - 200
+
+ct_pen = turtle.Turtle()
+ct_pen.hideturtle()
+ct_pen.pensize(3)
+ct_pen.color('red')
+ct_pen.speed(0)
+ct_style = ('Courier', 30, 'bold')
+style = ('Courier', 10, 'bold')
+k = 1
 
 level = get_level()
-
-for k in range(5):
-    matrix = generate_list(level)
-    wn = turtle.Screen()
-    wn.bgcolor("white")
-    wn.title("color_matrix")
-    canvas_width = 1000
-    canvas_height = 1000
-    wn.setup(canvas_width, canvas_height)
-    grid_width = canvas_width - 200
-    grid_height = canvas_height - 200
+matrix = generate_list(level)
+print(matrix)
+is_rotate = random.choice['True', 'False']
+if is_rotate:
 
 
+while True:
     grid_x, grid_y = draw_grid()
     draw_matrix(matrix, grid_x, grid_y)
 
-    turtle.hideturtle()
+    write_info()
+
     turtle.getscreen().getcanvas().postscript(file='tmp.ps')
 
     img = Image.open('tmp.ps')
-    img.save('test00' + str(k) + '.jpg')
+    img.save('test' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+
+    ct = time.time()
+    last_dt = 0
+
+    while True:
+
+        dt = int(time.time() - ct)
+        if dt - last_dt > 0:
+            ct_pen.clear()
+            ct_pen.penup()
+            ct_pen.setposition(0, (canvas_height // 2 - 70))
+            ct_pen.pendown()
+            ct_pen.write(str(dt), font=ct_style, align='center')
+            last_dt = dt
+        if last_dt == time_to_remember:
+            break
+        if keyboard.is_pressed('space'):
+            break
+        if keyboard.is_pressed('q'):
+            sys.exit()
+
     wn.clear()
+
+    write_info2()
+
+    while True:
+        if keyboard.is_pressed('space'):
+            break
+        if keyboard.is_pressed('q'):
+            sys.exit()
+
+    wn.clear()
+
+    k += 1
 
 
 
