@@ -55,7 +55,7 @@ def get_level():
             level = 2   # show 14 pieces == level 2
         elif level < 1:
             level = 1
-        else:
+        elif level >14:
             level = 999
     except ValueError:
         level = 1
@@ -113,13 +113,13 @@ def draw_matrix(matrix, grid_x, grid_y):
             square.penup()
 
 
-def write_info():
+def write_info(text):
     turtle.hideturtle()
     turtle.penup()
     turtle.goto(0, (canvas_height // 2 - 50) * (-1))
     turtle.pendown()
     turtle.color('black')
-    turtle.write('pleas press \'space\' to hide!', font=style, align='center')
+    turtle.write(text, font=style, align='center')
     turtle.penup()
     turtle.goto(0, (canvas_height // 2 - 20) * (-1))
     turtle.pendown()
@@ -131,12 +131,20 @@ def write_info2():
     turtle.penup()
     turtle.goto(0, 0)
     turtle.pendown()
-    turtle.write('pleas press \'space\' to have a new pattern!', font=style, align='center')
+    turtle.write('pleas press \'space\' to have show it again!', font=style, align='center')
     turtle.penup()
     turtle.goto(0, -100)
     turtle.pendown()
     turtle.write('or press \'q\' to quit', font=style, align='center')
     turtle.penup()
+
+
+def wait_keyin():
+    while True:
+        if keyboard.is_pressed('space'):
+            break
+        if keyboard.is_pressed('q'):
+            sys.exit()
 
 
 time_to_remember = 30
@@ -168,7 +176,7 @@ while True:
     grid_x, grid_y = draw_grid()
     draw_matrix(matrix, grid_x, grid_y)
 
-    write_info()
+    write_info('pleas press \'space\' to hide!')
 
     turtle.getscreen().getcanvas().postscript(file='tmp.ps')
 
@@ -186,7 +194,7 @@ while True:
             ct_pen.penup()
             ct_pen.setposition(0, (canvas_height // 2 - 70))
             ct_pen.pendown()
-            ct_pen.write(str(time_to_remember - dt), font=ct_style, align='center')
+            # ct_pen.write(str(time_to_remember - dt), font=ct_style, align='center')
             last_dt = dt
         if last_dt == time_to_remember:
             break
@@ -199,11 +207,12 @@ while True:
 
     write_info2()
 
-    while True:
-        if keyboard.is_pressed('space'):
-            break
-        if keyboard.is_pressed('q'):
-            sys.exit()
+    wait_keyin()
+
+    draw_matrix(matrix, grid_x, grid_y)
+    write_info('pleas press \'space\' to have a new pattern!')
+
+    wait_keyin()
 
     wn.clear()
 
