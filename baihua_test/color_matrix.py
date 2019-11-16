@@ -17,6 +17,22 @@ def generate_list(level):
     if level == 2:
         color_list = colors + colors
         random.shuffle(color_list)
+    if level > 2 and level != 999:
+        cover_pieces = 16 - level
+        color_list = colors + colors
+        random.shuffle(color_list)
+        if cover_pieces > 14:
+            cover_pieces = 14
+        index = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        random.shuffle(index)
+        for i in range(0, cover_pieces - 2):  # because there are 2 blocks already in white
+            if color_list[index[i]] == 'white':
+                index.pop(i)
+            color_list[index[i]] = 'white'
+    if level == 999:
+        color_list = ['black', 'white'] * 8
+        random.shuffle(color_list)
+
     matrix = []
     for i in range(4):
         tmp = []
@@ -32,13 +48,15 @@ def generate_list(level):
 
 
 def get_level():
-    level = input('please input the dificulties [1(easy) or 2(hard)]:')
+    level = input('please input the dificulties [1(easy) or 2(hard)], or # for # show, or 999 for black and white')
     try:
         level = int(level)
-        if level > 2:
-            level = 2
-        if level < 1:
+        if level > 14 and level != 999:
+            level = 2   # show 14 pieces == level 2
+        elif level < 1:
             level = 1
+        else:
+            level = 999
     except ValueError:
         level = 1
     return level
