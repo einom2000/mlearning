@@ -4,6 +4,7 @@ from PIL import Image
 import keyboard
 import sys
 import time
+import argparse
 
 
 def generate_list(level):
@@ -48,7 +49,7 @@ def generate_list(level):
 
 
 def get_level():
-    level = input('please input the dificulties [1(easy) or 2(hard)], or # for # show, or 999 for black and white')
+    level = input('the difficulties 1(easy) 2(hard), or # for # show, or 999 for black and white')
     try:
         level = int(level)
         if level > 14 and level != 999:
@@ -167,7 +168,14 @@ ct_style = ('Courier', 30, 'bold')
 style = ('Courier', 10, 'bold')
 k = 1
 
+# print('111')
 level = get_level()
+# parser = argparse.ArgumentParser(description='generate a matrix for kids to remember.')
+# parser.add_argument('level', type=int, nargs='+',
+#                     help='the difficulties 1(easy) 2(hard), or # for # show, or 999 for black and white')
+# args = parser.parse_args()
+# print(args.level)
+# sys.exit()
 
 while True:
 
