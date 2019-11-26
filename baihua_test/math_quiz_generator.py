@@ -2,6 +2,7 @@ from docx import Document
 from docx.shared import Pt
 from docx.shared import RGBColor
 from docx.shared import Inches
+from docx.oxml.ns import qn
 
 from datetime import datetime
 import random
@@ -86,6 +87,7 @@ def create_doc(i):
         wp.font.color.rgb = RGBColor(255, 0, 0)
 
         wp = p.add_run('关于数字 ')
+        wp.font.name = '#simSong'
         wp.font.size = Pt(25)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
@@ -101,6 +103,7 @@ def create_doc(i):
         wp.font.color.rgb = RGBColor(255, 0, 0)
         wp = p.add_run('练习 -- 第 ' + str(page + 1) + ' 页')
         wp.font.size = Pt(25)
+        wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
 
 
