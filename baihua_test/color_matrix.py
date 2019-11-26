@@ -5,6 +5,7 @@ import keyboard
 import sys
 import time
 import argparse
+from datetime import datetime
 
 
 def generate_list(level):
@@ -152,6 +153,9 @@ time_to_remember = 30
 canvas_width = 600
 canvas_height = 600
 
+today = datetime.now().date().strftime('%Y_%m_%d')
+folder = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\BAIHUA_LOGICS\\'
+
 wn = turtle.Screen()
 wn.bgcolor("white")
 wn.title("color_matrix")
@@ -189,7 +193,7 @@ while True:
     turtle.getscreen().getcanvas().postscript(file='tmp.ps')
 
     img = Image.open('tmp.ps')
-    img.save('test' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+    img.save(folder + 'color_4x4_matrix_' + today + '0' * (3 - len(str(k))) + str(k) + '.jpg')
 
     ct = time.time()
     last_dt = 0

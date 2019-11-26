@@ -2,6 +2,8 @@ import turtle
 import random
 import keyboard
 import sys
+from datetime import datetime
+
 
 def draw_grid():
     grid = turtle.Turtle()
@@ -62,6 +64,10 @@ def write_info(text):
     turtle.write('or press \'q\' to quit', font=style, align='center')
 
 
+today = datetime.now().date().strftime('%Y_%m_%d')
+folder = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\BAIHUA_LOGICS\\'
+
+
 time_to_remember = 30
 canvas_width = 1000
 canvas_height = 600
@@ -77,6 +83,7 @@ wn.title("color_matrix")
 wn.setup(canvas_width, canvas_height)
 grid_width = canvas_width - 100
 grid_height = canvas_height - 100
+
 
 
 while True:
