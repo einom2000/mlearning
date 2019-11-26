@@ -125,7 +125,7 @@ def create_doc(i):
         if page < i -1:
             document.add_page_break()
 
-    document.save('math_quiz' + '_' + datetime.now().date().strftime('%Y_%m_%d') + '.docx')
+    document.save('e:\\einom\Documents\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + '_' + datetime.now().date().strftime('%Y_%m_%d') + '.docx')
 
 
 obj = [2,]          # 2 to plus the other number
