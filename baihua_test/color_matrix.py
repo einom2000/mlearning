@@ -193,7 +193,10 @@ while True:
     turtle.getscreen().getcanvas().postscript(file='tmp.ps')
 
     img = Image.open('tmp.ps')
-    img.save(folder + 'color_4x4_matrix_' + today + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+    try:
+        img.save(folder + 'color_4x4_matrix_' + today + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+    except FileNotFoundError:
+        pass
 
     ct = time.time()
     last_dt = 0
