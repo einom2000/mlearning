@@ -93,7 +93,7 @@ while True:
     position = draw_grid()
     draw_sizes(position)
 
-    write_info('★★★pleas press \'space\' to new one!★★★')
+    write_info('pleas press \'space\' to new one!')
 
     while True:
 
