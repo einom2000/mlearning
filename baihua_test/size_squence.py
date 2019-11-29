@@ -94,19 +94,19 @@ for k in range(1, 4):
 
     write_info(today + '  please press \'space\' to new one!')
 
-    # while True:
-    #
-    #     if keyboard.is_pressed('space'):
-    turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
+    while True:
 
-    img = Image.open('tmp.ps')
-    try:
-        img.save(folder + 'size_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
-    except FileNotFoundError:
-        pass
-            # break
-        # if keyboard.is_pressed('q'):
-        #     sys.exit()
+        if keyboard.is_pressed('space'):
+                turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
+
+                img = Image.open('tmp.ps')
+                try:
+                    img.save(folder + 'size_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+                except FileNotFoundError:
+                    pass
+                    break
+        if keyboard.is_pressed('q'):
+            sys.exit()
 
     wn.clear()
 
