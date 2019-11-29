@@ -194,7 +194,7 @@ while True:
 
     img = Image.open('tmp.ps')
     try:
-        img.save(folder + 'color_4x4_matrix_' + today + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+        img.save(folder + 'color_4x4_matrix_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
     except FileNotFoundError:
         pass
 

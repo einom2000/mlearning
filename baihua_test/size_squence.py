@@ -87,28 +87,26 @@ grid_width = canvas_width - 100
 grid_height = canvas_height - 100
 circles = []
 
-k = 1
-while True:
+for k in range(1, 4):
 
     position = draw_grid()
     draw_sizes(position)
 
-    write_info('pleas press \'space\' to new one!')
+    write_info(today + '  please press \'space\' to new one!')
 
-    while True:
+    # while True:
+    #
+    #     if keyboard.is_pressed('space'):
+    turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
 
-        if keyboard.is_pressed('space'):
-            turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
-
-            img = Image.open('tmp.ps')
-            try:
-                img.save(folder + 'size_squence_' + today + '0' * (3 - len(str(k))) + str(k) + '.jpg')
-            except FileNotFoundError:
-                pass
-            break
-        if keyboard.is_pressed('q'):
-            sys.exit()
+    img = Image.open('tmp.ps')
+    try:
+        img.save(folder + 'size_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+    except FileNotFoundError:
+        pass
+            # break
+        # if keyboard.is_pressed('q'):
+        #     sys.exit()
 
     wn.clear()
 
-    k += 1
