@@ -19,6 +19,42 @@ def draw_circle(x, y, radius, color):
     t.circle(radius)
     t.end_fill()
 
+def draw_sqaure(x, y, radius, color):
+    edge = int(radius * 1.414)
+    t = turtle.Turtle()
+    t.speed(0)
+    t.hideturtle()
+    t.penup()
+    t.color(color)
+    t.setx(x - edge // 2)
+    t.sety(y + edge // 2)
+    t.pendown()
+    t.setheading(270)
+    t.begin_fill()
+    for _ in range(4):
+        t.fd(edge)
+        t.left(90)
+    t.end_fill()
+
+
+def draw_triangle(x, y, radius, color):
+    rd_dgr = random.choice(turn_degrees)
+    edge = int(radius * 1.732)
+    t = turtle.Turtle()
+    t.speed(0)
+    t.hideturtle()
+    t.penup()
+    t.color(color)
+    t.setx(x)
+    t.sety(y + radius)
+    t.pendown()
+    t.setheading(240 + rd_dgr)
+    t.begin_fill()
+    for _ in range(3):
+        t.fd(edge)
+        t.left(120)
+    t.end_fill()
+
 
 def draw_grid():
     grid = turtle.Turtle()
@@ -52,7 +88,7 @@ def draw_sizes(position):
 
     for pos in position:
         print(pos)
-        draw_circle(pos[0], pos[1], sizes[position.index(pos)], colors[position.index(pos)])
+        draw_triangle(pos[0], pos[1], sizes[position.index(pos)], colors[position.index(pos)])
 
 
 def write_info(text):
@@ -78,6 +114,7 @@ canvas_height = 600
 sizes = [10 + 14 * x for x in range(8)]
 colors = ['red', 'green', 'blue', 'brown', 'black', 'gray', 'pink', 'orange']
 style = ('Courier', 10, 'bold')
+turn_degrees = [-60, -30, 0, 30, 60]
 
 wn = turtle.Screen()
 wn.bgcolor("white")
