@@ -62,7 +62,7 @@ def quiz_create(field, obj, calc, quiz_number):
 def create_doc(i):
     document = Document()
     number = obj[0]  # Subtraction multiplication division
-    title1 = targt_date + ' -- '
+    title1 = target_date + ' -- '
     title2 = calc.upper()
     title3 = ' of number '
     title4 = str(number) + '\n'
@@ -126,13 +126,13 @@ def create_doc(i):
             document.add_page_break()
     try:
         document.save('e:\\einom\Documents\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + '_' + \
-                      targt_date + '.docx')
+                      target_date + '.docx')
     except FileNotFoundError:
         document.save('temp.docx')
 
+
 adv_day = int(input('any advanced day? (0=no)'))
-targt_date = (datetime.now() + timedelta(days=adv_day)).date().strftime('%Y_%m_%d')
-print(targt_date)
+target_date = (datetime.now() + timedelta(days=adv_day)).date().strftime('%Y_%m_%d')
 
 obj = [2,]          # 2 to plus the other number
 quiz_number = 16    # quiz per page in 2 columns
