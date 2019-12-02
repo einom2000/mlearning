@@ -124,9 +124,10 @@ def create_doc(i):
                         font.size = Pt(30)
         if page < i -1:
             document.add_page_break()
-
-    document.save('e:\\einom\Documents\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + '_' + datetime.now().date().strftime('%Y_%m_%d') + '.docx')
-
+    try:
+        document.save('e:\\einom\Documents\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + '_' + datetime.now().date().strftime('%Y_%m_%d') + '.docx')
+    except FileNotFoundError:
+        document.save('temp.docx')
 
 obj = [2,]          # 2 to plus the other number
 quiz_number = 16    # quiz per page in 2 columns
