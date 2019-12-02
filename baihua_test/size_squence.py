@@ -2,7 +2,7 @@ import turtle
 import random
 import keyboard
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from PIL import Image
 
 
@@ -88,7 +88,7 @@ def draw_sizes(position):
 
     for pos in position:
         print(pos)
-        draw_circle(pos[0], pos[1], sizes[position.index(pos)], colors[position.index(pos)])
+        draw_sqaure(pos[0], pos[1], sizes[position.index(pos)], colors[position.index(pos)])
         print(pos)
 
 
@@ -105,7 +105,8 @@ def write_info(text):
     turtle.write('or press \'q\' to quit', font=style, align='center')
 
 
-today = datetime.now().date().strftime('%Y_%m_%d')
+adv_day = int(input('any advanced day? (0=no)'))
+today = (datetime.now() + timedelta(days=adv_day)).date().strftime('%Y_%m_%d')
 folder = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\BAIHUA_LOGICS\\'
 
 
