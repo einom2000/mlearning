@@ -88,7 +88,8 @@ def draw_sizes(position):
 
     for pos in position:
         print(pos)
-        draw_triangle(pos[0], pos[1], sizes[position.index(pos)], colors[position.index(pos)])
+        draw_circle(pos[0], pos[1], sizes[position.index(pos)], colors[position.index(pos)])
+        print(pos)
 
 
 def write_info(text):
@@ -134,14 +135,16 @@ for k in range(1, 4):
     while True:
 
         if keyboard.is_pressed('space'):
-                turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
 
-                img = Image.open('tmp.ps')
-                try:
-                    img.save(folder + 'size_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
-                except FileNotFoundError:
-                    pass
-                    break
+            turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
+
+            img = Image.open('tmp.ps')
+            try:
+                img.save(folder + 'size_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+                break
+            except FileNotFoundError:
+                pass
+                break
         if keyboard.is_pressed('q'):
             sys.exit()
 
