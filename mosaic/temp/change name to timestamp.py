@@ -21,7 +21,7 @@ def file_surffix(t, tar):
     return os.path.splitext(tar)[0] + '_' + tx + os.path.splitext(tar)[1]
 
 
-def move_file(src, tar):
+def rename_file(src, tar):
     tar1 = tar
     if os.path.isfile(tar):
         t = 0
@@ -45,17 +45,17 @@ def set_datetime_exif(fn, t):
     piexif.insert(exif_byte, fn)
 
 
-target_dir = 'G:\\___DOWNLOAD FROM BAIDU_CLEAN_BAIDU_2019_12_14\\tmp_mp4_sorted_routine_out\\tmp'
-tmp_dir = 'G:\\___DOWNLOAD FROM BAIDU_CLEAN_BAIDU_2019_12_14\\tmp_mp4_sorted_routine_out\\tmp2'
+target_dir = 'e:\\einom\Documents\\___SOPHIA____\\--Sophia K1 Folder\\art course\\photos'
+# tmp_dir = 'G:\\___DOWNLOAD FROM BAIDU_CLEAN_BAIDU_2019_12_14\\tmp_mp4_sorted_routine_out\\tmp2'
 
-create_folder(tmp_dir)
+# create_folder(tmp_dir)
 
 for dirpath, dirnames, filenames in os.walk(target_dir):
     for filename in filenames:
         new_file_name = ''
         digits = '0123456789'
         for i in range(len(filename)):
-            if len(filename) > 18:
+            if len(filename) > 18 and filename[:10].isdigit():
                 new_file_name = filename[:12]
                 new_file_name = '20' + new_file_name[-2:] + \
                                        new_file_name[-4:-2] + \
@@ -71,7 +71,7 @@ for dirpath, dirnames, filenames in os.walk(target_dir):
                 new_file_name += filename[i]
 
         last_name = filename[filename.find('.', -5, -1):]
-        print(new_file_name)
+        print(filename + '----' + new_file_name)
 
         t = 0
         # following is name with timestamp
@@ -93,49 +93,8 @@ for dirpath, dirnames, filenames in os.walk(target_dir):
                 ext = '.jpg'
             if ext: # == '.jpg':
                 new_filename = str(int(datetime.datetime.timestamp(t))) + ext
-                new_path = os.path.join(tmp_dir, new_filename)
+                new_path = os.path.join(target_dir, new_filename)
                 print(original_path)
                 print(new_path)
 
-                move_file(original_path, new_path)
-                # set_datetime_exif(new_path, t)
-
-        #
-        #
-        #
-        # # if filename[:len(pre_fix)] == pre_fix:
-        # #     try:
-        # #         # following is name with datetime
-        # #         # print(filename[len(pre_fix): 19 + len(pre_fix) - 0])
-        # #         # t = datetime.datetime.strptime(filename[len(pre_fix): 19 + len(pre_fix) - 0], "%Y_%m_%d_%H_%M_%S")
-        # #
-        # #
-        # #         # fllowing is name start with datetime without any prefix
-        # #         # print(filename[: 17])
-        # #         # t = datetime.datetime.strptime(filename[:17], "%Y-%m-%d-%H%M%S")
-        # #
-        # #
-        # #         # following is name with timestamp
-        # #         # ts = float(filename[len(pre_fix): len(pre_fix) + 13]) / 1000
-        # #         # t = datetime.datetime.fromtimestamp(ts)
-        # #
-        # #
-        # #         # following is name with timestamp without any prefix
-        # #         ts = float(filename[: 10])
-        # #         t = datetime.datetime.fromtimestamp(ts)
-        # #
-        # #         original_path = os.path.join(target_dir, filename)
-        # #         ext = os.path.splitext(filename)[1]
-        # #         if ext == '.jpeg':
-        # #             ext = '.jpg'
-        # #         new_filename = str(int(datetime.datetime.timestamp(t))) + ext
-        # #         new_path = os.path.join(tmp_dir, new_filename)
-        # #         print(t)
-        # #         print(original_path)
-        # #         print(new_path)
-        # #
-        # #         move_file(original_path, new_path)
-        # #         set_datetime_exif(new_path, t)
-        #
-        #     # except TypeError:
-        #     #     pass
+                os.rename(original_path, new_path)

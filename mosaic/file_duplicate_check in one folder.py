@@ -260,18 +260,18 @@ def check_for_duplicates(paths, hash=hashlib.sha1):
                                 #    pass
                             else:
                                 hashes[file_id] = full_path
-                        #         exif = photo_info(full_path)
-                        #         if exif[0] != 'Not Available' and int(exif[0][:4]) > 1972: #timestamp from 1970
-                        #             arranged_file_name = str(int(datetime.timestamp(datetime.strptime(exif[0],
-                        #                                                             "%Y-%m-%d %H:%M:%S"))))
-                        #             target_file = os.path.join(photo_with_exif, arranged_file_name +'.' + extension)
-                        #             move_file(full_path, target_file)
-                        #
-                        #             insert_exif(target_file, 'no duplicated copy before ' + today )
-                        #         else:
-                        #             target_file = os.path.join(pic_without_exif, filename)
-                        #             move_file(full_path, target_file)
-                        #     # keyboard.wait(' ')
+                                exif = photo_info(full_path)
+                                if exif[0] != 'Not Available' and int(exif[0][:4]) > 1972: #timestamp from 1970
+                                    arranged_file_name = str(int(datetime.timestamp(datetime.strptime(exif[0],
+                                                                                    "%Y-%m-%d %H:%M:%S"))))
+                                    target_file = os.path.join(photo_with_exif, arranged_file_name +'.' + extension)
+                                    move_file(full_path, target_file)
+
+                                    insert_exif(target_file, 'no duplicated copy before ' + today )
+                                else:
+                                    target_file = os.path.join(pic_without_exif, filename)
+                                    move_file(full_path, target_file)
+                            # keyboard.wait(' ')
                         # except OSError:
                         #     pass
                     count_text = str(count) + ' / ' + str(max_files_count)
@@ -341,12 +341,13 @@ progress_gui.geometry('+%d+%d' % (bar_x, 50))
 progress_gui.title('checking images to move out the dulipcate ones')
 
 
-target_dir = 'F:\\未备备_有添加合并_整理，更名，全EXIF相册，唯一'  # F:\===================PIC TO CHECK\100NCD90
+# target_dir = 'G:\\II未备备_有添加合并_整理，更名，全EXIF相册，唯一'
+target_dir = 'G:\\workingfolder\\here\\WELL_ARRANGED_AND_TAGGED_PHOTOS'
 
 # create 3 sorts of folders  1, duplicated, 2, photo with exif, and 3 photo without exif
-duplicated_trash_dir = target_dir[0:3] + 'DULIPCATED_PICS_TRASH_BIN_2'
-photo_with_exif = target_dir[0:3] + 'WELL_ARRANGED_AND_TAGGED_PHOTOS'
-pic_without_exif = target_dir[0:3] + 'pic_without_exif'
+duplicated_trash_dir = target_dir + '\\DULIPCATED_PICS_TRASH_BIN_2'
+photo_with_exif = target_dir + '\\WELL_ARRANGED_AND_TAGGED_PHOTOS'
+pic_without_exif = target_dir + '\\pic_without_exif'
 create_folder(duplicated_trash_dir)
 create_folder(photo_with_exif)
 create_folder(pic_without_exif)

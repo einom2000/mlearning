@@ -5,7 +5,7 @@ import shutil
 import keyboard
 
 
-# 根据文件名人肉判断并修复exif
+# 根据文件名归入时间文件夹
 
 def create_folder(folder):
     if not os.path.exists(folder):
@@ -32,7 +32,7 @@ def move_file(src, tar):
     shutil.move(src, tar1)  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for safty reason, use copy while testing
 
 
-target_dir = 'f:\\未备备，已更名，已经有CreateDate,唯一, 1534 files，mp4'
+target_dir = 'G:\\___DOWNLOAD FROM BAIDU_CLEAN_BAIDU_2019_12_14\\tmp_mp4_sorted_routine_out\\tmp2'
 
 
 pre_fix = 'OtherType'
@@ -49,6 +49,7 @@ for filename in files:
             month_dir = os.path.join(year_dir,str(time.month) + '月')
             create_folder(month_dir)
             target_path = os.path.join(month_dir, filename)
+            print(full_path, target_path)
             move_file(full_path, target_path)
         except:
             print(filename)
