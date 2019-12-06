@@ -45,56 +45,74 @@ def set_datetime_exif(fn, t):
     piexif.insert(exif_byte, fn)
 
 
-target_dir = 'e:\\einom\Documents\\___SOPHIA____\\--Sophia K1 Folder\\art course\\photos'
+target_dir = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\ENGLOSH_DOREIMI_DRAMA_PROGRAM\\on class'
 # tmp_dir = 'G:\\___DOWNLOAD FROM BAIDU_CLEAN_BAIDU_2019_12_14\\tmp_mp4_sorted_routine_out\\tmp2'
 
 # create_folder(tmp_dir)
 
 for dirpath, dirnames, filenames in os.walk(target_dir):
     for filename in filenames:
-        new_file_name = ''
-        digits = '0123456789'
-        for i in range(len(filename)):
-            if len(filename) > 18 and filename[:10].isdigit():
-                new_file_name = filename[:12]
-                new_file_name = '20' + new_file_name[-2:] + \
-                                       new_file_name[-4:-2] + \
-                                       new_file_name[-6:-4] + \
-                                       new_file_name[:2] + \
-                                       new_file_name[-8:-6] + \
-                                       new_file_name[-10:-8]
+        if len(filename) == 14 and filename[:10].isdigit():
+            print('already!')
+        else:
 
-                break
-            if filename[i] == '.' and i >= len(filename) - 4:
-                break
-            if digits.find(filename[i]) != -1:
-                new_file_name += filename[i]
+            new_file_name = ''
+            digits = '0123456789'
+            for i in range(len(filename)):
+                if len(filename) > 18 and filename[:10].isdigit():
+                    new_file_name = filename[:12]
+                    new_file_name = '20' + new_file_name[-2:] + \
+                                           new_file_name[-4:-2] + \
+                                           new_file_name[-6:-4] + \
+                                           new_file_name[:2] + \
+                                           new_file_name[-8:-6] + \
+                                           new_file_name[-10:-8]
 
-        last_name = filename[filename.find('.', -5, -1):]
-        print(filename + '----' + new_file_name)
+                    break
+                if filename[i] == '.' and i >= len(filename) - 4:
+                    break
+                if digits.find(filename[i]) != -1:
+                    new_file_name += filename[i]
 
-        t = 0
-        # following is name with timestamp
-        if len(new_file_name) == 13 and new_file_name[0] == '1':
-            ts = float(new_file_name) / 1000
-            t = datetime.datetime.fromtimestamp(ts)
+            last_name = filename[filename.find('.', -5, -1):]
+            print(filename + '----' + new_file_name)
 
-        # following is name with datetime
-        if new_file_name[:3] == '201' and len(new_file_name) >= 14:
-            t = datetime.datetime.strptime(new_file_name[:14], "%Y%m%d%H%M%S")
+            t = 0
+            # following is name with timestamp
+            if len(new_file_name) == 13 and new_file_name[0] == '1':
+                ts = float(new_file_name) / 1000
+                t = datetime.datetime.fromtimestamp(ts)
 
-        print(new_file_name)
-        print(filename)
+            # following is name with datetime
+            if new_file_name[:3] == '201' and len(new_file_name) >= 14:
+                t = datetime.datetime.strptime(new_file_name[:14], "%Y%m%d%H%M%S")
 
-        if t != 0:
-            original_path = os.path.join(target_dir, filename)
-            ext = os.path.splitext(filename)[1]
-            if ext == '.jpeg':
-                ext = '.jpg'
-            if ext: # == '.jpg':
-                new_filename = str(int(datetime.datetime.timestamp(t))) + ext
-                new_path = os.path.join(target_dir, new_filename)
-                print(original_path)
-                print(new_path)
+            print(new_file_name)
+            print(filename)
 
-                os.rename(original_path, new_path)
+            if t != 0:
+                original_path = os.path.join(target_dir, filename)
+                ext = os.path.splitext(filename)[1]
+                if ext == '.jpeg':
+                    ext = '.jpg'
+                if ext == '.jpg' or ext == '.mp4' or ext == '.mov' or ext == '.png':
+                    new_filename = str(int(datetime.datetime.timestamp(t))) + ext
+                    new_path = os.path.join(target_dir, new_filename)
+                    print(original_path)
+                    print(new_path)
+
+                    k = 1
+                    while True:
+                        try:
+                            os.rename(original_path, new_path)
+                            break
+                        except FileExistsError:
+                            new_filename = str(int(datetime.datetime.timestamp(t)) + k ) + ext
+                            new_path = os.path.join(target_dir, new_filename)
+                            print('file exist, try new name!!!!')
+                            print(original_path)
+                            print(new_path)
+                            k += 1
+
+    break
+
