@@ -45,7 +45,7 @@ def set_datetime_exif(fn, t):
     piexif.insert(exif_byte, fn)
 
 
-target_dir = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\ENGLOSH_DOREIMI_DRAMA_PROGRAM\\on class'
+target_dir = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\reading before 4'
 # tmp_dir = 'G:\\___DOWNLOAD FROM BAIDU_CLEAN_BAIDU_2019_12_14\\tmp_mp4_sorted_routine_out\\tmp2'
 
 # create_folder(tmp_dir)
