@@ -1,11 +1,10 @@
+import random
+from datetime import datetime, timedelta
+
 from docx import Document
 from docx.shared import Pt
 from docx.shared import RGBColor
-from docx.shared import Inches
-from docx.oxml.ns import qn
 
-from datetime import datetime, timedelta
-import random
 
 # translation function
 def trans(calc):
@@ -134,9 +133,9 @@ def create_doc(i):
 adv_day = int(input('any advanced day? (0=no)'))
 target_date = (datetime.now() + timedelta(days=adv_day)).date().strftime('%Y_%m_%d')
 
-obj = [2,]          # 2 to plus the other number
+obj = [3, 2]          # 2 to plus the other number
 quiz_number = 16    # quiz per page in 2 columns
-field = [0, 12]     # 0 ~ 12 number to plus
+field = [0, 10]     # 0 ~ 12 number to plus
 calc = 'addition'
 max_quizs_per_page = 20
 

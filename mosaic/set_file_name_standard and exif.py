@@ -1,8 +1,8 @@
 import datetime
 import os
-import piexif
 import shutil
-import keyboard
+
+import piexif
 
 
 # 根据文件名人肉判断并修复exif
@@ -45,8 +45,8 @@ def set_datetime_exif(fn, t):
     piexif.insert(exif_byte, fn)
 
 
-target_dir = 'G:\\___DOWNLOAD FROM BAIDU_CLEAN_BAIDU_2019_12_14\\tmp_mp4_sorted_routine_out\\tmp'
-tmp_dir = 'G:\\___DOWNLOAD FROM BAIDU_CLEAN_BAIDU_2019_12_14\\tmp_mp4_sorted_routine_out\\tmp2'
+target_dir = 'e:\\einom\Documents\\vedio rename temp'
+tmp_dir = 'e:\\einom\\Documents\\vedio rename temp'
 
 create_folder(tmp_dir)
 
@@ -55,7 +55,7 @@ for dirpath, dirnames, filenames in os.walk(target_dir):
         new_file_name = ''
         digits = '0123456789'
         for i in range(len(filename)):
-            if len(filename) > 18:
+            if len(filename) > 18 and filename.isdigit():
                 new_file_name = filename[:12]
                 new_file_name = '20' + new_file_name[-2:] + \
                                        new_file_name[-4:-2] + \
@@ -139,3 +139,4 @@ for dirpath, dirnames, filenames in os.walk(target_dir):
         #
         #     # except TypeError:
         #     #     pass
+    break
