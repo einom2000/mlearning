@@ -4,6 +4,7 @@ import keyboard
 import sys
 from datetime import datetime, timedelta
 from PIL import Image
+import math
 
 
 def draw_circle(x, y, radius, color):
@@ -19,7 +20,10 @@ def draw_circle(x, y, radius, color):
     t.circle(radius)
     t.end_fill()
 
-def draw_sqaure(x, y, radius, color):
+
+def draw_square(x, y, radius, color):
+    rd_dgr = random.choice(turn_degrees)
+    print(rd_dgr)
     edge = int(radius * 1.414)
     t = turtle.Turtle()
     t.speed(0)
@@ -29,7 +33,7 @@ def draw_sqaure(x, y, radius, color):
     t.setx(x - edge // 2)
     t.sety(y + edge // 2)
     t.pendown()
-    t.setheading(270)
+    t.setheading(270 + rd_dgr)
     t.begin_fill()
     for _ in range(4):
         t.fd(edge)
@@ -48,11 +52,29 @@ def draw_triangle(x, y, radius, color):
     t.setx(x)
     t.sety(y + radius)
     t.pendown()
-    t.setheading(240 + rd_dgr)
+    t.setheading(270 + rd_dgr)
     t.begin_fill()
     for _ in range(3):
         t.fd(edge)
         t.left(120)
+    t.end_fill()
+
+
+def draw_star(x, y, radius, color):
+    rd_dgr = random.choice(turn_degrees)
+    t = turtle.Turtle()
+    t.speed(0)
+    t.hideturtle()
+    t.penup()
+    t.color(color)
+    t.setx(x - radius // 2)
+    t.sety(y)
+    t.pendown()
+    t.setheading(0 + rd_dgr)
+    t.begin_fill()
+    for _ in range(5):
+        t.fd(radius * 1.5)
+        t.right(144)
     t.end_fill()
 
 
@@ -85,10 +107,11 @@ def draw_grid():
 
 def draw_sizes(position):
     random.shuffle(sizes)
-
+    methods = [draw_square, draw_circle, draw_triangle, draw_star]
+    method = random.choice(methods)
     for pos in position:
         print(pos)
-        draw_sqaure(pos[0], pos[1], sizes[position.index(pos)], colors[position.index(pos)])
+        method(pos[0], pos[1], sizes[position.index(pos)], colors[position.index(pos)])
         print(pos)
 
 
