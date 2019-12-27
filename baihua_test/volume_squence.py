@@ -1,10 +1,11 @@
-import turtle
-import random
-import keyboard
-import sys
-from datetime import datetime, timedelta
-from PIL import Image
 import math
+import random
+import sys
+import turtle
+from datetime import datetime, timedelta
+
+import keyboard
+from PIL import Image
 
 
 def draw_glass(x, y, level, color):
@@ -119,7 +120,7 @@ for k in range(1, 4):
 
             img = Image.open('tmp.ps')
             try:
-                img.save(folder + 'size_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+                img.save(folder + 'volume_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
                 break
             except FileNotFoundError:
                 pass
