@@ -1,7 +1,6 @@
 import random
 import sys
 import time
-import tkinter as tk
 import turtle
 from datetime import datetime
 
@@ -50,39 +49,18 @@ def generate_list(level):
     return matrix
 
 
-def calc_level(e1):
-    global level
-    level = e1.get()
+def get_level():
+    level = input('the difficulties 1(easy) 2(hard), or # for # show, or 999 for black and white')
     try:
         level = int(level)
         if level > 14 and level != 999:
             level = 2   # show 14 pieces == level 2
-        elif level <= 1:
+        elif level < 1:
             level = 1
-        elif level > 14:
+        elif level >14:
             level = 999
     except ValueError:
-        level = 666
-    print('level = ' + str(level))
-
-def get_level():
-    master = tk.Tk()
-    tk.Label(master, text="please input a level to play").grid(row=0)
-    tk.Label(master, text="999 FOR B/W, 14+ FOR LEVEL2, 1 FOR LEVEL 1, 2~14 FOR COLORED PIECES").grid(row=2)
-    tk.Label(master, text='PLS INPUT NUMBER ONLY').grid(row=3)
-    e1 = tk.Entry(master)
-    e1.grid(row=0, column=1)
-    e1.insert(tk.END, '999')
-
-    tk.Button(master, text='GO', command=lambda: calc_level(e1)).grid(row=4, column=0, sticky=tk.W, pady=4)
-    print(level)
-    if level != 666 and level != 0:
-        print('destroy window!')
-        master.destroy()
-    elif level == 666:
-        warning_msg = 'WRONG INPUT!, PLS INPUT AGAIN!'
-    else:
-        master.mainloop()
+        level = 1
     return level
 
 
@@ -178,10 +156,6 @@ canvas_height = 600
 today = datetime.now().date().strftime('%Y_%m_%d')
 folder = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\BAIHUA_LOGICS\\'
 
-level = 0
-level = get_level()
-
-
 wn = turtle.Screen()
 wn.bgcolor("white")
 wn.title("color_matrix")
@@ -198,6 +172,14 @@ ct_style = ('Courier', 30, 'bold')
 style = ('Courier', 10, 'bold')
 k = 1
 
+# print('111')
+level = get_level()
+# parser = argparse.ArgumentParser(description='generate a matrix for kids to remember.')
+# parser.add_argument('level', type=int, nargs='+',
+#                     help='the difficulties 1(easy) 2(hard), or # for # show, or 999 for black and white')
+# args = parser.parse_args()
+# print(args.level)
+# sys.exit()
 
 while True:
 
@@ -250,9 +232,3 @@ while True:
     wn.clear()
 
     k += 1
-
-
-
-
-
-
