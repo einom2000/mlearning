@@ -1,6 +1,4 @@
 import turtle
-
-import turtle
 import random
 import keyboard
 import sys
@@ -11,6 +9,8 @@ import math
 
 def draw_glass(x, y, level, color):
     t = turtle.Turtle()
+    level = level / 100
+    fd_1 = int(level * 150)
     t.speed(0)
     t.hideturtle()
     t.penup()
@@ -18,10 +18,25 @@ def draw_glass(x, y, level, color):
     t.setx(x)
     t.sety(y)
     t.pendown()
+    # draw water
     t.begin_fill()
-    t.circle(5)
+    t.fd(50)
+    t.left(85)
+    t.fd(fd_1)
+    t.left(95)
+    t.fd(50 + 2 * math.sin(math.radians(5)) * fd_1)
+    t.left(95)
+    t.fd(fd_1)
     t.end_fill()
-
+    #.draw_cups
+    t.left(85)
+    t.fd(50)
+    t.left(85)
+    t.fd(150)
+    t.left(95)
+    t.fd(50 + 2 * math.sin(math.radians(5)) * 150)
+    t.left(95)
+    t.fd(150)
 
 def draw_grid():
     grid = turtle.Turtle()
@@ -78,7 +93,7 @@ folder = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\BAIHUA_LOGICS
 
 canvas_width = 1000
 canvas_height = 600
-levels = [0, 10, 25, 50, 75, 90, 100, 50]
+levels = [0, 15, 30, 50, 65, 80, 100, 95]
 colors = ['red', 'green', 'blue', 'brown', 'black', 'gray', 'pink', 'orange']
 style = ('Courier', 10, 'bold')
 
