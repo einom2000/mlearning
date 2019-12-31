@@ -1,10 +1,8 @@
 import math
 import random
-import sys
 import turtle
 from datetime import datetime, timedelta
 
-import keyboard
 from PIL import Image
 
 
@@ -114,19 +112,19 @@ for k in range(1, 4):
 
     while True:
 
-        if keyboard.is_pressed('space'):
+        # if keyboard.is_pressed('space'):
 
-            turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
+        turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
 
-            img = Image.open('tmp.ps')
-            try:
-                img.save(folder + 'volume_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
-                break
-            except FileNotFoundError:
-                pass
-                break
-        if keyboard.is_pressed('q'):
-            sys.exit()
+        img = Image.open('tmp.ps')
+        try:
+            img.save(folder + 'volume_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+            break
+        except FileNotFoundError:
+            pass
+            break
+        # if keyboard.is_pressed('q'):
+        #     sys.exit()
 
     wn.clear()
 

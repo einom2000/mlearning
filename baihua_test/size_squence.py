@@ -1,10 +1,8 @@
-import turtle
 import random
-import keyboard
-import sys
+import turtle
 from datetime import datetime, timedelta
+
 from PIL import Image
-import math
 
 
 def draw_circle(x, y, radius, color):
@@ -158,19 +156,19 @@ for k in range(1, 4):
 
     while True:
 
-        if keyboard.is_pressed('space'):
+        # if keyboard.is_pressed('space'):
 
-            turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
+        turtle.getscreen().getcanvas().postscript(file='tmp.ps', colormode='color')
 
-            img = Image.open('tmp.ps')
-            try:
-                img.save(folder + 'size_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
-                break
-            except FileNotFoundError:
-                pass
-                break
-        if keyboard.is_pressed('q'):
-            sys.exit()
+        img = Image.open('tmp.ps')
+        try:
+            img.save(folder + 'size_squence_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+            break
+        except FileNotFoundError:
+            pass
+            break
+        # if keyboard.is_pressed('q'):
+        #     sys.exit()
 
     wn.clear()
 

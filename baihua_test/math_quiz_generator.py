@@ -60,7 +60,11 @@ def quiz_create(field, obj, calc, quiz_number):
 
 def create_doc(i):
     document = Document()
-    number = obj[0]  # Subtraction multiplication division
+    number = ''
+    for k in obj:
+        number += str(k) + ','
+    number = number[:-1]
+
     title1 = target_date + ' -- '
     title2 = calc.upper()
     title3 = ' of number '
@@ -71,37 +75,37 @@ def create_doc(i):
         # title creation
         p = document.add_heading(level=0)
         wp = p.add_run(title1)
-        wp.font.size = Pt(25)
+        wp.font.size = Pt(20)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
         wp = p.add_run(title2)
-        wp.font.size = Pt(30)
+        wp.font.size = Pt(20)
         wp.font.color.rgb = RGBColor(255, 0, 0)
         wp = p.add_run(title3)
-        wp.font.size = Pt(25)
+        wp.font.size = Pt(20)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
         wp = p.add_run(title4)
-        wp.font.size = Pt(30)
+        wp.font.size = Pt(20)
         wp.font.color.rgb = RGBColor(255, 0, 0)
 
         wp = p.add_run('关于数字 ')
         wp.font.name = '#simSong'
-        wp.font.size = Pt(25)
+        wp.font.size = Pt(20)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
         wp = p.add_run(str(number))
-        wp.font.size = Pt(30)
+        wp.font.size = Pt(20)
         wp.font.color.rgb = RGBColor(255, 0, 0)
         wp = p.add_run(' 的')
-        wp.font.size = Pt(25)
+        wp.font.size = Pt(20)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
         wp = p.add_run(title5)
-        wp.font.size = Pt(30)
+        wp.font.size = Pt(20)
         wp.font.color.rgb = RGBColor(255, 0, 0)
         wp = p.add_run('练习 -- 第 ' + str(page + 1) + ' 页')
-        wp.font.size = Pt(25)
+        wp.font.size = Pt(20)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
 
