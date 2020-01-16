@@ -134,13 +134,14 @@ def create_doc(i):
         document.save('temp.docx')
 
 
-adv_day = int(input('any advanced day? (0=no)'))
-target_date = (datetime.now() + timedelta(days=adv_day)).date().strftime('%Y_%m_%d')
+adv_day = int(input('how many days from now? (0=today)'))
+for k in range(adv_day):
+    target_date = (datetime.now() + timedelta(days=k)).date().strftime('%Y_%m_%d')
 
-obj = [3, 2]          # 2 to plus the other number
-quiz_number = 16    # quiz per page in 2 columns
-field = [0, 10]     # 0 ~ 12 number to plus
-calc = 'addition'
-max_quizs_per_page = 20
+    obj = [3, 2]          # 2 to plus the other number
+    quiz_number = 16    # quiz per page in 2 columns
+    field = [0, 10]     # 0 ~ 12 number to plus
+    calc = 'addition'
+    max_quizs_per_page = 20
 
-create_doc(3)
+    create_doc(3)

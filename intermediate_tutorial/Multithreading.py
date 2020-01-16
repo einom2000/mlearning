@@ -43,13 +43,11 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode((500, 400))
     t = threading.Thread(target=f)
     t1 = threading.Thread(target=g)
-    t2 = threading.Thread(target=g)
     t.setDaemon(True)
     t1.setDaemon(True)
-    t2.setDaemon(True)
     t.start()
     t1.start()
-    t2.start()
+    t1.join()
     running = True
     while running:
         for event in pygame.event.get():
