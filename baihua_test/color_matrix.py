@@ -133,7 +133,7 @@ def write_info2():
     turtle.penup()
     turtle.goto(0, 0)
     turtle.pendown()
-    turtle.write('pleas press \'space\' to have show it again!', font=style, align='center')
+    turtle.write('pleas press \'space\' to show it again!', font=style, align='center')
     turtle.penup()
     turtle.goto(0, -100)
     turtle.pendown()
