@@ -181,7 +181,7 @@ for k in range(adv_day):
     target_date = (datetime.now() + timedelta(days=k)).date().strftime('%Y_%m_%d')
 
     obj = [4, 3, 2]          # 2 to plus the other number
-    quiz_type = [0, 1, 1]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
+    quiz_type = [0, 0, 1]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
     quiz_number = 12   # quiz per page in 2 columns  20 is the max per page and should be even number
     field = [1, 14]     # 0 ~ 12 number to plus
     calc = 'addition'
