@@ -1,11 +1,37 @@
 import random
+import sys
+import time
 import turtle
 from datetime import datetime
+
+import keyboard
+from PIL import Image
 
 
 # color definition:  0 = green, 1 = yellow, 2 = yellow & green
 # angel definition:  0 = no rotate, 1 = 90 degree rotate, 2 = 180 degree, 3 = 270 degree
 
+
+
+def write_info(text):
+    turtle.hideturtle()
+    turtle.penup()
+    turtle.goto(0, (canvas_height // 2 - 50) * (-1))
+    turtle.pendown()
+    turtle.color('black')
+    turtle.write(text, font=style, align='center')
+    turtle.penup()
+    turtle.goto(0, (canvas_height // 2 - 20) * (-1))
+    turtle.pendown()
+    turtle.write('or press \'q\' to quit', font=style, align='center')
+
+
+def wait_keyin():
+    while True:
+        if keyboard.is_pressed('space'):
+            break
+        if keyboard.is_pressed('q'):
+            sys.exit()
 
 def draw_matrix():
     square = turtle.Turtle()
@@ -14,12 +40,12 @@ def draw_matrix():
     square.speed(0)
     for i in range(len(matrix)):
         y = grid_y[i]
+        step = abs(grid_x[1] - grid_x[0])
         for j in range(len(matrix[i])):
             if matrix[i][j] != 2:
                 square.color('black', color[matrix[i][j]])
                 square.penup()
                 x = grid_x[j]
-                step = abs(grid_x[1] - grid_x[0])
                 square.setposition(x, y)
                 square.setheading(0)
                 square.pendown()
@@ -30,13 +56,14 @@ def draw_matrix():
                 square.end_fill()
                 square.penup()
             else:
+                k = random.choice([0, 1])
                 random.shuffle(dual_color)
                 square.color('black', dual_color[0])
                 square.penup()
-                x = grid_x[j]
+                x = grid_x[j] + k * step
                 step = abs(grid_x[1] - grid_x[0])
                 square.setposition(x, y)
-                square.setheading(0)
+                square.setheading(0 + k * (-90))
                 square.pendown()
                 square.begin_fill()
                 square.fd(step)
@@ -49,11 +76,11 @@ def draw_matrix():
                 square.color('black', dual_color[1])
                 square.penup()
                 square.setposition(x, y)
-                square.setheading(-90)
+                square.setheading(-90 + k * (-90))
                 square.pendown()
                 square.begin_fill()
                 square.fd(step)
-                square.setheading(0)
+                square.left(90)
                 square.fd(step)
                 square.goto(x, y)
                 square.end_fill()
@@ -146,9 +173,48 @@ style = ('Courier', 10, 'bold')
 level = 4
 
 # level has 3x3 & 4X4
-grid_x, grid_y = draw_grid()
-matrix = make_matrix()
-draw_matrix()
+k = 0
 
 while True:
-    pass
+
+    grid_x, grid_y = draw_grid()
+    matrix = make_matrix()
+    draw_matrix()
+
+    write_info('pleas press \'space\' to continue!')
+
+    turtle.getscreen().getcanvas().postscript(file='tmp.ps')
+
+    img = Image.open('tmp.ps')
+    try:
+        img.save(folder + 'tri_matrix_' + today + '--' + '0' * (3 - len(str(k))) + str(k) + '.jpg')
+    except FileNotFoundError:
+        pass
+
+    ct = time.time()
+    last_dt = 0
+
+    while True:
+
+        dt = int(time.time() - ct)
+        if dt - last_dt > 0:
+            ct_pen.clear()
+            ct_pen.penup()
+            ct_pen.setposition(0, (canvas_height // 2 - 70))
+            ct_pen.pendown()
+            # ct_pen.write(str(time_to_remember - dt), font=ct_style, align='center')
+            last_dt = dt
+        if last_dt == time_to_remember:
+            break
+        if keyboard.is_pressed('space'):
+            break
+        if keyboard.is_pressed('q'):
+            sys.exit()
+
+
+
+    wait_keyin()
+
+    wn.clear()
+
+    k += 1
