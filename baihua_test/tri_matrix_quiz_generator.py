@@ -1,22 +1,63 @@
 import random
-import sys
-import time
 import turtle
 from datetime import datetime
 
-import keyboard
-from PIL import Image
+
 # color definition:  0 = green, 1 = yellow, 2 = yellow & green
 # angel definition:  0 = no rotate, 1 = 90 degree rotate, 2 = 180 degree, 3 = 270 degree
 
 
 def draw_matrix():
-    for r in range(level):
-        for c in range(level):
-            if matrix[r][c] == 2:
-                pass
+    square = turtle.Turtle()
+    square.hideturtle()
+    square.pensize(1)
+    square.speed(0)
+    for i in range(len(matrix)):
+        y = grid_y[i]
+        for j in range(len(matrix[i])):
+            if matrix[i][j] != 2:
+                square.color('black', color[matrix[i][j]])
+                square.penup()
+                x = grid_x[j]
+                step = abs(grid_x[1] - grid_x[0])
+                square.setposition(x, y)
+                square.setheading(0)
+                square.pendown()
+                square.begin_fill()
+                for _ in range(4):
+                    square.fd(step)
+                    square.right(90)
+                square.end_fill()
+                square.penup()
             else:
-                pass
+                random.shuffle(dual_color)
+                square.color('black', dual_color[0])
+                square.penup()
+                x = grid_x[j]
+                step = abs(grid_x[1] - grid_x[0])
+                square.setposition(x, y)
+                square.setheading(0)
+                square.pendown()
+                square.begin_fill()
+                square.fd(step)
+                square.right(90)
+                square.fd(step)
+                square.goto(x, y)
+                square.end_fill()
+                square.penup()
+                # 2nd half
+                square.color('black', dual_color[1])
+                square.penup()
+                square.setposition(x, y)
+                square.setheading(-90)
+                square.pendown()
+                square.begin_fill()
+                square.fd(step)
+                square.setheading(0)
+                square.fd(step)
+                square.goto(x, y)
+                square.end_fill()
+                square.penup()
 
     pass
 
@@ -82,6 +123,7 @@ time_to_remember = 30
 canvas_width = 600
 canvas_height = 600
 color = ['green', 'yellow']
+dual_color = color.copy()
 
 today = datetime.now().date().strftime('%Y_%m_%d')
 folder = 'e:\\einom\\Documents\\___SOPHIA____\\--Sophia K2 Folder\\BAIHUA_LOGICS\\'
@@ -101,12 +143,12 @@ ct_pen.speed(0)
 ct_style = ('Courier', 30, 'bold')
 style = ('Courier', 10, 'bold')
 
-level = 3
+level = 4
 
 # level has 3x3 & 4X4
 grid_x, grid_y = draw_grid()
 matrix = make_matrix()
-
+draw_matrix()
 
 while True:
     pass
