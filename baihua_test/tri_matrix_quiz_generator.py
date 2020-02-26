@@ -90,13 +90,17 @@ def draw_matrix():
 
 
 def make_matrix():
-    matrix = []
-    for _ in range(level):
-        rows = []
+    while True:
+        matrix = []
         for _ in range(level):
-            rows.append(random.choice([0, 1, 2]))
-        matrix.append(rows)
-    return matrix
+            rows = []
+            for _ in range(level):
+                rows.append(random.choice([0, 1, 2]))
+            matrix.append(rows)
+        if sum(num.count(0) for num in matrix) <= level * level * 3 // 10 and \
+            sum(num.count(1) for num in matrix) <= level * level * 3 // 10:
+            # make sure the green and yellow pieces are less that 40% of the total pieces
+            return matrix
 
 
 def generate_symmetry(type):
