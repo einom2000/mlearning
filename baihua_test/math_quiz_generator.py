@@ -170,7 +170,7 @@ def create_doc(i):
         if page < i -1:
             document.add_page_break()
     try:
-        document.save('e:\\einom\Documents\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + '_' + \
+        document.save('f:\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + '_' + \
                       target_date + '.docx')
     except FileNotFoundError:
         document.save('temp.docx')
@@ -180,10 +180,10 @@ adv_day = int(input('how many days from now? (1=today)'))
 for k in range(adv_day):
     target_date = (datetime.now() + timedelta(days=k)).date().strftime('%Y_%m_%d')
 
-    obj = [4, 3, 2]          # 2 to plus the other number
+    obj = [5, 4, 3, 2]          # 2 to plus the other number
     quiz_type = [0, 0, 1]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
-    quiz_number = 12   # quiz per page in 2 columns  20 is the max per page and should be even number
-    field = [1, 14]     # 0 ~ 12 number to plus
+    quiz_number = 14   # quiz per page in 2 columns  20 is the max per page and should be even number
+    field = [1, 15]     # 0 ~ 12 number to plus
     calc = 'addition'
     max_quizs_per_page = 28
 
