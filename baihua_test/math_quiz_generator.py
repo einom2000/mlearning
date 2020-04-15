@@ -32,12 +32,16 @@ def quiz_create(field, obj, calc, quiz_number, max_result):
         subjs.append(random.randint(field[0], field[1]))
     quizs = []
     for subj in subjs:
+        num_a = subj
         while True:
-            tmp = [subj, random.choice(obj)]
+            tmp = [num_a, random.choice(obj)]
             chk_result = eval(str(tmp[0]) + calc_dic[calc] + str(tmp[1]))
-            if tmp not in quizs and [tmp[1], tmp[0]] not in quizs and [tmp[0], tmp[1]] not in quizs \
-                    and chk_result <= max_result:
+            if tmp not in quizs and chk_result <= max_result:
+                #and [tmp[1], tmp[0]] not in quizs and [tmp[0], tmp[1]] not in quizs \
                 break
+            else:
+                num_a = random.randint(field[0], field[1])
+
         random.shuffle(tmp)
         quizs.append(tmp)
     quiz_table = []
@@ -168,9 +172,10 @@ for k in range(adv_day):
     obj = [10, 9, 8, 7, 8, 5, 4, 3, 2, 1]          # 2 to plus the other number
     quiz_type = [0, 0, 1]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
     quiz_number = 22   # quiz per page in 2 columns  20 is the max per page and should be even number
-    field = [1, 20]     # 0 ~ 12 number to plus
+    field = [1, 19]     # 0 ~ 12 number to plus
     max_result = 20
     calc = 'addition'
     max_quizs_per_page = 28
+
 
     create_doc(len(quiz_type))   # 3 pages per quiz
