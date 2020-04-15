@@ -40,9 +40,6 @@ def quiz_create(field, obj, calc, quiz_number, max_result):
                 break
         random.shuffle(tmp)
         quizs.append(tmp)
-    print(quizs)
-    print(quiz_number)
-    print(length)
     quiz_table = []
     quiz_table1 = []
     for i in range(0, len(quizs), 2):
