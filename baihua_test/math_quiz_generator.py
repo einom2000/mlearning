@@ -21,45 +21,33 @@ def trans(calc):
 
 
 # create quiz list
-def quiz_create(field, obj, calc, quiz_number):
+def quiz_create(field, obj, calc, quiz_number, max_result):
     calc_dic = {'addition': '+',
                 'subtraction': '-',
                 'multiplication': 'x',
                 'division': '÷'}
-    # if the given field is larger than the random length of the random number list
-    if field[1] - field[0] + 1 < quiz_number:
-        length = field[1] - field[0] + 1
-    else:
-        length = quiz_number
-    length = length // 2 * 2
-    subjs = random.sample(range(field[0], field[1] + 1), length)
+    length = quiz_number // 2 * 2
+    subjs = []
+    for _ in range(0, length):
+        subjs.append(random.randint(field[0], field[1]))
     quizs = []
     for subj in subjs:
         while True:
             tmp = [subj, random.choice(obj)]
-            if tmp not in quizs and [tmp[1], tmp[0]] not in quizs:
+            chk_result = eval(str(tmp[0]) + calc_dic[calc] + str(tmp[1]))
+            if tmp not in quizs and [tmp[1], tmp[0]] not in quizs and [tmp[0], tmp[1]] not in quizs \
+                    and chk_result <= max_result:
                 break
         random.shuffle(tmp)
         quizs.append(tmp)
+    print(quizs)
+    print(quiz_number)
+    print(length)
     quiz_table = []
     quiz_table1 = []
     for i in range(0, len(quizs), 2):
         quiz_table.append((str(quizs[i][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i][1]) + ' =',
                            str(quizs[i + 1][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i + 1][1]) + ' ='))
-    if quiz_number > length:
-        length1 = quiz_number - length
-        if length1 + length > max_quizs_per_page:
-            length1 = max_quizs_per_page - length
-        subjs = random.sample(range(field[0], field[1] + 1), length1)
-        quizs = []
-        for subj in subjs:
-            tmp = [subj, random.choice(obj)]
-            random.shuffle(tmp)
-            quizs.append(tmp)
-        for i in range(0, len(quizs), 2):
-            quiz_table1.append((str(quizs[i][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i][1]) + ' =',
-                               str(quizs[i + 1][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i + 1][1]) + ' ='))
-    # add result to final quiz table
     ready_quiz_table = make_up_final_quiz(quiz_table + quiz_table1)
     return ready_quiz_table
 
@@ -113,41 +101,41 @@ def create_doc(i):
         # title creation
         p = document.add_heading(level=0)
         wp = p.add_run(title1)
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
         wp = p.add_run(title2)
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.color.rgb = RGBColor(255, 0, 0)
         wp = p.add_run(title3)
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
         wp = p.add_run(title4)
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.color.rgb = RGBColor(255, 0, 0)
 
         wp = p.add_run('关于数字 ')
         wp.font.name = '#simSong'
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
         wp = p.add_run(str(number))
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.color.rgb = RGBColor(255, 0, 0)
         wp = p.add_run(' 的')
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
         wp = p.add_run(title5)
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.color.rgb = RGBColor(255, 0, 0)
         wp = p.add_run('练习 -- 第 ' + str(page + 1) + ' 页')
-        wp.font.size = Pt(20)
+        wp.font.size = Pt(18)
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
 
-        quiz_table = quiz_create(field, obj, calc, quiz_number)
+        quiz_table = quiz_create(field, obj, calc, quiz_number, max_result)
         # like this [('4 + 3 = 7', '3 + 2 = 5'), ('3 + 12 = 15', '7 + 4 = 11'), ('2 + 2 = 4', '2 + 5 = 7'),
         # ('13 + 3 = 16', '1 + 2 = 3'), ('11 + 2 = 13', '10 + 2 = 12'), ('14 + 3 = 17', '6 + 4 = 10'),
         # ('3 + 8 = 11', '3 + 9 = 12'), ('2 + 9 = 11', '3 + 14 = 17'), ('3 + 2 = 5', '6 + 3 = 9'),
@@ -166,7 +154,7 @@ def create_doc(i):
                 for paragraph in paragraphs:
                     for run in paragraph.runs:
                         font = run.font
-                        font.size = Pt(30)
+                        font.size = Pt(26)
         if page < i -1:
             document.add_page_break()
     try:
@@ -180,10 +168,11 @@ adv_day = int(input('how many days from now? (1=today)'))
 for k in range(adv_day):
     target_date = (datetime.now() + timedelta(days=k)).date().strftime('%Y_%m_%d')
 
-    obj = [5, 4, 3, 2]          # 2 to plus the other number
+    obj = [10, 9, 8, 7, 8, 5, 4, 3, 2, 1]          # 2 to plus the other number
     quiz_type = [0, 0, 1]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
-    quiz_number = 14   # quiz per page in 2 columns  20 is the max per page and should be even number
-    field = [1, 15]     # 0 ~ 12 number to plus
+    quiz_number = 22   # quiz per page in 2 columns  20 is the max per page and should be even number
+    field = [1, 20]     # 0 ~ 12 number to plus
+    max_result = 20
     calc = 'addition'
     max_quizs_per_page = 28
 
