@@ -36,7 +36,7 @@ def quiz_create(field, obj, calc, quiz_number, max_result):
         while True:
             tmp = [num_a, random.choice(obj)]
             chk_result = eval(str(tmp[0]) + calc_dic[calc] + str(tmp[1]))
-            if tmp not in quizs and chk_result <= max_result:
+            if tmp not in quizs and 0 <= chk_result <= max_result:
                 #and [tmp[1], tmp[0]] not in quizs and [tmp[0], tmp[1]] not in quizs \
                 break
             else:
