@@ -1,4 +1,5 @@
 import random
+import re
 from datetime import datetime, timedelta
 
 from docx import Document
@@ -21,7 +22,7 @@ def trans(calc):
 
 
 # create quiz list
-def quiz_create(field, obj, calc, quiz_number, max_result):
+def quiz_create(field, obj, calc, quiz_number, max_result, elements):
     calc_dic = {'addition': '+',
                 'subtraction': '-',
                 'multiplication': 'x',
@@ -31,25 +32,53 @@ def quiz_create(field, obj, calc, quiz_number, max_result):
     for _ in range(0, length):
         subjs.append(random.randint(field[0], field[1]))
     quizs = []
-    for subj in subjs:
-        num_a = subj
-        while True:
-            tmp = [num_a, random.choice(obj)]
-            chk_result = eval(str(tmp[0]) + calc_dic[calc] + str(tmp[1]))
-            if tmp not in quizs and 0 <= chk_result <= max_result:
-                #and [tmp[1], tmp[0]] not in quizs and [tmp[0], tmp[1]] not in quizs \
-                break
-            else:
-                num_a = random.randint(field[0], field[1])
+    # more than 2 elements calcs
+    if elements == 3:
+        for subj in subjs:
+            num_a = subj
+            num_b = random.randint(field[0], field[1])
+            while True:
+                tmp = [num_a, num_b, random.choice(obj)]
+                chk_result = eval(str(tmp[0]) + calc_dic[calc] + str(tmp[1])+ calc_dic[calc] + str(tmp[2]))
+                if tmp not in quizs and 0 <= chk_result <= max_result:
+                    #and [tmp[1], tmp[0]] not in quizs and [tmp[0], tmp[1]] not in quizs \
+                    break
+                else:
+                    num_a = random.randint(field[0], field[1])
+                    num_b = random.randint(field[0], field[1])
 
-        random.shuffle(tmp)
-        quizs.append(tmp)
-    quiz_table = []
-    quiz_table1 = []
-    for i in range(0, len(quizs), 2):
-        quiz_table.append((str(quizs[i][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i][1]) + ' =',
-                           str(quizs[i + 1][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i + 1][1]) + ' ='))
-    ready_quiz_table = make_up_final_quiz(quiz_table + quiz_table1)
+            random.shuffle(tmp)
+            quizs.append(tmp)
+        quiz_table = []
+        quiz_table1 = []
+        for i in range(0, len(quizs), 2):
+            quiz_table.append((str(quizs[i][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i][1]) +  ' ' + calc_dic[calc]
+                               + ' ' + str(quizs[i][2]) + ' =',
+                               str(quizs[i + 1][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i + 1][1]) + ' '
+                               + calc_dic[calc] + ' ' + str(quizs[i + 1][2]) + ' ='))
+        ready_quiz_table = make_up_final_quiz(quiz_table + quiz_table1)
+    else:
+        # just 2 elements calcs
+        for subj in subjs:
+            num_a = subj
+            while True:
+                tmp = [num_a, random.choice(obj)]
+                chk_result = eval(str(tmp[0]) + calc_dic[calc] + str(tmp[1]))
+                if tmp not in quizs and 0 <= chk_result <= max_result:
+                    # and [tmp[1], tmp[0]] not in quizs and [tmp[0], tmp[1]] not in quizs \
+                    break
+                else:
+                    num_a = random.randint(field[0], field[1])
+
+            random.shuffle(tmp)
+            quizs.append(tmp)
+        quiz_table = []
+        quiz_table1 = []
+        for i in range(0, len(quizs), 2):
+            quiz_table.append((str(quizs[i][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i][1]) + ' =',
+                               str(quizs[i + 1][0]) + ' ' + calc_dic[calc] + ' ' + str(quizs[i + 1][1]) + ' ='))
+        ready_quiz_table = make_up_final_quiz(quiz_table + quiz_table1)
+
     return ready_quiz_table
 
 
@@ -62,7 +91,7 @@ def make_up_final_quiz(table):
     return new_table
 
 
-def mask_table(table, mask):
+def mask_table(table, mask, elements):
     new_table = []
     calc_dic = {'addition': '+',
                 'subtraction': '-',
@@ -73,15 +102,24 @@ def mask_table(table, mask):
             new_table.append((quiz_tuple[0][:quiz_tuple[0].index('=') + 1] + ' ____',
                               quiz_tuple[1][:quiz_tuple[1].index('=') + 1] + ' ____'))
         if mask == 1:
-            flag = random.choice([0, 1])
-            if not flag:
-                new_table.append(("____ " + quiz_tuple[0][quiz_tuple[0].index(calc_dic[calc]):],
-                                  "____ " + quiz_tuple[1][quiz_tuple[1].index(calc_dic[calc]):]))
-            else:
-                new_table.append((quiz_tuple[0][:quiz_tuple[0].index(calc_dic[calc]) + 1] + ' ____ ' +
-                                  quiz_tuple[0][quiz_tuple[0].index('='):],
-                                  quiz_tuple[1][:quiz_tuple[1].index(calc_dic[calc]) + 1] + ' ____ ' +
-                                  quiz_tuple[1][quiz_tuple[1].index('='):]))
+            flag_a = random.randint(0, elements-1)
+            column_a  = re.findall('[0-9]+', quiz_tuple[0])
+            column_a_map = re.sub('\w', '', quiz_tuple[0]).replace(' ', '')
+            flag_b = random.randint(0, elements-1)
+            column_b = re.findall('[0-9]+', quiz_tuple[1])
+            column_b_map = re.sub('\w', '', quiz_tuple[1]).replace(' ', '')
+                ## result quiz_tuple [('17 + 13 + 8 = 38', '3 + 15 + 19 = 37')]
+                ## column_a = ['17', '13', '8', '38'] column_b = ['3', '15', '19', '37']
+                ## column_a_map = '++='   &           column_b_map = '++='
+            column_a[flag_a] = "___"
+            column_b[flag_b] = "___"
+            new_quiz_column_a = ''
+            new_quiz_column_b = ''
+            for i in range(len(column_a)-1):
+                new_quiz_column_a = new_quiz_column_a + ' ' + column_a[i] + ' ' + column_a_map[i]
+                new_quiz_column_b = new_quiz_column_b + ' ' + column_b[i] + ' ' + column_b_map[i]
+            new_table.append((new_quiz_column_a, new_quiz_column_b))
+
     return new_table
 
 
@@ -157,13 +195,18 @@ def create_doc(i):
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
 
-        quiz_table = quiz_create(field, obj, calc, quiz_number, max_result)
-        # like this [('4 + 3 = 7', '3 + 2 = 5'), ('3 + 12 = 15', '7 + 4 = 11'), ('2 + 2 = 4', '2 + 5 = 7'),
-        # ('13 + 3 = 16', '1 + 2 = 3'), ('11 + 2 = 13', '10 + 2 = 12'), ('14 + 3 = 17', '6 + 4 = 10'),
-        # ('3 + 8 = 11', '3 + 9 = 12'), ('2 + 9 = 11', '3 + 14 = 17'), ('3 + 2 = 5', '6 + 3 = 9'),
-        # ('2 + 1 = 3', '3 + 12 = 15')]
+        if len(field2) == 1:
+            quiz_table = quiz_create(field, obj, calc, quiz_number, max_result, 2)
+            # like this [('4 + 3 = 7', '3 + 2 = 5'), ('3 + 12 = 15', '7 + 4 = 11'), ('2 + 2 = 4', '2 + 5 = 7'),
+            # ('13 + 3 = 16', '1 + 2 = 3'), ('11 + 2 = 13', '10 + 2 = 12'), ('14 + 3 = 17', '6 + 4 = 10'),
+            # ('3 + 8 = 11', '3 + 9 = 12'), ('2 + 9 = 11', '3 + 14 = 17'), ('3 + 2 = 5', '6 + 3 = 9'),
+            # ('2 + 1 = 3', '3 + 12 = 15')]
+        else:
+            quiz_table = quiz_create(field, obj, calc, quiz_number, max_result, 3)
+            print(quiz_table)
+            # like this [('4 + 3  + 0= 7', '3 + 2  + 0= 5'), .....]
 
-        masked_table = mask_table(quiz_table, quiz_type[page])
+        masked_table = mask_table(quiz_table, quiz_type[page], elements=len(field2) + 1)
         table = document.add_table(rows=1, cols=2)
 
         for q1, q2 in masked_table:
@@ -192,7 +235,7 @@ for k in range(adv_day):
     target_date = (datetime.now() + timedelta(days=k)).date().strftime('%Y_%m_%d')
 
     obj = [10, 9, 8, 7, 8, 5, 4, 3, 2, 1]          # 2 to plus the other number
-    quiz_type = [0, 0, 0]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
+    quiz_type = [1, 0, 0]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
     field = [10, 19]     # 0 ~ 12 number to plus
     field2 = [0, ]     # if length of field 2 is less than 2, then just 2 elements added
     max_result = 100
