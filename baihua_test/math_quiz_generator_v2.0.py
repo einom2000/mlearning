@@ -118,7 +118,7 @@ def mask_table(table, mask, elements):
             for i in range(len(column_a)-1):
                 new_quiz_column_a = new_quiz_column_a + ' ' + column_a[i] + ' ' + column_a_map[i]
                 new_quiz_column_b = new_quiz_column_b + ' ' + column_b[i] + ' ' + column_b_map[i]
-            new_table.append((new_quiz_column_a, new_quiz_column_b))
+            new_table.append((new_quiz_column_a + ' ' + column_a[-1], new_quiz_column_b+ ' ' + column_b[-1]))
 
     return new_table
 
@@ -203,7 +203,6 @@ def create_doc(i):
             # ('2 + 1 = 3', '3 + 12 = 15')]
         else:
             quiz_table = quiz_create(field, obj, calc, quiz_number, max_result, 3)
-            print(quiz_table)
             # like this [('4 + 3  + 0= 7', '3 + 2  + 0= 5'), .....]
 
         masked_table = mask_table(quiz_table, quiz_type[page], elements=len(field2) + 1)
@@ -223,21 +222,21 @@ def create_doc(i):
                         font.size = Pt(quiz_font_size)
         if page < i -1:
             document.add_page_break()
-    # try:
-    #     document.save('f:\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + '_' + \
-    #                   target_date + '.docx')
-    # except FileNotFoundError:
+    try:
+        document.save('f:\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + '_' + \
+                      target_date + '.docx')
+    except FileNotFoundError:
         document.save('temp.docx')
 
 
-adv_day = int(input('how many days from now? (1=today)'))
+adv_day = int(input('how many days from now? (1=today)')) + 0
 for k in range(adv_day):
     target_date = (datetime.now() + timedelta(days=k)).date().strftime('%Y_%m_%d')
 
     obj = [10, 9, 8, 7, 8, 5, 4, 3, 2, 1]          # 2 to plus the other number
-    quiz_type = [1, 0, 0]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
-    field = [10, 19]     # 0 ~ 12 number to plus
-    field2 = [0, ]     # if length of field 2 is less than 2, then just 2 elements added
+    quiz_type = [0, 0, 0]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
+    field = [1, 10]     # 0 ~ 12 number to plus
+    field2 = [1, 10]     # if length of field 2 is less than 2, then just 2 elements added
     max_result = 100
     calc = 'addition'
     if len(field2) == 1:
