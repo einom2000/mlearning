@@ -238,9 +238,9 @@ for k in range(adv_day):
     target_date = (datetime.now() + timedelta(days=k)).date().strftime('%Y_%m_%d')
 
     #obj = [10, 9, 8, 7, 8, 5, 4, 3, 2, 1]          # 2 to plus the other number
-    obj = random.sample(range(0, 20), 10)
+    obj = random.sample(range(0, 20), 10)  # range to be added
     quiz_type = [1, 1, 1]       # 0 is normal quiz, 1 is left either first or second blank in the rest 2 pages.
-    field = [0, 20]     # 0 ~ 12 number to plus
+    field = [0, 20]     # 0 ~ 12 number to add
     field2 = [1, ]     # if length of field 2 is less than 2, then just 2 elements added
     max_result = 100
     calc = 'addition'
