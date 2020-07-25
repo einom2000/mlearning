@@ -11,4 +11,5 @@ except ValueError:
     print('Error!')
 print(temp1)
 print(temp1.find('='))
-print(temp2)
+print(temp[temp.find('=') + 1 :temp.find('[')])
+print(temp[temp.find('[') + 1 :temp.find(']')].split(','))
