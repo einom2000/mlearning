@@ -6,7 +6,8 @@ from docx import Document
 from docx.shared import Pt
 from docx.shared import RGBColor
 
-class Quiz_generator(object):
+
+class QuizGenerator(object):
     def __init__(self, type, max_quiz_per_page):
         self.type = type
         self.max_quiz_per_page = max_quiz_per_page
@@ -14,7 +15,7 @@ class Quiz_generator(object):
         self.fill_in = False
         if type.find('?') >= 0:
             self.fill_in = True
-        self.max = int(type[type.find('=') + 1 :type.find('[')])
+        self.max = int(type[type.find('=') + 1:type.find('[')])
         self.range = (int(type[type.find('[') + 1:type.find(']')].split(',')[0]),
                       int(type[type.find('[') + 1:type.find(']')].split(',')[1]))
 
@@ -29,7 +30,6 @@ class Quiz_generator(object):
         # print(type_per_page)
         # [(['66', '36', '21'], 9), (['72', '11', '58'], 3), (['90', '36', '26'], 28), ...]
         # ['--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', ...]
-
 
     def random_quiz(self):
         while True:
@@ -50,14 +50,13 @@ class Quiz_generator(object):
 def generate_one_day(date, page_per_day, file_name_surfix, types_per_page, max_quiz_per_page):
     quiz_doc_file = []
     for i in range(page_per_day):
-        quiz_page = Quiz_generator(types_per_page[i], max_quiz_per_page)
+        quiz_page = QuizGenerator(types_per_page[i], max_quiz_per_page)
         quiz_doc_file.append(quiz_page)
         quiz_doc_file[i].quiz_generate()
-    create_doc(date, page_per_day, file_name_surfix, max_quiz_per_page,
-               quiz_doc_file)
+    create_doc(date, page_per_day, file_name_surfix, quiz_doc_file)
 
 
-def create_doc(date, page_per_day, file_name_surfix, max_quiz_per_page, quiz_doc_file):
+def create_doc(date, page_per_day, file_name_surfix, quiz_doc_file):
     document = Document()
     style = document.styles['Normal']
     font = style.font
@@ -113,38 +112,49 @@ def create_doc(date, page_per_day, file_name_surfix, max_quiz_per_page, quiz_doc
         wp.font.bold = True
         wp.font.color.rgb = RGBColor(0, 0, 0)
 
-        # if len(field2) == 1:
-        #     quiz_table = quiz_create(field, obj, calc, quiz_number, max_result, 2)
-        #     # like this [('4 + 3 = 7', '3 + 2 = 5'), ('3 + 12 = 15', '7 + 4 = 11'), ('2 + 2 = 4', '2 + 5 = 7'),
-        #     # ('13 + 3 = 16', '1 + 2 = 3'), ('11 + 2 = 13', '10 + 2 = 12'), ('14 + 3 = 17', '6 + 4 = 10'),
-        #     # ('3 + 8 = 11', '3 + 9 = 12'), ('2 + 9 = 11', '3 + 14 = 17'), ('3 + 2 = 5', '6 + 3 = 9'),
-        #     # ('2 + 1 = 3', '3 + 12 = 15')]
-        # else:
-        #     quiz_table = quiz_create(field, obj, calc, quiz_number, max_result, 3)
-        #     # like this [('4 + 3  + 0= 7', '3 + 2  + 0= 5'), .....]
-        #
-        # masked_table = mask_table(quiz_table, quiz_type[page], elements=len(field2) + 1)
-        # table = document.add_table(rows=1, cols=2)
-        #
-        # for q1, q2 in masked_table:
-        #     row_cells = table.add_row().cells
-        #     row_cells[0].text = q1
-        #     row_cells[1].text = q2
-        #
-        # for row in table.rows:
-        #     for cell in row.cells:
-        #         paragraphs = cell.paragraphs
-        #         for paragraph in paragraphs:
-        #             for run in paragraph.runs:
-        #                 font = run.font
-        #                 font.size = Pt(quiz_font_size)
-        if page < page_per_day -1:
+        print(quiz_doc_file[page].type_per_page)
+        print(quiz_doc_file[page].quiz_per_page)
+
+        masked_table = get_masked_table(quiz_doc_file[page])
+        table = document.add_table(rows=1, cols=2)
+
+        for q1, q2 in masked_table:
+            row_cells = table.add_row().cells
+            row_cells[0].text = q1
+            row_cells[1].text = q2
+
+        for row in table.rows:
+            for cell in row.cells:
+                paragraphs = cell.paragraphs
+                for paragraph in paragraphs:
+                    for run in paragraph.runs:
+                        font = run.font
+                        font.size = Pt(quiz_font_size)
+        if page < page_per_day - 1:
             document.add_page_break()
     try:
         document.save('f:\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + file_name_surfix + '_' + \
                       date + '.docx')
     except FileNotFoundError:
         document.save('temp.docx')
+
+
+def get_masked_table(quiz_of_this_page):
+    # [(['66', '36', '21'], 9), (['72', '11', '58'], 3), (['90', '36', '26'], 28), ...]
+    # ['--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', ...]
+    masked_queue = []
+    if quiz_of_this_page.type_per_page[0].find('?') > 0:
+        # mask needed
+        pass
+    else:
+        # no mask needed
+        type = quiz_of_this_page.type_per_page[0]
+        for i in range(0, len(quiz_of_this_page.type_per_page), 2):
+            quiz1 = quiz_of_this_page.quiz_per_page[i]
+            quiz2 = quiz_of_this_page.quiz_per_page[i + 1]
+
+
+
 
 def type_verbose(type):
     tmp = 'bcdefghijklmnopqrstuvwxyz'
@@ -210,6 +220,8 @@ def get_quiz_type_for_each_page(page):
 
 
 def main():
+    global quiz_font_size
+    quiz_font_size = 22
     adv_date, page_per_day, file_name_surfix, max_quiz_per_page = get_genral_input()
     types_per_page = []
     for i in range(page_per_day):
