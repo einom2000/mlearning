@@ -24,7 +24,7 @@ class QuizGenerator(object):
 
     def quiz_generate(self):
         for _ in range(self.max_quiz_per_page):
-            self.quiz_per_page.append(self.random_quiz())
+            self.quiz_per_page.append(list(self.random_quiz()))
             self.type_per_page.append(self.type[:self.type.find('=') + 1])
         # print(quiz_per_page)
         # print(type_per_page)
@@ -144,16 +144,26 @@ def get_masked_table(quiz_of_this_page):
     # ['--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', '--=', ...]
     masked_queue = []
     if quiz_of_this_page.type_per_page[0].find('?') > 0:
-        # mask needed
-        pass
+        for quiz in quiz_of_this_page.quiz_per_page:
+            k = random.randint(0, len(quiz[0])-1)
+            quiz[0][k] = '___'
     else:
-        # no mask needed
-        type = quiz_of_this_page.type_per_page[0]
-        for i in range(0, len(quiz_of_this_page.type_per_page), 2):
-            quiz1 = quiz_of_this_page.quiz_per_page[i]
-            quiz2 = quiz_of_this_page.quiz_per_page[i + 1]
+        for quiz in quiz_of_this_page.quiz_per_page:
+            quiz[1] = '___'
+    type = quiz_of_this_page.type_per_page[0].replace('?', '')
+    for i in range(0, len(quiz_of_this_page.type_per_page), 2):
+        quiz_rowed = []
+        for j in range(2):
+            quiz = quiz_of_this_page.quiz_per_page[i + j]
+            temp = ''
+            for k in range(len(quiz[0])):
+                temp += quiz[0][k] + ' ' + type[k] + ' '
+            temp = temp + ' ' + str(quiz[1])
+            quiz_rowed.append(temp)
+        masked_queue.append(quiz_rowed)
 
-
+    print(masked_queue)
+    return masked_queue
 
 
 def type_verbose(type):
