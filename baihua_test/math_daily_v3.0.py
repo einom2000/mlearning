@@ -161,8 +161,7 @@ def get_masked_table(quiz_of_this_page):
             temp = temp + ' ' + str(quiz[1])
             quiz_rowed.append(temp)
         masked_queue.append(quiz_rowed)
-
-    print(masked_queue)
+    # print(masked_queue)
     return masked_queue
 
 
@@ -242,7 +241,7 @@ def main():
             types_per_page.append(types_per_page[i-1])
     today = 'sample'
     for i in range(adv_date):
-        date = (datetime.now() + timedelta(days=adv_date)).date().strftime('%Y_%m_%d')
+        date = (datetime.now() + timedelta(days=i)).date().strftime('%Y_%m_%d')
         generate_one_day(date, page_per_day, file_name_surfix, types_per_page, max_quiz_per_page)
     pass
 
