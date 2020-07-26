@@ -1,5 +1,10 @@
-import re
 import random
+import re
+from datetime import datetime, timedelta
+
+from docx import Document
+from docx.shared import Pt
+from docx.shared import RGBColor
 
 class Quiz_generator(object):
     def __init__(self, type, max_quiz_per_page):
@@ -10,7 +15,7 @@ class Quiz_generator(object):
         if type.find('?') >= 0:
             self.fill_in = True
         self.max = int(type[type.find('=') + 1 :type.find('[')])
-        self.range = (int(type[type.find('[') + 1 :type.find(']')].split(',')[0]),
+        self.range = (int(type[type.find('[') + 1:type.find(']')].split(',')[0]),
                       int(type[type.find('[') + 1:type.find(']')].split(',')[1]))
 
         self.quiz_per_page = []
@@ -43,12 +48,116 @@ class Quiz_generator(object):
 
 
 def generate_one_day(date, page_per_day, file_name_surfix, types_per_page, max_quiz_per_page):
+    quiz_doc_file = []
     for i in range(page_per_day):
-        quiz_generator = Quiz_generator(types_per_page[i], max_quiz_per_page)
-        quiz_generator.quiz_generate()
-        print(quiz_generator.quiz_per_page)
-        print(quiz_generator.type_per_page)
-    pass
+        quiz_page = Quiz_generator(types_per_page[i], max_quiz_per_page)
+        quiz_doc_file.append(quiz_page)
+        quiz_doc_file[i].quiz_generate()
+    create_doc(date, page_per_day, file_name_surfix, max_quiz_per_page,
+               quiz_doc_file)
+
+
+def create_doc(date, page_per_day, file_name_surfix, max_quiz_per_page, quiz_doc_file):
+    document = Document()
+    style = document.styles['Normal']
+    font = style.font
+    font.name = '仿宋'
+    font.size = Pt(10)
+
+    title1 = date + ' -- '
+    title3 = ' of integers between '
+
+    for page in range(page_per_day):
+        title2 = type_verbose(quiz_doc_file[page].type_per_page[0])
+        title4 = str(quiz_doc_file[page].range[0]) + ' ~ ' + str(quiz_doc_file[page].range[1])
+        # title creation
+        p = document.add_heading(level=0)
+        wp = p.add_run(title1)
+        wp.font.size = Pt(15)
+        wp.font.bold = True
+        wp.font.color.rgb = RGBColor(0, 0, 0)
+
+        wp = p.add_run(title2)
+        wp.font.size = Pt(15)
+        wp.font.color.rgb = RGBColor(255, 0, 0)
+
+        wp = p.add_run(title3)
+        wp.font.size = Pt(15)
+        wp.font.bold = True
+        wp.font.color.rgb = RGBColor(0, 0, 0)
+
+        wp = p.add_run(title4 + '\n')
+        wp.font.size = Pt(15)
+        wp.font.color.rgb = RGBColor(255, 0, 0)
+
+        wp = p.add_run('整数 ')
+        wp.font.size = Pt(15)
+        wp.font.bold = True
+        wp.font.color.rgb = RGBColor(0, 0, 0)
+
+        wp = p.add_run(title4)
+        wp.font.size = Pt(15)
+        wp.font.color.rgb = RGBColor(255, 0, 0)
+
+        wp = p.add_run(' 之间的')
+        wp.font.size = Pt(15)
+        wp.font.bold = True
+        wp.font.color.rgb = RGBColor(0, 0, 0)
+
+        wp = p.add_run(title2)
+        wp.font.size = Pt(15)
+        wp.font.color.rgb = RGBColor(255, 0, 0)
+
+        wp = p.add_run('练习 -- 第 ' + str(page + 1) + ' 页')
+        wp.font.size = Pt(15)
+        wp.font.bold = True
+        wp.font.color.rgb = RGBColor(0, 0, 0)
+
+        # if len(field2) == 1:
+        #     quiz_table = quiz_create(field, obj, calc, quiz_number, max_result, 2)
+        #     # like this [('4 + 3 = 7', '3 + 2 = 5'), ('3 + 12 = 15', '7 + 4 = 11'), ('2 + 2 = 4', '2 + 5 = 7'),
+        #     # ('13 + 3 = 16', '1 + 2 = 3'), ('11 + 2 = 13', '10 + 2 = 12'), ('14 + 3 = 17', '6 + 4 = 10'),
+        #     # ('3 + 8 = 11', '3 + 9 = 12'), ('2 + 9 = 11', '3 + 14 = 17'), ('3 + 2 = 5', '6 + 3 = 9'),
+        #     # ('2 + 1 = 3', '3 + 12 = 15')]
+        # else:
+        #     quiz_table = quiz_create(field, obj, calc, quiz_number, max_result, 3)
+        #     # like this [('4 + 3  + 0= 7', '3 + 2  + 0= 5'), .....]
+        #
+        # masked_table = mask_table(quiz_table, quiz_type[page], elements=len(field2) + 1)
+        # table = document.add_table(rows=1, cols=2)
+        #
+        # for q1, q2 in masked_table:
+        #     row_cells = table.add_row().cells
+        #     row_cells[0].text = q1
+        #     row_cells[1].text = q2
+        #
+        # for row in table.rows:
+        #     for cell in row.cells:
+        #         paragraphs = cell.paragraphs
+        #         for paragraph in paragraphs:
+        #             for run in paragraph.runs:
+        #                 font = run.font
+        #                 font.size = Pt(quiz_font_size)
+        if page < page_per_day -1:
+            document.add_page_break()
+    try:
+        document.save('f:\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + file_name_surfix + '_' + \
+                      date + '.docx')
+    except FileNotFoundError:
+        document.save('temp.docx')
+
+def type_verbose(type):
+    tmp = 'bcdefghijklmnopqrstuvwxyz'
+    verbose = 'a'
+    type1 = type.replace('?', '')
+    type1 = type1.replace('=', '')
+    for i in range(len(type1)):
+        verbose += type1[i]
+        verbose += tmp[i]
+    if type.find('?') > 0:
+        temp = verbose
+        verbose = temp[:type.find('?') + 1] + '?' + temp[type.find('?') + 2:]
+    return verbose + '=' + tmp[len(type1)]
 
 
 def get_genral_input():
@@ -89,12 +198,12 @@ def get_quiz_type_for_each_page(page):
     print('Please enter the %d page\'s quiz type' % page)
     print('type \'a+b+c+d=100[10, 99]\' stands for abcd all in [10,99] range and the result <=100')
     type = input('please give a type: (use enter to use previous or default(a+b=100)')
-    if (page == 1 and type == '') or type.find('[') < 0 or type.find(']') < 0 or type.find(',') < 0 \
+    if type == '' and page != 1:
+        return 'previous'
+    elif (page == 1 and type == '') or type.find('[') < 0 or type.find(']') < 0 or type.find(',') < 0 \
             or type.find('=') < 0:
         print('Use the default a+b=100[10,99]')
         return '+=100[10,99]'
-    elif type == '':
-        return 'previous'
     else:
         type1 = re.sub('[a-zA-Z!"#$%&\'().:;@\\^_`{|}~ \t\n\r\x0b\x0c]', '', type).replace(' ', '')
     return type1
@@ -104,10 +213,14 @@ def main():
     adv_date, page_per_day, file_name_surfix, max_quiz_per_page = get_genral_input()
     types_per_page = []
     for i in range(page_per_day):
-        types_per_page.append(get_quiz_type_for_each_page(i + 1))
+        temp = get_quiz_type_for_each_page(i + 1)
+        if temp != 'previous':
+            types_per_page.append(temp)
+        else:
+            types_per_page.append(types_per_page[i-1])
     today = 'sample'
     for i in range(adv_date):
-        date = today + 'i'
+        date = (datetime.now() + timedelta(days=adv_date)).date().strftime('%Y_%m_%d')
         generate_one_day(date, page_per_day, file_name_surfix, types_per_page, max_quiz_per_page)
     pass
 
