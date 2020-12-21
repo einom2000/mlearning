@@ -134,11 +134,11 @@ def create_doc(date, page_per_day, file_name_surfix, quiz_doc_file):
                         font.size = Pt(quiz_font_size)
         if page < page_per_day - 1:
             document.add_page_break()
-    # try:
-    #     document.save('f:\\___SOPHIA____\\--Sophia K2 Folder\\MATH_PRACTICE\\math_quiz' + file_name_surfix + '_' + \
-    #                   date + '.docx')
-    # except FileNotFoundError:
-    document.save('temp.docx')
+    try:
+        document.save('f:\\___SOPHIA____\\--Sophia K3 Folder\\MATH_PRACTICE\\math_quiz' + file_name_surfix + '_' + \
+                      date + '.docx')
+    except FileNotFoundError:
+        document.save('temp.docx')
 
 
 def get_masked_table(quiz_of_this_page):
