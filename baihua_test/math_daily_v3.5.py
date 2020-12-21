@@ -164,6 +164,7 @@ def get_masked_table(quiz_of_this_page):
             quiz_rowed.append(temp)
         masked_queue.append(quiz_rowed)
     # print(masked_queue)
+    print(masked_queue)
     return masked_queue
 
 
@@ -201,7 +202,7 @@ def get_genral_input():
     try:
         # get max quizes per page:
         max_quiz_per_page = int(input('Pleas input max quiz per page? (default = 22 quiz)')) // 2 * 2
-        if max_quiz_per_page > 22 or page_per_day <= 10:
+        if max_quiz_per_page > 22 or max_quiz_per_page <= 10:
             max_quiz_per_page = 22
     except ValueError:
         max_quiz_per_page = 22
