@@ -236,3 +236,49 @@ print(x)
 
 x = random.choice([3, 5, 7, 9], size=(3, 5))
 print(x)
+
+x = random.choice([3, 5, 7, 9], p=[0.1, 0.3, 0.6, 0.0], size=(100))
+print(x)
+
+x = random.choice([3, 5, 7, 9], p=[0.1, 0.3, 0.6, 0.0], size=(3, 5))
+print(x)
+
+arr = np.array([1, 2, 3, 4, 5])
+random.shuffle(arr)
+print(arr)
+
+arr = np.array([1, 2, 3, 4, 5])
+print(random.permutation(arr))
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.distplot([0, 1, 2, 3, 4, 5])
+plt.show()
+
+sns.distplot([0, 1, 2, 3, 4, 5], hist=False)
+plt.show()
+
+x = random.normal(size=(2, 3000))
+print(x)
+sns.distplot(x)
+plt.show()
+
+x = random.normal(loc=1, scale=20, size=(2, 3000))
+print(x)
+sns.distplot(x)
+plt.show()
+
+x = random.binomial(n=10, p=0.5, size=10)
+print(x)
+sns.distplot(x)
+plt.show()
+
+sns.distplot(random.binomial(n=10, p=0.5, size=1000), hist=True, kde=False)
+plt.show()
+
+x = random.poisson(lam=2, size=10)
+print(x)
+
+x = random.logistic(loc=1, scale=2, size=(2, 3))
+print(x)

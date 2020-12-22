@@ -1,16 +1,15 @@
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout, Bidirectional
-from tensorflow.keras.callbacks import ModelCheckpoint, TensorBoard
-from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
-from yahoo_fin import stock_info as si
+import random
 from collections import deque
 
-import os
 import numpy as np
 import pandas as pd
-import random
+import tensorflow as tf
+from sklearn import preprocessing
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.callbacks import ModelCheckpoint, TensorBoard
+from tensorflow.keras.layers import LSTM, Dense, Dropout, Bidirectional
+from tensorflow.keras.models import Sequential
+from yahoo_fin import stock_info as si
 
 # set seed, so we can get the same results after rerunning several times
 np.random.seed(314)
@@ -333,4 +332,22 @@ total_profit = total_buy_profit + total_sell_profit
 # dividing total profit by number of testing samples (number of trades)
 profit_per_trade = total_profit / len(final_df)
 
+# printing metrics
+print(f"Future price after {LOOKUP_STEP} days is {future_price:.2f}$")
+print(f"{LOSS} loss:", loss)
+print("Mean Absolute Error:", mean_absolute_error)
+print("Accuracy score:", accuracy_score)
+print("Total buy profit:", total_buy_profit)
+print("Total sell profit:", total_sell_profit)
+print("Total profit:", total_profit)
+print("Profit per trade:", profit_per_trade)
 
+plot_graph(final_df)
+
+print(final_df.tail(10))
+# save the final dataframe to csv-results folder
+csv_results_folder = "csv-results"
+if not os.path.isdir(csv_results_folder):
+    os.mkdir(csv_results_folder)
+csv_filename = os.path.join(csv_results_folder, model_name + ".csv")
+final_df.to_csv(csv_filename)
