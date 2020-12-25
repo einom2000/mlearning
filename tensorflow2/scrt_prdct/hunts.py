@@ -16,6 +16,7 @@ from tensorflow.keras.models import Sequential
 
 import day_to_csv
 import remove_file
+import tool_get_per_of_300
 
 
 def shuffle_in_unison(a, b):
@@ -27,7 +28,8 @@ def shuffle_in_unison(a, b):
 
 
 def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split_by_date=True,
-                test_size=0.2, feature_columns=('adjclose', 'volume', 'open', 'high', 'low')):
+                test_size=0.2,
+              feature_columns=('adjclose', 'volume', 'open', 'high', 'low', "pct_index_300", "pct_vol_300")):
     if isinstance(ticker, str):
         if os.path.isfile('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv'):
             df = pd.read_csv('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv')
@@ -37,6 +39,8 @@ def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split
             #     if fname.startswith(ticker):
             #         os.remove(os.path.join('csv-original\\', fname))
             day_to_csv.day_to_csv(single_code=ticker[2:], market=ticker[:2])
+            # put 300 index growing percent to the csv
+            tool_get_per_of_300.join_300(ticker)
             df = pd.read_csv('csv-original\\' + ticker + '_' + time.strftime("%Y-%m-%d") + '.csv')
     elif isinstance(ticker, pd.DataFrame):
         df = ticker
@@ -217,7 +221,8 @@ def predict(model, data):
 
 
 def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_by_date=False, test_size=0.2,
-            feature_columns=["adjclose", "volume", "open", "high", "low"], n_layers=2, cell=LSTM, units=256,
+            feature_columns=["adjclose", "volume", "open", "high", "low", "pct_index_300", "pct_vol_300"],
+            n_layers=2, cell=LSTM, units=256,
             dropout=0.4, bidirectional=False, epochs=500, flush_result=False, only_forecast=False):
     # set seed, so we can get the same results after rerunning several times
     np.random.seed(314)
