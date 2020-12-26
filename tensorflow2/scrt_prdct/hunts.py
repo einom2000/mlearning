@@ -158,7 +158,7 @@ def plot_graph(test_df, plot_filename):
     plt.xlabel("Days")
     plt.ylabel("Price")
     plt.legend(["Actual Price", "Predicted Price"])
-    plt.savefig(plot_filename)
+    # plt.savefig(plot_filename)
 
 
 def get_final_df(model, data):

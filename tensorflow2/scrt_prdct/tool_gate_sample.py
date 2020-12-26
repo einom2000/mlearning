@@ -7,13 +7,12 @@ import hunts
 
 date_now = time.strftime("%Y-%m-%d")
 
-stock_list = []
-# stock_list = ['sh000300']
-stock_list.extend(['sh600600', 'sh600846', 'sh600585', 'sh601229'])
-stock_list.extend(['sh600529', 'sh600547', 'sh600587', 'sh600058', 'sh600448'])
+stock_list = ['sh600600']
+# stock_list.extend(['sh600600', 'sh600846', 'sh600585', 'sh601229'])
+# stock_list.extend(['sh600529', 'sh600547', 'sh600587', 'sh600058', 'sh600448'])
 
 pre_fix = ''
-LOOKUP_STEP = 10
+LOOKUP_STEP = 8
 INIT_EPOCHS = 500
 SECOND_EPOCHS = 100
 
@@ -36,7 +35,7 @@ for stock in stock_list:
         saved_epochs = data[data['stock'] == stock]['uptonow_epochs'].max()
         if type(saved_epochs) == float:
             saved_epochs = 0
-    if isinstance(data, list) or saved_epochs < 500:
+    if isinstance(data, list) or saved_epochs < 800:
         epochs = INIT_EPOCHS
     else:
         epochs = SECOND_EPOCHS
