@@ -167,10 +167,11 @@ def get_final_df(model, data):
     """
     # if predicted future price is higher than the current,
     # then calculate the true future price minus the current price, to get the buy profit
-    buy_profit  = lambda current, true_future, pred_future: true_future - current if pred_future > current else 0
+    reachability = lambda currentlow, true_futurelow, pred_futurelow: pred_futurelow - true_futurelow
+    # a positive reachability means predicted low are reachable
     # if the predicted future price is lower than the current price,
     # then subtract the true future price from the current price
-    sell_profit = lambda current, true_future, pred_future: current - true_future if pred_future < current else 0
+    reachability_2 = lambda ccurrentlow, true_futurelow, pred_futurelow: pred_futurelow * 1.05 - true_futurelow
     X_test = data["X_test"]
     y_test = data["y_test"]
     # perform prediction and get prices
@@ -187,14 +188,14 @@ def get_final_df(model, data):
     test_df.sort_index(inplace=True)
     final_df = test_df
     # add the buy profit column
-    final_df["buy_profit"] = list(map(buy_profit,
+    final_df["buy_profit"] = list(map(reachability,
                                     final_df["low"],
                                     final_df[f"low_{LOOKUP_STEP}"],
                                     final_df[f"true_low_{LOOKUP_STEP}"])
                                     # since we don't have profit for last sequence, add 0's
                                     )
     # add the sell profit column
-    final_df["sell_profit"] = list(map(sell_profit,
+    final_df["sell_profit"] = list(map(reachability_2,
                                     final_df["low"],
                                     final_df[f"low_{LOOKUP_STEP}"],
                                     final_df[f"true_low_{LOOKUP_STEP}"])
@@ -218,10 +219,10 @@ def predict(model, data):
     return predicted_price
 
 
-def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_by_date=False, test_size=0.2,
-            feature_columns=["adjclose", "volume", "open", "high", "low", "pct_index_300", "pct_vol_300"],
-            n_layers=2, cell=LSTM, units=256,
-            dropout=0.4, bidirectional=False, epochs=500, flush_result=False, only_forecast=False):
+def go_defend(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_by_date=False, test_size=0.2,
+              feature_columns=["adjclose", "volume", "open", "high", "low", "pct_index_300", "pct_vol_300"],
+              n_layers=2, cell=LSTM, units=256,
+              dropout=0.4, bidirectional=False, epochs=500, flush_result=False, only_forecast=False):
     # set seed, so we can get the same results after rerunning several times
     np.random.seed(314)
     tf.random.set_seed(314)
@@ -303,7 +304,7 @@ def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_
         model = create_model(N_STEPS, len(FEATURE_COLUMNS), loss=LOSS, units=UNITS, cell=CELL, n_layers=N_LAYERS,
                              dropout=DROPOUT, optimizer=OPTIMIZER, bidirectional=BIDIRECTIONAL)
     # some tensorflow callbacks
-    checkpointer = ModelCheckpoint(os.path.join("results", model_name[10:] + ".h5"), save_best_only=True, verbose=1)
+    checkpointer = ModelCheckpoint(os.path.join("results", model_name[:] + ".h5"), save_best_only=True, verbose=1)
                 # save_weights_only=True,
     callbacks_list = [checkpointer]
     # tensorboard = TensorBoard(log_dir=os.path.join("logs", model_name))
@@ -321,7 +322,7 @@ def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_
     # -----------------------------------------------------------prediction-------------------------------------------------
 
     # load optimal model weights from results folder
-    model_path = os.path.join("results", model_name[10:]) + ".h5"
+    model_path = os.path.join("results", model_name[:]) + ".h5"
     try:
         model.load_weights(model_path)
         # evaluate the model
@@ -341,40 +342,26 @@ def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_
         # we calculate the accuracy by counting the number of positive profits
         # accuracy_score = (len(final_df[final_df['sell_profit'] > 0]) + len(final_df[final_df['buy_profit'] > 0]))\
         #                  / len(final_df)
-        total_buying_profitable_trades = len(final_df[final_df['buy_profit'] > 0])
-        total_buying_loss_trades = len(final_df[final_df['buy_profit'] < 0])
-        total_null_buying_trades = len(final_df[final_df['buy_profit'] == 0])
-        total_selling_profitable_trades = len(final_df[final_df['sell_profit'] > 0])
-        total_selling_loss_trades = len(final_df[final_df['sell_profit'] < 0])
-        total_null_selling_trades = len(final_df[final_df['sell_profit'] == 0])
-
-        total_trades = total_buying_loss_trades + total_buying_profitable_trades + total_null_buying_trades
-        accuracy_buying_score = total_buying_profitable_trades / (total_buying_profitable_trades + total_buying_loss_trades)
-        accuracy_buying_failure = total_buying_loss_trades / (total_buying_profitable_trades + total_buying_loss_trades)
-        # calculating total buy & sell profit
-        total_buy_profit  = final_df["buy_profit"].sum()
-        total_sell_profit = final_df["sell_profit"].sum()
-        # total profit by adding sell & buy together
-        total_profit = total_buy_profit + total_sell_profit
-        # dividing total profit by number of testing samples (number of trades)
-        profit_per_trade = total_profit / len(final_df)
-
-        reachability = (total_buying_loss_trades + total_selling_profitable_trades) / total_trades
-
+        reachability = round((len(final_df[final_df['buy_profit'] > 0]) / len(final_df['buy_profit'])) * 100, 2)
+        reachability_2 = round((len(final_df[final_df['sell_profit'] > 0]) / len(final_df['sell_profit'])) * 100, 2)
         # printing metrics
+        increased_future_low = rount(future_price * 1.01, 2)
         print(f"{ticker} T+1 possible low price is {future_price:.2f}$")
         print(f"{LOSS} loss:", loss)
         print("Mean Absolute Error:", mean_absolute_error)
-        print("Possiblity of reachability", reachability)
+        print(f"Possiblity of reachability is {reachability}%")
+        print(f"If you increase the low up 1% at {increased_future_low}:")
+        print(f"The reachability will be {reachability_2}")
 
-        foresees_filename = os.path.join("defends_foresees", f"{ticker}_{LOOKUP_STEP}_forecast.csv")
-        plot_filename = os.path.join("defends_foresees", f"{ticker}_{LOOKUP_STEP}_forecast.png")
+        foresees_filename = os.path.join("foresees", f"{ticker}_{LOOKUP_STEP}_forecast_defend.csv")
+        plot_filename = os.path.join("foresees", f"{ticker}_{LOOKUP_STEP}_forecast_defend.png")
         ifile = open(foresees_filename, 'a')
         linename = "forecast_day" + ',' + "days_in_future" + ',' + "T+1 lowest" + ',' + "LOSS" + ',' + "MAE" +\
-                   ',' + "Reachability" + '\n'
+                   ',' + "Reachability" + "low + 5%" + "Reachability_2" + '\n'
         ifile.write(linename)
         line = date_now + ',' + str(LOOKUP_STEP) + ',' + str(future_price) + ',' + str(loss) + ',' + \
-               str(mean_absolute_error) + ',' + str(reachability) + '\n'
+               str(mean_absolute_error) + ',' + str(reachability) + str(increased_future_low) + str(reachability_2) + \
+               '\n'
         ifile.write(line)
         ifile.close()
 
@@ -387,7 +374,7 @@ def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_
             os.mkdir(csv_results_folder)
         csv_filename = os.path.join(csv_results_folder, model_name + ".csv")
         final_df.to_csv(csv_filename)
-        return future_price, accuracy_buying_score
+        return future_price, reachability
     except OSError or FileNotFoundError:
         print(f"defends_{ticker}'s h5 model file can't be found in 'result\\' folder!  Abandon...")
         return None, None

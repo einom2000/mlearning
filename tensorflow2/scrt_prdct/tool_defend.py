@@ -3,19 +3,18 @@ import time
 
 import pandas as pd
 
-import hunts
+import defends
 
 date_now = time.strftime("%Y-%m-%d")
 
 stock_list = []
-stock_list.extend(['sh600600', 'sh600846', 'sh600585', 'sh601229'])
-stock_list.extend(['sh600529', 'sh600547', 'sh600587', 'sh600058', 'sh600448'])
+stock_list.extend(['sh600600'])
 
-pre_fix = ''
+pre_fix = 'defend_'
 daily_forecast_dir = ''
-LOOKUP_STEP = 8
-INIT_EPOCHS = 500
-SECOND_EPOCHS = 500
+LOOKUP_STEP = 1
+INIT_EPOCHS = 100
+SECOND_EPOCHS = 30
 
 daily_forecast_filename = os.path.join(daily_forecast_dir, f"{pre_fix}{date_now}_{LOOKUP_STEP}_forecast.csv")
 
@@ -40,11 +39,11 @@ for stock in stock_list:
         epochs = INIT_EPOCHS
     else:
         epochs = SECOND_EPOCHS
-    future_price, buying_accuracy_rate = \
-        hunts.go_hunt(stock, lookup_step=LOOKUP_STEP, flush_result=False, epochs=epochs, only_forecast=False)
+    future_price, reachability = \
+        defends.go_defend(stock, lookup_step=LOOKUP_STEP, flush_result=False, epochs=epochs, only_forecast=False)
     epochs += saved_epochs
     dt.append({'stock': stock, 'fc_date': date_now, 'future_days': LOOKUP_STEP,
-               'future_price': future_price, 'buy_acc_rate': buying_accuracy_rate,
+               'future_lowest': future_price, 'reachability': reachability,
                'uptonow_epochs' : epochs})
 dt = pd.DataFrame.from_dict(dt)
 if isinstance(data, list):
