@@ -31,8 +31,8 @@ def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split
                 test_size=0.2,
               feature_columns=('adjclose', 'volume', 'open', 'high', 'low', "pct_index_300", "pct_vol_300")):
     if isinstance(ticker, str):
-        if os.path.isfile('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv'):
-            df = pd.read_csv('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv')
+        if os.path.isfile('csv-original\\' + ticker + '_'+  time.strftime("%Y-%m-%d") + '.csv'):
+            df = pd.read_csv('csv-original\\' + ticker + '_'+  time.strftime("%Y-%m-%d") + '.csv')
         else:
             remove_file.remove('csv-original\\', startwith=ticker)
             day_to_csv.day_to_csv(single_code=ticker[2:], market=ticker[:2])
@@ -65,7 +65,7 @@ def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split
         result["column_scaler"] = column_scaler
     # add the target column (label) by shifting by `lookup_step`
     # defending by fredict the lowest tomorrow============================================================
-    df['future'] = df['low'].shift(-lookup_step)
+    df['future'] = df['high'].shift(-lookup_step)
     # last `lookup_step` columns contains NaN in future column
     # get them before droping NaNs
     last_sequence = np.array(df[feature_columns].tail(lookup_step))
@@ -151,8 +151,8 @@ def plot_graph(test_df, plot_filename):
     This function plots true close price along with predicted close price
     with blue and red colors respectively
     """
-    plt.plot(test_df[f'true_low_{LOOKUP_STEP}'], c='b')
-    plt.plot(test_df[f'low_{LOOKUP_STEP}'], c='r')
+    plt.plot(test_df[f'true_high_{LOOKUP_STEP}'], c='b')
+    plt.plot(test_df[f'high_{LOOKUP_STEP}'], c='r')
     plt.xlabel("Days")
     plt.ylabel("Price")
     plt.legend(["Actual Price", "Predicted Price"])
@@ -167,38 +167,36 @@ def get_final_df(model, data):
     """
     # if predicted future price is higher than the current,
     # then calculate the true future price minus the current price, to get the buy profit
-    reachability = lambda currentlow, true_futurelow, pred_futurelow: pred_futurelow - true_futurelow
-    # a positive reachability means predicted low are reachable
-    # if the predicted future price is lower than the current price,
-    # then subtract the true future price from the current price
-    reachability_2 = lambda ccurrentlow, true_futurelow, pred_futurelow: pred_futurelow * 1.005 - true_futurelow
+    reachability = lambda currenthigh, true_futurehigh, pred_futurehigh: true_futurehigh - pred_futurehigh
+    # a positive reachability means predicted high are reachable
+    reachability_2 = lambda ccurrenthigh, true_futurehigh, pred_futurehigh: true_futurehigh - pred_futurehigh * 0.995
     X_test = data["X_test"]
     y_test = data["y_test"]
     # perform prediction and get prices
     y_pred = model.predict(X_test)
     if SCALE:
-        y_test = np.squeeze(data["column_scaler"]["low"].inverse_transform(np.expand_dims(y_test, axis=0)))
-        y_pred = np.squeeze(data["column_scaler"]["low"].inverse_transform(y_pred))
+        y_test = np.squeeze(data["column_scaler"]["high"].inverse_transform(np.expand_dims(y_test, axis=0)))
+        y_pred = np.squeeze(data["column_scaler"]["high"].inverse_transform(y_pred))
     test_df = data["test_df"]
     # add predicted future prices to the dataframe
-    test_df[f"low_{LOOKUP_STEP}"] = y_pred
+    test_df[f"high_{LOOKUP_STEP}"] = y_pred
     # add true future prices to the dataframe
-    test_df[f"true_low_{LOOKUP_STEP}"] = y_test
+    test_df[f"true_high_{LOOKUP_STEP}"] = y_test
     # sort the dataframe by date
     test_df.sort_index(inplace=True)
     final_df = test_df
     # add the buy profit column
     final_df["buy_profit"] = list(map(reachability,
-                                    final_df["low"],
-                                    final_df[f"low_{LOOKUP_STEP}"],
-                                    final_df[f"true_low_{LOOKUP_STEP}"])
+                                    final_df["high"],
+                                    final_df[f"high_{LOOKUP_STEP}"],
+                                    final_df[f"true_high_{LOOKUP_STEP}"])
                                     # since we don't have profit for last sequence, add 0's
                                     )
     # add the sell profit column
     final_df["sell_profit"] = list(map(reachability_2,
-                                    final_df["low"],
-                                    final_df[f"low_{LOOKUP_STEP}"],
-                                    final_df[f"true_low_{LOOKUP_STEP}"])
+                                    final_df["high"],
+                                    final_df[f"high_{LOOKUP_STEP}"],
+                                    final_df[f"true_high_{LOOKUP_STEP}"])
                                     # since we don't have profit for last sequence, add 0's
                                     )
     return final_df
@@ -213,13 +211,13 @@ def predict(model, data):
     prediction = model.predict(last_sequence)
     # get the price (by inverting the scaling)
     if SCALE:
-        predicted_price = data["column_scaler"]["low"].inverse_transform(prediction)[0][0]
+        predicted_price = data["column_scaler"]["high"].inverse_transform(prediction)[0][0]
     else:
         predicted_price = prediction[0][0]
     return predicted_price
 
 
-def go_defend(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_by_date=False, test_size=0.2,
+def go_collect(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_by_date=False, test_size=0.2,
               feature_columns=["adjclose", "volume", "open", "high", "low", "pct_index_300", "pct_vol_300"],
               n_layers=2, cell=LSTM, units=256,
               dropout=0.4, bidirectional=False, epochs=500, flush_result=False, only_forecast=False):
@@ -271,7 +269,7 @@ def go_defend(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, spli
     ticker_data_filename = os.path.join("data", f"{ticker}_{date_now}.csv")
     # model name to save, making it as unique as possible based on parameters
     model_name = \
-        f"defend_{date_now}_{ticker}-{shuffle_str}-{scale_str}-{split_by_date_str}-{LOSS}-{OPTIMIZER}-{CELL.__name__}-seq-{N_STEPS}-step-{LOOKUP_STEP}-layers-{N_LAYERS}-units-{UNITS}"
+        f"collect_{date_now}_{ticker}-{shuffle_str}-{scale_str}-{split_by_date_str}-{LOSS}-{OPTIMIZER}-{CELL.__name__}-seq-{N_STEPS}-step-{LOOKUP_STEP}-layers-{N_LAYERS}-units-{UNITS}"
     if BIDIRECTIONAL:
         model_name += "-b"
     # create these folders if they does not exist
@@ -329,7 +327,7 @@ def go_defend(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, spli
         loss, mae = model.evaluate(data["X_test"], data["y_test"], verbose=0)
         # calculate the mean absolute error (inverse scaling)
         if SCALE:
-            mean_absolute_error = data["column_scaler"]["low"].inverse_transform([[mae]])[0][0]
+            mean_absolute_error = data["column_scaler"]["high"].inverse_transform([[mae]])[0][0]
         else:
             mean_absolute_error = mae
 
@@ -345,22 +343,22 @@ def go_defend(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, spli
         reachability = round((len(final_df[final_df['buy_profit'] > 0]) / len(final_df['buy_profit'])) * 100, 2)
         reachability_2 = round((len(final_df[final_df['sell_profit'] > 0]) / len(final_df['sell_profit'])) * 100, 2)
         # printing metrics
-        increased_future_low = round(future_price * 1.005, 2)
-        print(f"{ticker} T+1 possible low price is {future_price:.2f}$")
+        decreased_future_high = round(future_price * 1.005, 2)
+        print(f"{ticker} T+1 possible high price is {future_price:.2f}$")
         print(f"{LOSS} loss:", loss)
         print("Mean Absolute Error:", mean_absolute_error)
         print(f"Possiblity of reachability is {reachability}%")
-        print(f"If you increase the low up 0.5% at {increased_future_low}:")
+        print(f"If you decrease the high down 0.5% at {decreased_future_high}:")
         print(f"The reachability will be {reachability_2}")
 
-        foresees_filename = os.path.join("foresees", f"{ticker}_{LOOKUP_STEP}_forecast_defend.csv")
-        plot_filename = os.path.join("foresees", f"{ticker}_{LOOKUP_STEP}_forecast_defend.png")
+        foresees_filename = os.path.join("foresees", f"{ticker}_{LOOKUP_STEP}_forecast_collect.csv")
+        plot_filename = os.path.join("foresees", f"{ticker}_{LOOKUP_STEP}_forecast_collect.png")
         ifile = open(foresees_filename, 'a')
-        linename = "forecast_day" + ',' + "days_in_future" + ',' + "T+1 lowest" + ',' + "LOSS" + ',' + "MAE" +\
-                   ',' + "Reachability" + "low + 0.5%" + "Reachability_2" + '\n'
+        linename = "forecast_day" + ',' + "days_in_future" + ',' + "T+2_highest" + ',' + "LOSS" + ',' + "MAE" +\
+                   ',' + "Reachability" + "highest * 99.5%" + "Reachability_2" + '\n'
         ifile.write(linename)
         line = date_now + ',' + str(LOOKUP_STEP) + ',' + str(future_price) + ',' + str(loss) + ',' + \
-               str(mean_absolute_error) + ',' + str(reachability) + str(increased_future_low) + str(reachability_2) + \
+               str(mean_absolute_error) + ',' + str(reachability) + str(decreased_future_high) + str(reachability_2) + \
                '\n'
         ifile.write(line)
         ifile.close()
@@ -376,7 +374,7 @@ def go_defend(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, spli
         final_df.to_csv(csv_filename, index=False)
         return future_price, reachability, reachability_2
     except OSError or FileNotFoundError:
-        print(f"defends_{ticker}'s h5 model file can't be found in 'result\\' folder!  Abandon...")
+        print(f"collect_{ticker}'s h5 model file can't be found in 'result\\' folder!  Abandon...")
         return None, None
 
 

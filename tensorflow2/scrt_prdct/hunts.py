@@ -296,7 +296,7 @@ def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_
     for fname in os.listdir('data\\'):
         if fname.startswith(ticker):
             os.remove(os.path.join('data\\', fname))
-        data["df"].to_csv(ticker_data_filename)
+        data["df"].to_csv(ticker_data_filename, index=False)
     # construct the model
     try:
         model = tf.keras.models.load_model(os.path.join("results", model_name + ".h5"))
@@ -399,7 +399,7 @@ def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_
         if not os.path.isdir(csv_results_folder):
             os.mkdir(csv_results_folder)
         csv_filename = os.path.join(csv_results_folder, model_name + ".csv")
-        final_df.to_csv(csv_filename)
+        final_df.to_csv(csv_filename, index=False)
         return future_price, accuracy_buying_score
     except OSError or FileNotFoundError:
         print(f"{ticker}'s h5 model file can't be found in 'result\\' folder!  Abandon...")
