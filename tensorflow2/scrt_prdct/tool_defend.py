@@ -1,3 +1,4 @@
+import datetime
 import os
 import time
 
@@ -14,8 +15,8 @@ def predict(stock, module='defend', daily_forecast_dir=''):
     if module == 'defend':
         pre_fix = 'defend_'
         LOOKUP_STEP = 1
-        INIT_EPOCHS = 200
-        SECOND_EPOCHS = 200
+        INIT_EPOCHS = 250
+        SECOND_EPOCHS = 250
 
         daily_forecast_filename = os.path.join(daily_forecast_dir, f"{pre_fix}{date_now}_{LOOKUP_STEP}_forecast.csv")
 
@@ -27,7 +28,7 @@ def predict(stock, module='defend', daily_forecast_dir=''):
         else:
             data = []
 
-        print(data)
+        # print(data)
         dt = []
         print(stock)
         saved_epochs = 0
@@ -52,15 +53,15 @@ def predict(stock, module='defend', daily_forecast_dir=''):
         else:
             frames = [data, dt]
             data = pd.concat(frames)
-        print(data)
-        data.to_csv(daily_forecast_filename, index=False)
-        return future_price, reachability, reachability_2, epochs
+        # print(data)
+        # data.to_csv(daily_forecast_filename, index=False)
+        return float(future_price), reachability, reachability_2, epochs
 
     elif module == 'collect':
         pre_fix = 'collect'
         LOOKUP_STEP = 2
-        INIT_EPOCHS = 300
-        SECOND_EPOCHS = 300
+        INIT_EPOCHS = 400
+        SECOND_EPOCHS = 400
         daily_forecast_filename = os.path.join(daily_forecast_dir, f"{pre_fix}{date_now}_{LOOKUP_STEP}_forecast.csv")
 
         if os.path.isfile(daily_forecast_filename):
@@ -71,7 +72,7 @@ def predict(stock, module='defend', daily_forecast_dir=''):
         else:
             data = []
 
-        print(data)
+        # print(data)
         dt = []
         print(stock)
         saved_epochs = 0
@@ -95,22 +96,27 @@ def predict(stock, module='defend', daily_forecast_dir=''):
         else:
             frames = [data, dt]
             data = pd.concat(frames)
-        print(data)
+        # print(data)
         data.to_csv(daily_forecast_filename, index=False)
 
-        return future_price, reachability, reachability_2, epochs
+        return float(future_price), reachability, reachability_2, epochs
 
     else:
         print('Unknown module...terminated!')
 
-
+def get_t_1_and_2(Vday_0):
+    k = [1,1,1,1,3,2,1]
+    day_0 = datetime.datetime.strptime(Vday_0, "%Y-%m-%d")
+    day_1 = day_0 + datetime.timedelta(days=k[day_0.weekday()])  # 0,1,2,3,4,5,6(sun)
+    day_2 = day_1 + datetime.timedelta(days=k[day_1.weekday()])
+    return day_1.strftime("%Y-%m-%d"), day_2.strftime( "%Y-%m-%d")
 
 #==================main===============================
 
-
+# 601211, 601319, 601328, 601390, 601727
 stock_list = ['sh600030']
-stock_list.extend(['sh600600', 'sh600846', 'sh600585', 'sh601229'])
-stock_list.extend(['sh600529', 'sh600547', 'sh600587', 'sh600058', 'sh600448'])
+stock_list.extend(['sh600600', 'sh600648', 'sh600585', 'sh601229'])
+# stock_list.extend(['sh600529', 'sh600547', 'sh600587', 'sh600058', 'sh600448'])
 
 date_now = time.strftime("%Y-%m-%d")
 
@@ -127,7 +133,7 @@ for ticker in stock_list:
 
     row = {'stock': ticker,
             'fc_date': date_now,
-            't+1_low': round(t1_low, 2),
+            't+1_low': round(round(t1_low, 2), 2),
             'reachability': rch_1,
             't+1_low+0.5%': round(t1_low * 1.005, 2),
             'reachability2': rch_2,
@@ -141,6 +147,41 @@ for ticker in stock_list:
     df = df.append(row, ignore_index=True)
 
     df.to_csv(f'TTT_{date_now}_t1_2_forecast.csv', index=False)
+
+# --------------------------------------------------------------
+
+    t2_2_high = t2_high * .995
+    day_1 , day_2 = get_t_1_and_2(date_now)
+    columes_act = ['stock', 'act_day', 'act', 'target_price', 'gain_percent']
+    if not os.path.isfile(f'DDD_{day_1}_t1_2_decision.csv'):
+        df1 = pd.DataFrame(columns=columes_act)
+        df1.to_csv(f'DDD_{day_1}_t1_2_decision.csv', index=False)
+    if not os.path.isfile(f'DDD_{day_2}_t1_2_decision.csv'):
+        df2 = pd.DataFrame(columns=columes_act)
+        df2.to_csv(f'DDD_{day_2}_t1_2_decision.csv', index=False)
+
+    df1 = pd.read_csv(f'DDD_{day_1}_t1_2_decision.csv')
+    df2 = pd.read_csv(f'DDD_{day_2}_t1_2_decision.csv')
+
+    if (t2_2_high - t1_low) / t1_low >= 0.005:
+        row1 = {'stock': ticker,
+                'act_day': day_1,
+                'act': 'buy',
+                'target_price': t1_low}
+        df1 = df1.append(row1, ignore_index=True)
+        row2 = {'stock': ticker,
+                'act_day': day_2,
+                'act': 'sell',
+                'target_price': t2_2_high,
+                'gain_percent': round((t2_2_high - t1_low) / t1_low, 2) }
+        df2 = df2.append(row2, ignore_index=True)
+
+        df1.to_csv(f'DDD_{day_1}_t1_2_decision.csv', index=False)
+        df2.to_csv(f'DDD_{day_2}_t1_2_decision.csv', index=False)
+
+
+
+
 
 
 

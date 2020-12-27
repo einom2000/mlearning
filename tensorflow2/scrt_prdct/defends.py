@@ -367,7 +367,7 @@ def go_defend(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, spli
 
         plot_graph(final_df, plot_filename)
 
-        print(final_df.tail(10))
+        # print(final_df.tail(10))
         # save the final dataframe to csv-results folder
         csv_results_folder = "csv-results"
         if not os.path.isdir(csv_results_folder):

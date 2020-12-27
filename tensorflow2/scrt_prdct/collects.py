@@ -343,7 +343,7 @@ def go_collect(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, spl
         reachability = round((len(final_df[final_df['buy_profit'] > 0]) / len(final_df['buy_profit'])) * 100, 2)
         reachability_2 = round((len(final_df[final_df['sell_profit'] > 0]) / len(final_df['sell_profit'])) * 100, 2)
         # printing metrics
-        decreased_future_high = round(future_price * 1.005, 2)
+        decreased_future_high = round(future_price * 0.995, 2)
         print(f"{ticker} T+1 possible high price is {future_price:.2f}$")
         print(f"{LOSS} loss:", loss)
         print("Mean Absolute Error:", mean_absolute_error)
@@ -365,7 +365,7 @@ def go_collect(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, spl
 
         plot_graph(final_df, plot_filename)
 
-        print(final_df.tail(10))
+        # print(final_df.tail(10))
         # save the final dataframe to csv-results folder
         csv_results_folder = "csv-results"
         if not os.path.isdir(csv_results_folder):

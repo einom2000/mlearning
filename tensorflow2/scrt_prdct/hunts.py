@@ -32,7 +32,7 @@ def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split
               feature_columns=('adjclose', 'volume', 'open', 'high', 'low', "pct_index_300", "pct_vol_300")):
     if isinstance(ticker, str):
         if os.path.isfile('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv'):
-            df = pd.read_csv('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv')
+            df = pd.read_csv('csv-original\\' + ticker + '_'+  time.strftime("%Y-%m-%d") + '.csv')
         else:
             remove_file.remove('csv-original\\', startwith=ticker)
             # for fname in os.listdir('csv-original\\'):
@@ -393,7 +393,7 @@ def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_
 
         plot_graph(final_df, plot_filename)
 
-        print(final_df.tail(10))
+        # print(final_df.tail(10))
         # save the final dataframe to csv-results folder
         csv_results_folder = "csv-results"
         if not os.path.isdir(csv_results_folder):
