@@ -15,8 +15,8 @@ def predict(stock, module='defend', daily_forecast_dir=''):
     if module == 'defend':
         pre_fix = 'defend_'
         LOOKUP_STEP = 1
-        INIT_EPOCHS = 250
-        SECOND_EPOCHS = 250
+        INIT_EPOCHS = 2 * EPOCH_RATIO
+        SECOND_EPOCHS = 2 * EPOCH_RATIO
 
         daily_forecast_filename = os.path.join(daily_forecast_dir, f"{pre_fix}{date_now}_{LOOKUP_STEP}_forecast.csv")
 
@@ -60,8 +60,8 @@ def predict(stock, module='defend', daily_forecast_dir=''):
     elif module == 'collect':
         pre_fix = 'collect'
         LOOKUP_STEP = 2
-        INIT_EPOCHS = 400
-        SECOND_EPOCHS = 400
+        INIT_EPOCHS = 3 * EPOCH_RATIO
+        SECOND_EPOCHS = 3 * EPOCH_RATIO
         daily_forecast_filename = os.path.join(daily_forecast_dir, f"{pre_fix}{date_now}_{LOOKUP_STEP}_forecast.csv")
 
         if os.path.isfile(daily_forecast_filename):
@@ -114,11 +114,14 @@ def get_t_1_and_2(Vday_0):
 #==================main===============================
 
 # 601211, 601319, 601328, 601390, 601727
-stock_list = ['sh600030']
-stock_list.extend(['sh600600', 'sh600648', 'sh600585', 'sh601229'])
-# stock_list.extend(['sh600529', 'sh600547', 'sh600587', 'sh600058', 'sh600448'])
+# stock_list = ['sh600030']
+# stock_list.extend(['sh600600', 'sh600648', 'sh600585'])
+# stock_list.extend(['sh600529', 'sh600547', 'sh600587', 'sh600058'])
+stock_list = ['sh600158']
 
 date_now = time.strftime("%Y-%m-%d")
+
+EPOCH_RATIO = 100
 
 for ticker in stock_list:
     t1_low, rch_1, rch_2, epo_d = predict(ticker)
@@ -152,32 +155,37 @@ for ticker in stock_list:
 
     t2_2_high = t2_high * .995
     day_1 , day_2 = get_t_1_and_2(date_now)
-    columes_act = ['stock', 'act_day', 'act', 'target_price', 'gain_percent']
-    if not os.path.isfile(f'DDD_{day_1}_t1_2_decision.csv'):
-        df1 = pd.DataFrame(columns=columes_act)
-        df1.to_csv(f'DDD_{day_1}_t1_2_decision.csv', index=False)
-    if not os.path.isfile(f'DDD_{day_2}_t1_2_decision.csv'):
-        df2 = pd.DataFrame(columns=columes_act)
-        df2.to_csv(f'DDD_{day_2}_t1_2_decision.csv', index=False)
+    columes_buy = ['stock', 'act_day', 'act', 'target_price', 'act_low', 'act_high', 'buy', 'at_price']
+    if not os.path.isfile(f'DDD_{day_1}_t1_2_decision_buy.csv'):
+        df1 = pd.DataFrame(columns=columes_buy)
+        df1.to_csv(f'DDD_{day_1}_t1_2_decision_buy.csv', index=False)
+    columes_sell = ['stock', 'act_day', 'act', 'target_price', 'gain_percent']
+    if not os.path.isfile(f'DDD_{day_2}_t1_2_decision_sell.csv'):
+        df2 = pd.DataFrame(columns=columes_sell)
+        df2.to_csv(f'DDD_{day_2}_t1_2_decision_sell.csv', index=False)
 
-    df1 = pd.read_csv(f'DDD_{day_1}_t1_2_decision.csv')
-    df2 = pd.read_csv(f'DDD_{day_2}_t1_2_decision.csv')
+    df1 = pd.read_csv(f'DDD_{day_1}_t1_2_decision_buy.csv')
+    df2 = pd.read_csv(f'DDD_{day_2}_t1_2_decision_sell.csv')
 
     if (t2_2_high - t1_low) / t1_low >= 0.005:
         row1 = {'stock': ticker,
                 'act_day': day_1,
                 'act': 'buy',
-                'target_price': t1_low}
+                'target_price': t1_low,
+                'act_low':0,
+                'act_high':0,
+                'buy':9999,
+                'at_price':0}
         df1 = df1.append(row1, ignore_index=True)
         row2 = {'stock': ticker,
                 'act_day': day_2,
                 'act': 'sell',
                 'target_price': t2_2_high,
-                'gain_percent': round((t2_2_high - t1_low) / t1_low, 2) }
+                'gain_percent': round((t2_2_high - t1_low) / t1_low, 2)}
         df2 = df2.append(row2, ignore_index=True)
 
-        df1.to_csv(f'DDD_{day_1}_t1_2_decision.csv', index=False)
-        df2.to_csv(f'DDD_{day_2}_t1_2_decision.csv', index=False)
+        df1.to_csv(f'DDD_{day_1}_t1_2_decision_buy.csv', index=False)
+        df2.to_csv(f'DDD_{day_2}_t1_2_decision_sell.csv', index=False)
 
 
 
