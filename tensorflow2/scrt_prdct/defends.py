@@ -31,8 +31,8 @@ def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split
                 test_size=0.2,
               feature_columns=('adjclose', 'volume', 'open', 'high', 'low', "pct_index_300", "pct_vol_300")):
     if isinstance(ticker, str):
-        if os.path.isfile('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv'):
-            df = pd.read_csv('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv')
+        if os.path.isfile('csv-original\\' + ticker + '_' + time.strftime("%Y-%m-%d") + '.csv'):
+            df = pd.read_csv('csv-original\\' + ticker + '_' + time.strftime("%Y-%m-%d") + '.csv')
         else:
             remove_file.remove('csv-original\\', startwith=ticker)
             day_to_csv.day_to_csv(single_code=ticker[2:], market=ticker[:2])

@@ -155,37 +155,29 @@ for ticker in stock_list:
 
     t2_2_high = t2_high * .995
     day_1 , day_2 = get_t_1_and_2(date_now)
-    columes_buy = ['stock', 'act_day', 'act', 'target_price', 'act_low', 'act_high', 'buy', 'at_price']
+    columes_buy = ['stock', 'act_day', 'act', 'target_price', 'sell_day', 'T2-sell', 'gain_percent',
+                   'act_low', 'act_high', 'buy', 'at_price', 'EPOCH_R']
     if not os.path.isfile(f'DDD_{day_1}_t1_2_decision_buy.csv'):
         df1 = pd.DataFrame(columns=columes_buy)
         df1.to_csv(f'DDD_{day_1}_t1_2_decision_buy.csv', index=False)
-    columes_sell = ['stock', 'act_day', 'act', 'target_price', 'gain_percent']
-    if not os.path.isfile(f'DDD_{day_2}_t1_2_decision_sell.csv'):
-        df2 = pd.DataFrame(columns=columes_sell)
-        df2.to_csv(f'DDD_{day_2}_t1_2_decision_sell.csv', index=False)
 
     df1 = pd.read_csv(f'DDD_{day_1}_t1_2_decision_buy.csv')
-    df2 = pd.read_csv(f'DDD_{day_2}_t1_2_decision_sell.csv')
 
     if (t2_2_high - t1_low) / t1_low >= 0.005:
         row1 = {'stock': ticker,
                 'act_day': day_1,
                 'act': 'buy',
                 'target_price': t1_low,
-                'act_low':0,
-                'act_high':0,
-                'buy':9999,
-                'at_price':0}
+                'sell_day': day_2,
+                'T2-sell': t2_2_high,
+                'gain_percent': round((t2_2_high - t1_low) / t1_low, 2),
+                'act_low': 0,
+                'act_high': 0,
+                'buy': 9999,
+                'at_price': 0,
+                'EPOCH_R': EPOCH_RATIO}
         df1 = df1.append(row1, ignore_index=True)
-        row2 = {'stock': ticker,
-                'act_day': day_2,
-                'act': 'sell',
-                'target_price': t2_2_high,
-                'gain_percent': round((t2_2_high - t1_low) / t1_low, 2)}
-        df2 = df2.append(row2, ignore_index=True)
-
         df1.to_csv(f'DDD_{day_1}_t1_2_decision_buy.csv', index=False)
-        df2.to_csv(f'DDD_{day_2}_t1_2_decision_sell.csv', index=False)
 
 
 

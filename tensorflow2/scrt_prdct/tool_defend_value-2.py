@@ -161,7 +161,7 @@ def get_t_1_and_2(Vday_0):
     return day_1.strftime("%Y-%m-%d"), day_2.strftime( "%Y-%m-%d")
 
 
-def value(df1, df2, ticker, pool, max_pool=2):
+def value(df1, df2, ticker, pool, max_pool=20):
 
     global PROFIT_COLLECTED, LL, LH, spirit_2l, spirit_2h
 
@@ -170,11 +170,6 @@ def value(df1, df2, ticker, pool, max_pool=2):
     Vday_n1_adj = float(df1[-2:-1]['adjclose'].item())
     Vday_n2_adj = float(df1[-3:-2]['adjclose'].item())
 
-    spirit = 1  # spirit of trend
-    if Vday_n2_adj > Vday_n1_adj > Vday_0_adjc:
-        spirit = 0.995
-    if Vday_n2_adj < Vday_n1_adj < Vday_0_adjc:
-        spirit = 1.005
 
     def get_total_from_pool(pool):
         total = 0.0
@@ -199,25 +194,40 @@ def value(df1, df2, ticker, pool, max_pool=2):
     t2_low, rch2_1, rch2_2, epo_c = predict('sh999999', module='collect_low')
     t2_2_low = round(t2_low * 1.005, 2)
 
-    spirit_2l = spirit_2h = 1
+
+    spirit = 1  # spirit of trend
+    if Vday_n2_adj > Vday_n1_adj > Vday_0_adjc:
+        spirit = 0.995
+    elif Vday_n2_adj < Vday_n1_adj < Vday_0_adjc:
+        spirit = 1.005
+    else:
+        spirit = 1
 
     # arg2 for adjust misforecast   paused
     if Vday_0_actlow > LL:
-        spirit_2l = LL / Vday_0_actlow
-        spirit_2h = (Vday_0_actlow - LL) / Vday_0_actlow
-    else:
-        spirit_2l = 1
-    if Vday_0_acthigh < LH:
-        spirit_2h = (LH - Vday_0_acthigh) / Vday_0_acthigh
-    else:
-        spirit_2h = 1
+        spirit_2l = (Vday_0_actlow - LL) / LL + 1
+        spirit_2h = (Vday_0_actlow - LL) / LL + 1
 
+    if Vday_0_actlow < LL < 900:
+        spirit_2l = 1 - (Vday_0_actlow - LL) / LL
+        spirit_2h = 1 - (Vday_0_actlow - LL) / LL
+
+    if Vday_0_acthigh < LH:
+        try:
+            spirit_2h = 1 - (LH - Vday_0_acthigh) / LH
+        except ZeroDivisionError:
+            spirit_2h = 1
+
+    if Vday_0_acthigh > LH > 1:
+        spirit_2h = (Vday_0_acthigh - LH) / LH + 1
+
+    spirit_2l = spirit_2h =1
 
     t1_low = round(t1_low * spirit * spirit_2l, 2)
-    LL = Vday_0_actlow
+    LL = t1_low
 
-    t2_2_high = round(t2_2_high * spirit_2h, 2)
-    LH = Vday_0_acthigh
+    t2_2_high = round(t2_2_high * spirit * spirit_2h * spirit_2l, 2)
+    LH = t2_2_high
 
     with open(f'memo_{ticker}_v2.txt', 'a') as f:
         f.write(str(pool) + '\n')
@@ -253,7 +263,7 @@ def value(df1, df2, ticker, pool, max_pool=2):
             for trade in pool[1:]:
                 f.write('working on ' + str(trade) + f"on day{Vday_2}" + "\n")
 
-                if trade[1] <= Vday_2_acthigh and trade[2] <= 2: # best forecast
+                if trade[1] <= t2_2_high <=Vday_2_acthigh and trade[2] <= 2: # best forecast
                     f.write(f'BEST TRADE on {Vday_2} sell ' + str(trade[0]) + f' of {ticker} at {t2_2_high} \n')
                     PROFIT_COLLECTED += (t2_2_high - trade[1]) * trade[0]
                     f.write(f"----profit in total is {PROFIT_COLLECTED} \n")
@@ -268,6 +278,7 @@ def value(df1, df2, ticker, pool, max_pool=2):
                     f.write(f'BAD FORECAST on {Vday_2} with supposed selling at {t2_2_high} but failed by {dif} \n')
                     f.write(f"list the stock in pool...")
                     f.write(f"stock as following:" + str(pool) + '\n')
+                    spirit_2l = spirit_2h= 0.995
 
                 elif trade[1] * 1.003 <= Vday_2_acthigh and trade[2] >= 2:
                     f.write('clearing on ' + str(trade) + f"on day{Vday_1}" + "\n")
@@ -290,7 +301,7 @@ def value(df1, df2, ticker, pool, max_pool=2):
                     f.write(f"stock as following:" + str(pool) + '\n')
                 else:
                     f.write('what it the else I forget? \n')
-                    trade[2] += 1
+                trade[2] += 1
 
         total_value = get_total_from_pool(pool)
 
@@ -302,9 +313,9 @@ def value(df1, df2, ticker, pool, max_pool=2):
 # ==================main===============================
 
 
-EPOCHS_RATIO = 10
+EPOCHS_RATIO = 5
 
-ticker = 'sh600030'
+ticker = 'sh600587'
 pool = [[1000, 0.0, 1], ] # last elemnt is the day from T0
 
 PROFIT_COLLECTED = 0
