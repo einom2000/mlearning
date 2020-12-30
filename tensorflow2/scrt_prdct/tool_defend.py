@@ -111,13 +111,19 @@ def get_t_1_and_2(Vday_0):
     day_2 = day_1 + datetime.timedelta(days=k[day_1.weekday()])
     return day_1.strftime("%Y-%m-%d"), day_2.strftime( "%Y-%m-%d")
 
-#==================main===============================
+#==================main===============================conda
+
+# patch the decision_file
+import tool_defend_patch
+tool_defend_patch.patch()
+# calculate the stock pool list
+
 
 # 601211, 601319, 601328, 601390, 601727
-# stock_list = ['sh600030']
-# stock_list.extend(['sh600600', 'sh600648', 'sh600585'])
-# stock_list.extend(['sh600529', 'sh600547', 'sh600587', 'sh600058'])
-stock_list = ['sh600158']
+stock_list = ['sh600547']
+# stock_list.extend(['sh600030','sh600600', 'sh600648', 'sh600585', 'sh600529'])
+# stock_list.extend(['sh600587', 'sh600058'])
+
 
 date_now = time.strftime("%Y-%m-%d")
 
@@ -173,8 +179,10 @@ for ticker in stock_list:
                 'gain_percent': round((t2_2_high - t1_low) / t1_low, 2),
                 'act_low': 0,
                 'act_high': 0,
-                'buy': 9999,
+                'buy': 0,
                 'at_price': 0,
+                'sell':0,
+                'selling_price':0,
                 'EPOCH_R': EPOCH_RATIO}
         df1 = df1.append(row1, ignore_index=True)
         df1.to_csv(f'DDD_{day_1}_t1_2_decision_buy.csv', index=False)

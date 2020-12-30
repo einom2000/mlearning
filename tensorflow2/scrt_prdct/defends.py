@@ -265,7 +265,7 @@ def go_defend(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, spli
     # huber loss
     LOSS = "huber_loss"
     OPTIMIZER = "adam"
-    BATCH_SIZE = 64
+    BATCH_SIZE = 256
     EPOCHS = epochs
     # ticker = "sh600585"
     ticker_data_filename = os.path.join("data", f"{ticker}_{date_now}.csv")
