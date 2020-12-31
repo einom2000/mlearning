@@ -1,11 +1,11 @@
 import os
-import time
 
 import pandas as pd
 
 import hunts
+import tool_day_off_filter
 
-date_now = time.strftime("%Y-%m-%d")
+date_now = tool_day_off_filter.get_date_now()
 
 stock_list = []
 stock_list.extend(['sh600600', 'sh600846', 'sh600585', 'sh601229'])

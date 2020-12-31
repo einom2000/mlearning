@@ -1,6 +1,4 @@
-import datetime
 import os
-import time
 
 import pandas as pd
 
@@ -8,12 +6,13 @@ import collects
 import day_to_csv
 import defends
 import remove_file
+import tool_day_off_filter
 import tool_get_per_of_300
 
 
 def predict(stock, module='defend', daily_forecast_dir=''):
 
-    date_now = time.strftime("%Y-%m-%d")
+    date_now = tool_day_off_filter.get_date_now()
 
     if module == 'defend':
         pre_fix = 'defend_'
@@ -108,14 +107,6 @@ def predict(stock, module='defend', daily_forecast_dir=''):
         print('Unknown module...terminated!')
 
 
-def get_t_1_and_2(Vday_0):
-    k = [1,1,1,1,3,2,1]
-    day_0 = datetime.datetime.strptime(Vday_0, "%Y-%m-%d")
-    day_1 = day_0 + datetime.timedelta(days=k[day_0.weekday()])  # 0,1,2,3,4,5,6(sun)
-    day_2 = day_1 + datetime.timedelta(days=k[day_1.weekday()])
-    return day_1.strftime("%Y-%m-%d"), day_2.strftime( "%Y-%m-%d")
-
-
 def value(df1, df2, ticker, pool, max_pool=2):
 
     global PROFIT_COLLECTED, LL, LH, spirit_2l, spirit_2h
@@ -145,7 +136,8 @@ def value(df1, df2, ticker, pool, max_pool=2):
 
     Vday_0 = str(df1[-1:]['Unnamed: 0.1'].item())
     print(Vday_0)
-    Vday_1, Vday_2 = get_t_1_and_2(Vday_0)
+    Vday_1 = tool_day_off_filter.get_first_working_day(Vday_0, delta=1)
+    Vday_2 = tool_day_off_filter.get_first_working_day(Vday_0, delta=2)
     Vday_1_actlow = float(df2[0:1]['low'].item())
     Vday_1_acthigh = float(df2[0:1]['high'].item())
     Vday_2_acthigh = float(df2[1:2]['high'].item())
@@ -249,20 +241,21 @@ stock_list = []   # tested dataframe
 
 last = 30
 last *= -1
-date_now = time.strftime("%Y-%m-%d")
+date_now = tool_day_off_filter.get_date_now()
 if os.path.isfile(f'csv-original\\sh999999_{date_now}.csv'):
     os.remove(f'csv-original\\sh999999_{date_now}.csv')
 if os.path.isfile('csv-original\\valuation.csv'):
     os.remove('csv-original\\valuation.csv')
 
-if os.path.isfile('csv-original\\' + ticker + '_' + time.strftime("%Y-%m-%d") + '.csv'):
-    df = pd.read_csv('csv-original\\' + ticker + '_' + time.strftime("%Y-%m-%d") + '.csv')
+if os.path.isfile('csv-original\\' + ticker + '_' + date_now + '.csv'):
+    df = pd.read_csv('csv-original\\' + ticker + '_' + date_now + '.csv')
 else:
     remove_file.remove('csv-original\\', startwith=ticker)
     day_to_csv.day_to_csv(single_code=ticker[2:], market=ticker[:2])
     # put 300 index growing percent to the csv
     tool_get_per_of_300.join_300(ticker)
-    df = pd.read_csv('csv-original\\' + ticker + '_' + time.strftime("%Y-%m-%d") + '.csv')
+    df = pd.read_csv('csv-original\\' + ticker + '_' + date_now + '.csv')
+
 
 df2 = df[last:]
 df1 = df[:last]

@@ -1,16 +1,18 @@
 import os
-import time
 from struct import *
+
+import tool_day_off_filter
 
 
 def day2csv_data(dirname, fname, targetDir, starttime=20050104, market='sh'):
+    date_now = tool_day_off_filter.get_date_now()
     try:
         ofile = open(os.path.join(dirname.replace('mkt', market), fname), 'rb')
         buf = ofile.read()
         ofile.close()
 
         ifile = open(os.path.join(targetDir.replace('mkt', market), fname[:-4]) + '_' +
-                     time.strftime("%Y-%m-%d") + '.csv', 'w')
+                     date_now + '.csv', 'w')
         num = len(buf)
         no = num / 32
         b = 0

@@ -1,16 +1,16 @@
-import datetime
 import os
-import time
 
 import pandas as pd
 
 import collects
 import defends
+import tool_day_off_filter
+import tool_defend_patch
 
 
 def predict(stock, module='defend', daily_forecast_dir=''):
 
-    date_now = time.strftime("%Y-%m-%d")
+    date_now = tool_day_off_filter.get_date_now()
 
     if module == 'defend':
         pre_fix = 'defend_'
@@ -104,28 +104,21 @@ def predict(stock, module='defend', daily_forecast_dir=''):
     else:
         print('Unknown module...terminated!')
 
-def get_t_1_and_2(Vday_0):
-    k = [1,1,1,1,3,2,1]
-    day_0 = datetime.datetime.strptime(Vday_0, "%Y-%m-%d")
-    day_1 = day_0 + datetime.timedelta(days=k[day_0.weekday()])  # 0,1,2,3,4,5,6(sun)
-    day_2 = day_1 + datetime.timedelta(days=k[day_1.weekday()])
-    return day_1.strftime("%Y-%m-%d"), day_2.strftime( "%Y-%m-%d")
 
 #==================main===============================conda
 
 # patch the decision_file
-import tool_defend_patch
-tool_defend_patch.patch()
-# calculate the stock pool list
 
+tool_defend_patch.clear_old_catch()
+tool_defend_patch.patch()
 
 # 601211, 601319, 601328, 601390, 601727
-stock_list = ['sh600547']
+stock_list = ['sh600685']
 # stock_list.extend(['sh600030','sh600600', 'sh600648', 'sh600585', 'sh600529'])
-# stock_list.extend(['sh600587', 'sh600058'])
+# stock_list.extend(['sh600587', 'sh600058','sh600547'])
 
 
-date_now = time.strftime("%Y-%m-%d")
+date_now = tool_day_off_filter.get_date_now()
 
 EPOCH_RATIO = 100
 
@@ -160,7 +153,8 @@ for ticker in stock_list:
 # --------------------------------------------------------------
 
     t2_2_high = t2_high * .995
-    day_1 , day_2 = get_t_1_and_2(date_now)
+    day_1 = tool_day_off_filter.get_first_working_day(date_now, delta=1)
+    day_2 = tool_day_off_filter.get_first_working_day(date_now, delta=2)
     columes_buy = ['stock', 'act_day', 'act', 'target_price', 'sell_day', 'T2-sell', 'gain_percent',
                    'act_low', 'act_high', 'buy', 'at_price', 'EPOCH_R']
     if not os.path.isfile(f'DDD_{day_1}_t1_2_decision_buy.csv'):
@@ -186,6 +180,10 @@ for ticker in stock_list:
                 'EPOCH_R': EPOCH_RATIO}
         df1 = df1.append(row1, ignore_index=True)
         df1.to_csv(f'DDD_{day_1}_t1_2_decision_buy.csv', index=False)
+
+# calculate the stock pool list
+tool_defend_patch.pool_list()
+
 
 
 

@@ -2,29 +2,30 @@ import datetime
 import glob
 import os
 import shutil
-import time
 
 import pandas as pd
 
 import day_to_csv
+import tool_day_off_filter
 import tool_get_per_of_300
 
 
 #!!!! must run on the T+1 day  actualy + 1
 
+
 def patch():
 
-    def get_t_posi_1(today):
-        k = [1, 1, 1, 1, 3, 2, 1]
-        day_0 = datetime.datetime.strptime(today, "%Y-%m-%d")
-        day_1 = day_0 + datetime.timedelta(days=k[day_0.weekday()])  # 0,1,2,3,4,5,6(sun)
-        return day_1.strftime("%Y-%m-%d")
+    # def get_t_posi_1(today):
+    #     k = [1, 1, 1, 1, 3, 2, 1]
+    #     day_0 = datetime.datetime.strptime(today, "%Y-%m-%d")
+    #     day_1 = day_0 + datetime.timedelta(days=k[day_0.weekday()])  # 0,1,2,3,4,5,6(sun)
+    #     return day_1.strftime("%Y-%m-%d")
 
     if not os.path.isdir('decision_back\\'):
         os.mkdir('decision_back\\')
 
-    date_now = time.strftime("%Y-%m-%d")
-    day_p1 = get_t_posi_1(date_now)
+    date_now = tool_day_off_filter.get_date_now()
+    day_p1 = tool_day_off_filter.get_first_working_day(date_now, delta=1)
 
     df1 = pd.read_csv(f'DDD_{date_now}_t1_2_decision_buy.csv')
 
@@ -52,7 +53,7 @@ def patch():
 
     df1['act_low_dif'] = round((df1['target_price'] - df1['act_low']), 2)
     df1.loc[df1['target_price'] >= df1['act_low'], 'at_price'] = df1['target_price']
-    df1.loc[df1['target_price'] >= df1['act_low'], 'buy'] = 9999
+    df1.loc[df1['target_price'] >= df1['act_low'], 'buy'] = 0
     print(df1.to_string())
     now = str(datetime.datetime.now())[:19]
     now = now.replace(":", "_")
@@ -60,19 +61,19 @@ def patch():
     df1.to_csv(f'DDD_{act_day}_t1_2_decision_buy.csv', index=False)
 
 
-def get_previous_day(day0, pri=1):
-    k = [-3, -1, -1, -1, -1, -1, -2]
-    pri_day = datetime.datetime.strptime(day0, "%Y-%m-%d")
-    for _ in range(pri):
-        pri_day = pri_day+ datetime.timedelta(days=k[pri_day.weekday()])  # 0,1,2,3,4,5,6(sun)
-    return pri_day.strftime("%Y-%m-%d")
+# def get_previous_day(day0, pri=1):
+#     k = [-3, -1, -1, -1, -1, -1, -2]
+#     pri_day = datetime.datetime.strptime(day0, "%Y-%m-%d")
+#     for _ in range(pri):
+#         pri_day = pri_day+ datetime.timedelta(days=k[pri_day.weekday()])  # 0,1,2,3,4,5,6(sun)
+#     return pri_day.strftime("%Y-%m-%d")
 
 
 def clear_old_catch():
-    date_now = time.strftime("%Y-%m-%d")
+    date_now = tool_day_off_filter.get_date_now()
     catch_dirs =['results\\', 'data\\', 'csv-results\\', 'csv-original\\']
     for i in range(3, 5):
-        old_day = get_previous_day(date_now, i)
+        old_day = tool_day_off_filter.get_first_working_day(date_now, delta=i*(-1))
         print(f"clearing following catched files of day {old_day}....")
         for catch_dir in catch_dirs:
             lists = glob.glob(f"{catch_dir}*{old_day}*.*")
@@ -87,7 +88,7 @@ def pool_list():
     now = now.replace(":", "_")
     shutil.copy(f'DDD_stock_list.csv',
                 f'decision_back\\DDD_stock_list.csv_backon_{now}.csv')
-    date_now = time.strftime("%Y-%m-%d")
+    date_now = tool_day_off_filter.get_date_now()
     if not os.path.isfile('DDD_stock_list.csv'):
         df = pd.DataFrame(columns=['stock', 'inpool_date', 'volume', 'inpool_price',
                                    'toll_fees', 'outpool_date', 'outpool_price', 'margin'])
@@ -96,7 +97,7 @@ def pool_list():
     df = pd.read_csv('DDD_stock_list.csv')
 
     for i in range(5, -1, -1):
-        history_day = get_previous_day(date_now, i)
+        history_day = tool_day_off_filter.get_first_working_day(date_now, delta=i * (-1))
         if os.path.isfile(f'DDD_{history_day}_t1_2_decision_buy.csv'):
             df_decision = pd.read_csv(f'DDD_{history_day}_t1_2_decision_buy.csv')
             rows = df_decision[(df_decision['buy'] != 0)]
@@ -134,3 +135,4 @@ def pool_list():
             df.to_csv('DDD_stock_list.csv', index=False)
 
 
+pool_list()

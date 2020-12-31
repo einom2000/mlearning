@@ -1,6 +1,5 @@
 import os
 import random
-import time
 from collections import deque
 
 import matplotlib.pyplot as plt
@@ -16,6 +15,7 @@ from tensorflow.keras.models import Sequential
 
 import day_to_csv
 import remove_file
+import tool_day_off_filter
 import tool_get_per_of_300
 
 
@@ -30,9 +30,10 @@ def shuffle_in_unison(a, b):
 def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split_by_date=True,
                 test_size=0.2,
               feature_columns=('adjclose', 'volume', 'open', 'high', 'low', "pct_index_300", "pct_vol_300")):
+    date_now = tool_day_off_filter.get_date_now()
     if isinstance(ticker, str):
-        if os.path.isfile('csv-original\\' + ticker +'_'+  time.strftime("%Y-%m-%d") + '.csv'):
-            df = pd.read_csv('csv-original\\' + ticker + '_'+  time.strftime("%Y-%m-%d") + '.csv')
+        if os.path.isfile('csv-original\\' + ticker + '_' + date_now + '.csv'):
+            df = pd.read_csv('csv-original\\' + ticker + '_' + date_now + '.csv')
         else:
             remove_file.remove('csv-original\\', startwith=ticker)
             # for fname in os.listdir('csv-original\\'):
@@ -41,7 +42,7 @@ def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split
             day_to_csv.day_to_csv(single_code=ticker[2:], market=ticker[:2])
             # put 300 index growing percent to the csv
             tool_get_per_of_300.join_300(ticker)
-            df = pd.read_csv('csv-original\\' + ticker + '_' + time.strftime("%Y-%m-%d") + '.csv')
+            df = pd.read_csv('csv-original\\' + ticker + '_' + date_now + '.csv')
     elif isinstance(ticker, pd.DataFrame):
         df = ticker
     else:
@@ -249,7 +250,7 @@ def go_hunt(ticker, n_steps=50, lookup_step=15, scale=True, shuffle=True, split_
     # features to use
     FEATURE_COLUMNS = feature_columns
     # date now
-    date_now = time.strftime("%Y-%m-%d")
+    date_now = tool_day_off_filter.get_date_now()
     ### model parameters
     N_LAYERS = n_layers
     # LSTM cell

@@ -1,10 +1,10 @@
 import os
-import time
 
 import pandas as pd
 
 import day_to_csv
 import remove_file
+import tool_day_off_filter
 
 
 def init(date_now):
@@ -29,7 +29,7 @@ def init(date_now):
 
 
 def join_300(ticker):
-    date_now = time.strftime("%Y-%m-%d")
+    date_now = tool_day_off_filter.get_date_now()
     if not os.path.exists(f'csv-original\\sh000300_{date_now}_pct_300.csv'):
         init(date_now)
     df = pd.read_csv(f'csv-original\\{ticker}_{date_now}.csv')
