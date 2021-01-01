@@ -113,9 +113,9 @@ tool_defend_patch.clear_old_catch()
 tool_defend_patch.patch()
 
 # 601211, 601319, 601328, 601390, 601727
-stock_list = ['sh600685']
-# stock_list.extend(['sh600030','sh600600', 'sh600648', 'sh600585', 'sh600529'])
-# stock_list.extend(['sh600587', 'sh600058','sh600547'])
+stock_list = []
+stock_list.extend(['sh600030', 'sh600600', 'sh600648', 'sh600585', 'sh600529'])
+stock_list.extend(['sh600587', 'sh600685', 'sh600058', 'sh600547'])
 
 
 date_now = tool_day_off_filter.get_date_now()
