@@ -116,6 +116,7 @@ for posi in coordination['init']:
     pyautogui.click()
     time.sleep(1)
 
+
 add_btn = coordination['add']
 code_box = coordination['code']
 buy_btn = coordination['buy']
@@ -137,6 +138,12 @@ for buy in buys:
     pyautogui.press('enter')
     move_click(buy_btn[0], buy_btn[1])
     move_click(price_box[0], price_box[1])
+    for _ in range(6):
+        pyautogui.keyDown('backspace')
+        time.sleep(0.1)
+        pyautogui.keyUp('backspace')
+        time.sleep(0.1)
+
     pyautogui.write(str(price))
     pyautogui.press('enter')
     move_click(vol_box[0], vol_box[1])

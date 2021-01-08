@@ -3,6 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import remove_file
 import tool_day_off_filter
 
 date_now = tool_day_off_filter.get_date_now()
@@ -10,6 +11,7 @@ start_date = '2020-12-28'
 
 date_list = [start_date,]
 next_day = start_date
+remove_file.remove(os.getcwd(), endswith='.png')
 
 while True:
     next_day = tool_day_off_filter.get_first_working_day(next_day, delta=1)
@@ -20,7 +22,9 @@ while True:
 
 stock_list = []
 stock_list.extend(['sh600030', 'sh600600', 'sh600648', 'sh600585', 'sh600529'])
-stock_list.extend(['sh600587', 'sh600685', 'sh600058', 'sh600547'])
+stock_list.extend(['sh600587', 'sh600685', 'sh600230', 'sh600655'])
+stock_list.extend(['sz002304', 'sh603589', 'sh600305', 'sh600058', 'sh600547', 'sz300778'])
+stock_list.extend(['sh600298', 'sh600211', 'sz002399', 'sz000729', 'sz002664'])
 
 lookup_codes = stock_list.copy()
 
