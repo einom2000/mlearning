@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d2352cb-0e00-4df2-a8ae-efdbd274ed79" name="Default" comment="">
+    <list default="true" id="8d2352cb-0e00-4df2-a8ae-efdbd274ed79" name="Default" comment="&#10;111">
+      <change afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mlearning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mlearning.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tool_defend.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tool_defend.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1298">
-              <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+            <state relative-caret-position="330">
+              <caret line="109" column="25" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#182#3727#0" />
@@ -30,14 +34,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DDD_2021-01-11_t1_2_decision_buy.csv" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hunts.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/hunts.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DDD_2021-01-11_t1_2_decision_buy.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv">
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="440">
-              <caret line="20" column="95" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
+            <state relative-caret-position="462">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tool_quickview.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,7 +117,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/check.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/original.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/copies.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/2020-12-24_15_forecast.csv" />
@@ -132,7 +156,6 @@
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-31_t1_2_decision_buy.csv" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_temp.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-04_t1_2_decision_buy.csv" />
-        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/000_test.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_decision_keyin.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-05_t1_2_decision_buy.csv" />
@@ -141,12 +164,14 @@
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-07_t1_2_decision_buy.csv" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_copy.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv" />
-        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_test.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1073" />
     <option name="y" value="231" />
     <option name="width" value="700" />
@@ -189,8 +214,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../local_project/hsiftxt" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="D:/Users/einom/anaconda3/envs/tensorflow2" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -219,7 +244,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tool_defend_value-3">
+  <component name="RunManager" selected="Python.tool_test">
     <configuration name="KNN" type="PythonConfigurationType" factoryName="Python">
       <module name="mlearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -328,24 +353,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="tool_defend_patch" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="mlearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_patch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="tool_defend_value-3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="mlearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -382,6 +389,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="tool_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <list>
       <item itemvalue="Python.tmp" />
       <item itemvalue="Python.math_daily_v4.0" />
@@ -390,16 +415,16 @@
       <item itemvalue="Python.tool_defend_value-3" />
       <item itemvalue="Python.tool_quickview" />
       <item itemvalue="Python.tool_defend" />
-      <item itemvalue="Python.tool_defend_patch" />
       <item itemvalue="Python.tool_copy" />
+      <item itemvalue="Python.tool_test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.tool_test" />
+        <item itemvalue="Python.tool_quickview" />
         <item itemvalue="Python.tool_defend_value-3" />
         <item itemvalue="Python.tool_defend" />
         <item itemvalue="Python.tool_copy" />
-        <item itemvalue="Python.tool_defend_patch" />
-        <item itemvalue="Python.tool_quickview" />
       </list>
     </recent_temporary>
   </component>
@@ -761,8 +786,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2193" height="1538" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="2193" height="1538" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32161275" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -822,8 +846,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600547_updated_2021-01-04.png" />
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600529_updated_2021-01-04.png" />
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600058_updated_2021-01-04.png" />
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2020-12-31.png" />
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600648_updated_2020-12-31.png" />
@@ -929,13 +951,6 @@
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="352">
           <caret line="16" column="59" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1055,17 +1070,6 @@
         <state relative-caret-position="-6666" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1298">
-          <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#182#3727#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2021-01-08.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1097,8 +1101,43 @@
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" column="95" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
+        <state relative-caret-position="462">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/hunts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="109" column="25" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#182#3727#0" />
+          </folding>
         </state>
       </provider>
     </entry>

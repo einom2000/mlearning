@@ -6,6 +6,7 @@ import winsound
 import keyboard
 import pandas as pd
 import pyautogui
+
 import tool_day_off_filter
 
 
@@ -43,7 +44,7 @@ def parse_csv():
         print('running in afternoon')
     else:
         sell_list_day = yesterday
-        buy_list_day = day_now  # should be day_now
+        buy_list_day = tomorrow  # should be day_now
         print('running in morning')
 
     buy_list = []
