@@ -1,0 +1,77 @@
+Vday_0 = 2020-12-11 
+Vday_0's adjclose = 18.52 
+T+1 2020-12-14 actual low at 18.5 
+T+1 2020-12-14 forecast low at 18.34 with 50.27 possibility & 18.43 with 62.64 
+T+2 2020-12-15 actual high at 18.85 
+T+2 2020-12-15 forecast high at 18.79 with 55.71 possibility & 18.7 with 67.66 
+T+2 2020-12-15 actual close at 18.74 
+Vday_0 = 2020-12-14 
+Vday_0's adjclose = 18.88 
+T+1 2020-12-15 actual low at 18.15 
+T+1 2020-12-15 forecast low at 18.64 with 55.84 possibility & 18.73 with 64.67 
+T+2 2020-12-16 actual high at 19.1 
+T+2 2020-12-16 forecast high at 19.3 with 71.88 possibility & 19.2 with 80.03 
+T+2 2020-12-16 actual close at 19.01 
+on 2020-12-15 buy 1000 of sz000001 at 18.64 
+Vday_0 = 2020-12-15 
+Vday_0's adjclose = 18.74 
+T+1 2020-12-16 actual low at 18.58 
+T+1 2020-12-16 forecast low at 18.26 with 66.03 possibility & 18.35 with 76.09 
+T+2 2020-12-17 actual high at 19.07 
+T+2 2020-12-17 forecast high at 18.77 with 45.38 possibility & 18.68 with 58.97 
+T+2 2020-12-17 actual close at 18.95 
+on 2020-12-17 sell 1000 of sz000001 at 18.68 
+----profit in total is 419.9999999999982 
+----stock on hand's value is 0.0 
+Vday_0 = 2020-12-16 
+Vday_0's adjclose = 19.01 
+T+1 2020-12-17 actual low at 18.6 
+T+1 2020-12-17 forecast low at 18.67 with 47.55 possibility & 18.76 with 62.64 
+T+2 2020-12-18 actual high at 19.1 
+T+2 2020-12-18 forecast high at 19.22 with 60.46 possibility & 19.12 with 71.2 
+T+2 2020-12-18 actual close at 18.36 
+on 2020-12-17 buy 1000 of sz000001 at 18.67 
+Vday_0 = 2020-12-17 
+Vday_0's adjclose = 18.95 
+T+1 2020-12-18 actual low at 18.23 
+T+1 2020-12-18 forecast low at 18.7 with 48.3 possibility & 18.79 with 62.01 
+T+2 2020-12-21 actual high at 18.64 
+T+2 2020-12-21 forecast high at 19.13 with 59.29 possibility & 19.03 with 66.62 
+T+2 2020-12-21 actual close at 18.28 
+on 2020-12-18 buy 1000 of sz000001 at 18.7 
+Vday_0 = 2020-12-18 
+Vday_0's adjclose = 18.36 
+T+1 2020-12-21 actual low at 18.03 
+T+1 2020-12-21 forecast low at 17.94 with 43.55 possibility & 18.03 with 51.02 
+T+2 2020-12-22 actual high at 18.65 
+T+2 2020-12-22 forecast high at 18.36 with 45.86 possibility & 18.27 with 53.87 
+T+2 2020-12-22 actual close at 17.9 
+on 2020-12-22 sell 1000 of sz000001 at 18.27 
+----profit in total is 749.9999999999965 
+----stock on hand's value is 17900.0 
+Vday_0 = 2020-12-21 
+Vday_0's adjclose = 18.28 
+T+1 2020-12-22 actual low at 17.88 
+T+1 2020-12-22 forecast low at 18.27 with 37.86 possibility & 18.36 with 55.36 
+T+2 2020-12-23 actual high at 18.07 
+T+2 2020-12-23 forecast high at 18.71 with 75.31 possibility & 18.62 with 81.82 
+T+2 2020-12-23 actual close at 18.0 
+on 2020-12-22 buy 1000 of sz000001 at 18.27 
+Vday_0 = 2020-12-22 
+Vday_0's adjclose = 17.9 
+T+1 2020-12-23 actual low at 17.79 
+T+1 2020-12-23 forecast low at 17.82 with 36.23 possibility & 17.91 with 47.63 
+T+2 2020-12-24 actual high at 18.49 
+T+2 2020-12-24 forecast high at 18.16 with 53.73 possibility & 18.07 with 64.45 
+T+2 2020-12-24 actual close at 18.26 
+on 2020-12-23 buy 1000 of sz000001 at 17.82 
+on 2020-12-24 sell 1000 of sz000001 at 18.07 
+----profit in total is 999.9999999999965 
+----stock on hand's value is 36520.0 
+Vday_0 = 2020-12-23 
+Vday_0's adjclose = 18.0 
+T+1 2020-12-24 actual low at 18.05 
+T+1 2020-12-24 forecast low at 17.95 with 32.43 possibility & 18.04 with 46.95 
+T+2 2020-12-25 actual high at 18.26 
+T+2 2020-12-25 forecast high at 18.48 with 70.83 possibility & 18.39 with 76.53 
+T+2 2020-12-25 actual close at 18.04 

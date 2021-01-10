@@ -1,0 +1,22 @@
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2020-12-30,1,23.552132,3.537701923050918e-05,7.721195190586149,50.923.6759.64
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2020-12-30,1,23.36649,3.36715966113843e-05,7.688521369490772,58.5323.4867.13
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2020-12-30,1,23.430227,3.3450294722570106e-05,7.660902956021018,54.5123.5563.52
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2020-12-30,1,23.515787,3.238452336518094e-05,7.692223842595704,42.7223.6353.4
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2020-12-31,1,24.132027,3.803596700890921e-05,7.761914231497794,46.7424.2556.31
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2021-01-04,1,24.262257,3.656786429928616e-05,7.740962728424929,51.8724.3860.75
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2021-01-05,1,24.703876,3.500915045151487e-05,7.699945286572911,49.6524.8359.5
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2021-01-05,1,24.41661,3.392389044165611e-05,7.704128309115767,55.6224.5464.77
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2021-01-06,1,24.47164,3.3058702683774754e-05,7.723341533276252,49.7924.5957.42
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2021-01-07,1,24.347725,3.3327345590805635e-05,7.711330452840775,58.7324.4766.2
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2021-01-08,1,23.8837,3.48908688465599e-05,7.702892020447179,50.6924.058.31

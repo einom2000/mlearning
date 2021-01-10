@@ -1,0 +1,4 @@
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2021-01-07,1,12.275813,9.679930371930823e-05,4.254370106556453,54.2312.3465.6
+forecast_day,days_in_future,T+1 lowest,LOSS,MAE,Reachabilitylow + 0.5%Reachability_2
+2021-01-08,1,13.428606,9.608617256162688e-05,4.26432466134429,55.5413.565.6

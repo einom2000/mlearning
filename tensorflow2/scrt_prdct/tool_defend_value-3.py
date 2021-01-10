@@ -21,10 +21,12 @@ while True:
         break
 
 stock_list = []
-stock_list.extend(['sh600030', 'sh600600', 'sh600648', 'sh600585', 'sh600529'])
-stock_list.extend(['sh600587', 'sh600685', 'sh600230', 'sh600655'])
-stock_list.extend(['sz002304', 'sh603589', 'sh600305', 'sh600058', 'sh600547', 'sz300778'])
-stock_list.extend(['sh600298', 'sh600211', 'sz002399', 'sz000729', 'sz002664'])
+stock_list.extend(['sh600030', 'sh600600', 'sh600648', 'sh600585', ])
+stock_list.extend([])
+stock_list.extend(['sh600587', 's h600685', 'sh600230', 'sh600655'])
+stock_list.extend(['sz002304', 'sh603589', 'sh600305', 'sh600058', 'sh600547', ])
+stock_list.extend(['sz300778','sh600298', 'sh600211', 'sz002399', 'sz000729', 'sz002664'])
+stock_list.extend(['sh600529'])
 
 lookup_codes = stock_list.copy()
 

@@ -1,0 +1,2 @@
+forecast_day,days_in_future,future_price,LOSS,MAE,Acc_buying_score,Acc_buying_failure,Total_buy_profit
+2021-01-04,5,8.98516,0.0005111774080432951,4.386223725993186,0.28313253012048195,0.7168674698795181,-94423.50952148439

@@ -1,0 +1,199 @@
+Vday_0 = 2020-11-13 
+Vday_0's adjclose = 9.36 
+T+1 2020-11-16 actual low at 9.37 
+T+1 2020-11-16 forecast low at 9.34 with 44.94 possibility & 9.39 with 57.76 
+T+2 2020-11-17 actual high at 9.53 
+T+2 2020-11-17 forecast high at 9.32 with 43.05 possibility & 9.27 with 57.22 
+T+2 2020-11-17 actual close at 9.53 
+Vday_0 = 2020-11-16 
+Vday_0's adjclose = 9.45 
+T+1 2020-11-17 actual low at 9.44 
+T+1 2020-11-17 forecast low at 9.44 with 36.44 possibility & 9.49 with 53.58 
+T+2 2020-11-18 actual high at 9.77 
+T+2 2020-11-18 forecast high at 9.53 with 57.35 possibility & 9.48 with 68.96 
+T+2 2020-11-18 actual close at 9.7 
+on 2020-11-17 buy 2000 of sh600000 at 9.44 
+on 2020-11-18 sell 2000 of sh600000 at 9.48 
+----profit in total is 80.00000000000185 
+----stock on hand's value is 0.0 
+Vday_0 = 2020-11-17 
+Vday_0's adjclose = 9.53 
+T+1 2020-11-18 actual low at 9.5 
+T+1 2020-11-18 forecast low at 9.53 with 42.24 possibility & 9.58 with 57.62 
+T+2 2020-11-19 actual high at 9.78 
+T+2 2020-11-19 forecast high at 9.6 with 58.3 possibility & 9.55 with 70.45 
+T+2 2020-11-19 actual close at 9.74 
+on 2020-11-18 buy 2000 of sh600000 at 9.53 
+on 2020-11-19 sell 2000 of sh600000 at 9.55 
+----profit in total is 120.00000000000455 
+----stock on hand's value is 0.0 
+Vday_0 = 2020-11-18 
+Vday_0's adjclose = 9.7 
+T+1 2020-11-19 actual low at 9.64 
+T+1 2020-11-19 forecast low at 9.62 with 42.18 possibility & 9.67 with 59.7 
+T+2 2020-11-20 actual high at 9.72 
+T+2 2020-11-20 forecast high at 9.68 with 42.72 possibility & 9.63 with 56.47 
+T+2 2020-11-20 actual close at 9.67 
+Vday_0 = 2020-11-19 
+Vday_0's adjclose = 9.74 
+T+1 2020-11-20 actual low at 9.61 
+T+1 2020-11-20 forecast low at 9.67 with 49.46 possibility & 9.72 with 64.29 
+T+2 2020-11-23 actual high at 9.92 
+T+2 2020-11-23 forecast high at 9.92 with 70.62 possibility & 9.87 with 77.49 
+T+2 2020-11-23 actual close at 9.9 
+on 2020-11-20 buy 2000 of sh600000 at 9.67 
+on 2020-11-23 sell 2000 of sh600000 at 9.87 
+----profit in total is 520.0000000000032 
+----stock on hand's value is 0.0 
+Vday_0 = 2020-11-20 
+Vday_0's adjclose = 9.67 
+T+1 2020-11-23 actual low at 9.63 
+T+1 2020-11-23 forecast low at 9.47 with 70.62 possibility & 9.52 with 78.84 
+T+2 2020-11-24 actual high at 9.97 
+T+2 2020-11-24 forecast high at 9.71 with 46.09 possibility & 9.66 with 60.24 
+T+2 2020-11-24 actual close at 9.85 
+Vday_0 = 2020-11-23 
+Vday_0's adjclose = 9.9 
+T+1 2020-11-24 actual low at 9.82 
+T+1 2020-11-24 forecast low at 9.78 with 68.06 possibility & 9.83 with 78.98 
+T+2 2020-11-25 actual high at 9.99 
+T+2 2020-11-25 forecast high at 9.97 with 54.85 possibility & 9.92 with 69.14 
+T+2 2020-11-25 actual close at 9.81 
+Vday_0 = 2020-11-24 
+Vday_0's adjclose = 9.85 
+T+1 2020-11-25 actual low at 9.81 
+T+1 2020-11-25 forecast low at 9.73 with 53.37 possibility & 9.78 with 67.92 
+T+2 2020-11-26 actual high at 9.99 
+T+2 2020-11-26 forecast high at 9.95 with 62.13 possibility & 9.9 with 72.91 
+T+2 2020-11-26 actual close at 9.98 
+Vday_0 = 2020-11-25 
+Vday_0's adjclose = 9.81 
+T+1 2020-11-26 actual low at 9.76 
+T+1 2020-11-26 forecast low at 9.82 with 40.78 possibility & 9.87 with 55.32 
+T+2 2020-11-27 actual high at 10.2 
+T+2 2020-11-27 forecast high at 10.01 with 70.79 possibility & 9.96 with 78.6 
+T+2 2020-11-27 actual close at 10.2 
+on 2020-11-26 buy 2000 of sh600000 at 9.82 
+on 2020-11-27 sell 2000 of sh600000 at 9.96 
+----profit in total is 800.0000000000043 
+----stock on hand's value is 0.0 
+Vday_0 = 2020-11-26 
+Vday_0's adjclose = 9.98 
+T+1 2020-11-27 actual low at 9.96 
+T+1 2020-11-27 forecast low at 9.82 with 56.26 possibility & 9.87 with 69.99 
+T+2 2020-11-30 actual high at 10.53 
+T+2 2020-11-30 forecast high at 10.05 with 62.58 possibility & 10.0 with 72.81 
+T+2 2020-11-30 actual close at 10.06 
+Vday_0 = 2020-11-27 
+Vday_0's adjclose = 10.2 
+T+1 2020-11-30 actual low at 10.06 
+T+1 2020-11-30 forecast low at 10.05 with 45.9 possibility & 10.1 with 64.06 
+T+2 2020-12-01 actual high at 10.35 
+T+2 2020-12-01 forecast high at 10.31 with 58.95 possibility & 10.26 with 70.93 
+T+2 2020-12-01 actual close at 10.3 
+Vday_0 = 2020-11-30 
+Vday_0's adjclose = 10.06 
+T+1 2020-12-01 actual low at 10.01 
+T+1 2020-12-01 forecast low at 10.05 with 36.07 possibility & 10.1 with 56.93 
+T+2 2020-12-02 actual high at 10.39 
+T+2 2020-12-02 forecast high at 10.29 with 61.24 possibility & 10.24 with 72.68 
+T+2 2020-12-02 actual close at 10.25 
+on 2020-12-01 buy 2000 of sh600000 at 10.05 
+on 2020-12-02 sell 2000 of sh600000 at 10.24 
+----profit in total is 1180.0000000000032 
+----stock on hand's value is 0.0 
+Vday_0 = 2020-12-01 
+Vday_0's adjclose = 10.3 
+T+1 2020-12-02 actual low at 10.19 
+T+1 2020-12-02 forecast low at 10.26 with 35.8 possibility & 10.31 with 53.16 
+T+2 2020-12-03 actual high at 10.28 
+T+2 2020-12-03 forecast high at 10.52 with 54.1 possibility & 10.47 with 67.43 
+T+2 2020-12-03 actual close at 10.24 
+on 2020-12-02 buy 2000 of sh600000 at 10.26 
+Vday_0 = 2020-12-02 
+Vday_0's adjclose = 10.25 
+T+1 2020-12-03 actual low at 10.16 
+T+1 2020-12-03 forecast low at 10.03 with 76.48 possibility & 10.08 with 84.14 
+T+2 2020-12-04 actual high at 10.25 
+T+2 2020-12-04 forecast high at 10.46 with 71.91 possibility & 10.41 with 77.96 
+T+2 2020-12-04 actual close at 10.17 
+Vday_0 = 2020-12-03 
+Vday_0's adjclose = 10.24 
+T+1 2020-12-04 actual low at 10.05 
+T+1 2020-12-04 forecast low at 10.09 with 51.61 possibility & 10.14 with 66.13 
+T+2 2020-12-07 actual high at 10.17 
+T+2 2020-12-07 forecast high at 10.38 with 55.51 possibility & 10.33 with 68.55 
+T+2 2020-12-07 actual close at 9.99 
+on 2020-12-04 buy 2000 of sh600000 at 10.09 
+Vday_0 = 2020-12-04 
+Vday_0's adjclose = 10.17 
+T+1 2020-12-07 actual low at 9.9 
+T+1 2020-12-07 forecast low at 10.03 with 62.77 possibility & 10.08 with 76.75 
+T+2 2020-12-08 actual high at 10.06 
+T+2 2020-12-08 forecast high at 10.26 with 51.61 possibility & 10.21 with 65.19 
+T+2 2020-12-08 actual close at 9.98 
+on 2020-12-07 buy 2000 of sh600000 at 10.03 
+Vday_0 = 2020-12-07 
+Vday_0's adjclose = 9.99 
+T+1 2020-12-08 actual low at 9.93 
+T+1 2020-12-08 forecast low at 9.94 with 45.83 possibility & 9.99 with 63.31 
+T+2 2020-12-09 actual high at 10.09 
+T+2 2020-12-09 forecast high at 10.06 with 51.08 possibility & 10.01 with 65.59 
+T+2 2020-12-09 actual close at 9.91 
+on 2020-12-08 buy 2000 of sh600000 at 9.94 
+on 2020-12-09 sell 2000 of sh600000 at 10.01 
+----profit in total is 1320.0000000000036 
+----stock on hand's value is 59460.0 
+Vday_0 = 2020-12-08 
+Vday_0's adjclose = 9.98 
+T+1 2020-12-09 actual low at 9.91 
+T+1 2020-12-09 forecast low at 9.93 with 44.22 possibility & 9.98 with 59.41 
+T+2 2020-12-10 actual high at 9.96 
+T+2 2020-12-10 forecast high at 10.08 with 59.14 possibility & 10.03 with 72.58 
+T+2 2020-12-10 actual close at 9.82 
+on 2020-12-09 buy 2000 of sh600000 at 9.93 
+Vday_0 = 2020-12-09 
+Vday_0's adjclose = 9.91 
+T+1 2020-12-10 actual low at 9.76 
+T+1 2020-12-10 forecast low at 9.89 with 43.76 possibility & 9.94 with 61.61 
+T+2 2020-12-11 actual high at 9.88 
+T+2 2020-12-11 forecast high at 9.99 with 44.03 possibility & 9.94 with 61.48 
+T+2 2020-12-11 actual close at 9.7 
+on 2020-12-10 buy 2000 of sh600000 at 9.89 
+Vday_0 = 2020-12-10 
+Vday_0's adjclose = 9.82 
+T+1 2020-12-11 actual low at 9.69 
+T+1 2020-12-11 forecast low at 9.74 with 59.46 possibility & 9.79 with 73.42 
+T+2 2020-12-14 actual high at 9.8 
+T+2 2020-12-14 forecast high at 9.93 with 53.02 possibility & 9.88 with 69.8 
+T+2 2020-12-14 actual close at 9.75 
+on 2020-12-11 buy 2000 of sh600000 at 9.74 
+Vday_0 = 2020-12-11 
+Vday_0's adjclose = 9.7 
+T+1 2020-12-14 actual low at 9.68 
+T+1 2020-12-14 forecast low at 9.74 with 39.06 possibility & 9.79 with 52.08 
+T+2 2020-12-15 actual high at 9.74 
+T+2 2020-12-15 forecast high at 9.69 with 36.51 possibility & 9.64 with 53.96 
+T+2 2020-12-15 actual close at 9.71 
+on 2020-12-14 buy 2000 of sh600000 at 9.74 
+on 2020-12-15 sell 2000 of sh600000 at 9.64 
+----profit in total is 1120.0000000000043 
+----stock on hand's value is 116520.00000000001 
+Vday_0 = 2020-12-14 
+Vday_0's adjclose = 9.75 
+T+1 2020-12-15 actual low at 9.6 
+T+1 2020-12-15 forecast low at 9.81 with 35.84 possibility & 9.86 with 49.93 
+T+2 2020-12-16 actual high at 9.78 
+T+2 2020-12-16 forecast high at 9.85 with 51.41 possibility & 9.8 with 67.38 
+T+2 2020-12-16 actual close at 9.65 
+on 2020-12-15 buy 2000 of sh600000 at 9.81 
+Vday_0 = 2020-12-15 
+Vday_0's adjclose = 9.71 
+T+1 2020-12-16 actual low at 9.64 
+T+1 2020-12-16 forecast low at 9.63 with 55.17 possibility & 9.68 with 69.66 
+T+2 2020-12-17 actual high at 9.79 
+T+2 2020-12-17 forecast high at 9.75 with 54.9 possibility & 9.7 with 67.92 
+T+2 2020-12-17 actual close at 9.77 
+on 2020-12-17 sell 2000 of sh600000 at 9.7 
+----profit in total is 1260.0000000000014 
+----stock on hand's value is 117240.0 

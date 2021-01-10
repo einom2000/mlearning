@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d2352cb-0e00-4df2-a8ae-efdbd274ed79" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="mlearning" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="tool_defend.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1298">
+              <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#182#3727#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DDD_2021-01-11_t1_2_decision_buy.csv" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv">
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="440">
+              <caret line="20" column="95" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find />
+      <find>dif</find>
+      <find>pirit</find>
+      <find>_test</find>
+      <find>BATCH_SIZE</find>
+      <find>predict</find>
+      <find>-1</find>
+      <find>9999</find>
+      <find>str</find>
+      <find>from</find>
+      <find>after</find>
+      <find>date_now</find>
+      <find>time.s</find>
+      <find>get</find>
+      <find>time</find>
+      <find>600030</find>
+      <find>aft</find>
+      <find>T+2</find>
+      <find>date</find>
+      <find>day_2</find>
+      <find>time.</find>
+      <find>get_t_1_and_2</find>
+      <find>datetime</find>
+      <find>plot</find>
+      <find>n_steps</find>
+      <find>total</find>
+      <find>plot_graph</find>
+      <find>sh</find>
+      <find>600655</find>
+      <find>TTT_{date_now}_t1_2_forecast.csv</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/check.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/original.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/copies.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/2020-12-24_15_forecast.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/2020-12-24_10_forecast.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tmp.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/JQuant/test.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/test.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/remove_file.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/JQuant/get_index_comps.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/csv-original/sh600030_2020-12-25.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/test.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/csv-original/test.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/csv-original/sh600030_2020-12-27.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/memo_sh600030_v2.txt" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-28_t1_2_decision_buy_test.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/temp.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-28_t1_2_decision.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-28_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-29_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-30_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-01_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/0000_TODO" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-holidays.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/collects.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/defends.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/hunts.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/collects_2dlow.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/day_to_csv.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_get_per_of_300.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_patch.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_gate_sample.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_day_off_filter.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-2.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/LTSM/tutorial.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-04_t1_2_decision_buy11.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-31_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_temp.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-04_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/000_test.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_decision_keyin.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-05_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-06_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-07_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_copy.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1073" />
+    <option name="y" value="231" />
+    <option name="width" value="700" />
+    <option name="height" value="589" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="mlearning" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mlearning" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mlearning" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mlearning" type="462c0819:PsiDirectoryNode" />
+              <item name="tensorflow2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mlearning" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mlearning" type="462c0819:PsiDirectoryNode" />
+              <item name="tensorflow2" type="462c0819:PsiDirectoryNode" />
+              <item name="LTSM" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mlearning" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mlearning" type="462c0819:PsiDirectoryNode" />
+              <item name="tensorflow2" type="462c0819:PsiDirectoryNode" />
+              <item name="scrt_prdct" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../local_project/hsiftxt" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\einom\PycharmProjects\mlearning\tensorflow2\scrt_prdct\csv-original" />
+      <recent name="C:\Users\einom\PycharmProjects\mlearning\advanced_tutorial\networking\bin" />
+      <recent name="C:\Users\einom\PycharmProjects\mlearning\advanced_tutorial" />
+      <recent name="C:\Users\einom\PycharmProjects\mlearning" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\einom\PycharmProjects\mlearning\tensorflow2\scrt_prdct" />
+      <recent name="C:\Users\einom\PycharmProjects\mlearning\tensorflow2\scrt_prdct\decision_back" />
+      <recent name="C:\Users\einom\PycharmProjects\mlearning\tensorflow2\scrt_prdct\csv-original" />
+      <recent name="C:\Users\einom\PycharmProjects\mlearning\tensorflow2\scrt_prdct\data" />
+      <recent name="C:\Users\einom\PycharmProjects\mlearning\Matplotlib" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.tool_defend_value-3">
+    <configuration name="KNN" type="PythonConfigurationType" factoryName="Python">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\ProgramData\Anaconda3\envs\tensor\pythonw.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/KNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="math_daily_v4.0" type="PythonConfigurationType" factoryName="Python">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baihua_test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baihua_test/math_daily_v4.0.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="tmp" type="PythonConfigurationType" factoryName="Python">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\einom\PycharmProjects\mlearning\tensorflow2\scrt_prdct\tool_get_per_of_300.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="tool_copy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_copy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="tool_decision_keyin" type="PythonConfigurationType" factoryName="Python">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_decision_keyin.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="tool_defend" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="tool_defend_patch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_patch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="tool_defend_value-3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="tool_quickview" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mlearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow2/scrt_prdct" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.tmp" />
+      <item itemvalue="Python.math_daily_v4.0" />
+      <item itemvalue="Python.KNN" />
+      <item itemvalue="Python.tool_decision_keyin" />
+      <item itemvalue="Python.tool_defend_value-3" />
+      <item itemvalue="Python.tool_quickview" />
+      <item itemvalue="Python.tool_defend" />
+      <item itemvalue="Python.tool_defend_patch" />
+      <item itemvalue="Python.tool_copy" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.tool_defend_value-3" />
+        <item itemvalue="Python.tool_defend" />
+        <item itemvalue="Python.tool_copy" />
+        <item itemvalue="Python.tool_defend_patch" />
+        <item itemvalue="Python.tool_quickview" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d2352cb-0e00-4df2-a8ae-efdbd274ed79" name="Default" comment="" />
+      <created>1557986112833</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557986112833</updated>
+    </task>
+    <task id="LOCAL-00067" summary="&#10;111">
+      <created>1575617474949</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1575617474950</updated>
+    </task>
+    <task id="LOCAL-00068" summary="&#10;111">
+      <created>1575619838609</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1575619838609</updated>
+    </task>
+    <task id="LOCAL-00069" summary="&#10;111">
+      <created>1575691223254</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1575691223254</updated>
+    </task>
+    <task id="LOCAL-00070" summary="&#10;111">
+      <created>1576048440386</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1576048440387</updated>
+    </task>
+    <task id="LOCAL-00071" summary="&#10;111">
+      <created>1576723477321</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1576723477321</updated>
+    </task>
+    <task id="LOCAL-00072" summary="&#10;111">
+      <created>1577448832025</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1577448832026</updated>
+    </task>
+    <task id="LOCAL-00073" summary="&#10;111">
+      <created>1577449287885</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1577449287886</updated>
+    </task>
+    <task id="LOCAL-00074" summary="&#10;111">
+      <created>1577780446909</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1577780446910</updated>
+    </task>
+    <task id="LOCAL-00075" summary="&#10;111">
+      <created>1577935724928</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1577935724928</updated>
+    </task>
+    <task id="LOCAL-00076" summary="&#10;111">
+      <created>1579162362878</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1579162362879</updated>
+    </task>
+    <task id="LOCAL-00077" summary="&#10;111">
+      <created>1581673278442</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1581673278442</updated>
+    </task>
+    <task id="LOCAL-00078" summary="&#10;111">
+      <created>1582718570298</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1582718570299</updated>
+    </task>
+    <task id="LOCAL-00079" summary="&#10;111">
+      <created>1582728755335</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1582728755335</updated>
+    </task>
+    <task id="LOCAL-00080" summary="&#10;111">
+      <created>1582729289768</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1582729289768</updated>
+    </task>
+    <task id="LOCAL-00081" summary="&#10;111">
+      <created>1585015265697</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1585015265698</updated>
+    </task>
+    <task id="LOCAL-00082" summary="&#10;111">
+      <created>1586940756949</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1586940756950</updated>
+    </task>
+    <task id="LOCAL-00083" summary="&#10;111">
+      <created>1586940779231</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1586940779231</updated>
+    </task>
+    <task id="LOCAL-00084" summary="&#10;111">
+      <created>1586941601820</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1586941601820</updated>
+    </task>
+    <task id="LOCAL-00085" summary="&#10;111">
+      <created>1587351546677</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1587351546678</updated>
+    </task>
+    <task id="LOCAL-00086" summary="&#10;111">
+      <created>1587714764217</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1587714764217</updated>
+    </task>
+    <task id="LOCAL-00087" summary="&#10;111">
+      <created>1587720342579</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1587720342579</updated>
+    </task>
+    <task id="LOCAL-00088" summary="&#10;111">
+      <created>1587725009519</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1587725009519</updated>
+    </task>
+    <task id="LOCAL-00089" summary="&#10;111">
+      <created>1588570020768</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1588570020769</updated>
+    </task>
+    <task id="LOCAL-00090" summary="&#10;111">
+      <created>1589969526015</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1589969526015</updated>
+    </task>
+    <task id="LOCAL-00091" summary="&#10;111">
+      <created>1589970236260</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1589970236260</updated>
+    </task>
+    <task id="LOCAL-00092" summary="&#10;111">
+      <created>1589970319506</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1589970319506</updated>
+    </task>
+    <task id="LOCAL-00093" summary="&#10;111">
+      <created>1595512784015</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1595512784016</updated>
+    </task>
+    <task id="LOCAL-00094" summary="&#10;111">
+      <created>1595673040404</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1595673040405</updated>
+    </task>
+    <task id="LOCAL-00095" summary="&#10;111">
+      <created>1595752058833</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1595752058834</updated>
+    </task>
+    <task id="LOCAL-00096" summary="&#10;111">
+      <created>1595752485400</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1595752485400</updated>
+    </task>
+    <task id="LOCAL-00097" summary="&#10;111">
+      <created>1596347005168</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1596347005169</updated>
+    </task>
+    <task id="LOCAL-00098" summary="&#10;111">
+      <created>1596347006177</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1596347006177</updated>
+    </task>
+    <task id="LOCAL-00099" summary="&#10;111">
+      <created>1596347094761</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1596347094761</updated>
+    </task>
+    <task id="LOCAL-00100" summary="&#10;111">
+      <created>1607856272319</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1607856272320</updated>
+    </task>
+    <task id="LOCAL-00101" summary="&#10;111">
+      <created>1608387711640</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1608387711641</updated>
+    </task>
+    <task id="LOCAL-00102" summary="&#10;111">
+      <created>1608550858145</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1608550858146</updated>
+    </task>
+    <task id="LOCAL-00103" summary="&#10;111">
+      <created>1608551361483</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1608551361483</updated>
+    </task>
+    <task id="LOCAL-00104" summary="&#10;111">
+      <created>1608654542435</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1608654542436</updated>
+    </task>
+    <task id="LOCAL-00105" summary="&#10;111">
+      <created>1608866237520</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1608866237521</updated>
+    </task>
+    <task id="LOCAL-00106" summary="&#10;111">
+      <created>1608870052074</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1608870052074</updated>
+    </task>
+    <task id="LOCAL-00107" summary="&#10;111">
+      <created>1608945033682</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1608945033683</updated>
+    </task>
+    <task id="LOCAL-00108" summary="&#10;111">
+      <created>1608949121012</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1608949121012</updated>
+    </task>
+    <task id="LOCAL-00109" summary="&#10;111">
+      <created>1609026215142</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1609026215142</updated>
+    </task>
+    <task id="LOCAL-00110" summary="&#10;111">
+      <created>1609078856014</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1609078856015</updated>
+    </task>
+    <task id="LOCAL-00111" summary="&#10;111">
+      <created>1609200029486</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1609200029487</updated>
+    </task>
+    <task id="LOCAL-00112" summary="&#10;111">
+      <created>1609227971455</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1609227971455</updated>
+    </task>
+    <task id="LOCAL-00113" summary="&#10;111">
+      <created>1609312157748</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1609312157749</updated>
+    </task>
+    <task id="LOCAL-00114" summary="&#10;111">
+      <created>1609396030591</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1609396030591</updated>
+    </task>
+    <task id="LOCAL-00115" summary="&#10;111">
+      <created>1610090855090</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1610090855091</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="2193" height="1538" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32161275" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="LuaJ" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5107239" side_tool="true" weight="0.83013296" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4995847" weight="0.32946634" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48927614" visible="true" weight="0.42743105" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3295562" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49971315" weight="0.39262062" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="ExcelReader" order="11" weight="0.32923368" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49959216" weight="0.32734153" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="ExcelReader" order="11" weight="0.32923368" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.41215107" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4995847" weight="0.32946634" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48927614" visible="true" weight="0.494133" />
+      <window_info anchor="right" id="LuaJ" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49971315" weight="0.39262062" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3295562" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5107239" side_tool="true" weight="0.83013296" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32954547" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49959216" weight="0.32734153" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="qq" />
+    <MESSAGE value="&#10;lkk" />
+    <MESSAGE value="&#10;111" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;111" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600547_updated_2021-01-04.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600529_updated_2021-01-04.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600058_updated_2021-01-04.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2020-12-31.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600648_updated_2020-12-31.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600648_updated_2021-01-04.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2021-01-04.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/remove_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/000_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="409" column="39" selection-start-line="409" selection-start-column="39" selection-end-line="409" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_day_off_filter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1474">
+          <caret line="71" column="1" lean-forward="true" selection-start-line="71" selection-start-column="1" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600058_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600587_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600585_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600600_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-28_t1_2_decision_buy.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="64" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-31_t1_2_decision_buy.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="44">
+          <caret line="10" column="73" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-04_t1_2_decision_buy.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="97" selection-start-line="10" selection-start-column="97" selection-end-line="10" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600648_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_decision_keyin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-06_t1_2_decision_buy.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="20">
+          <caret line="36" column="58" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-08_t1_2_decision_buy.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-05_t1_2_decision_buy.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="59" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_copy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_patch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2332">
+          <caret line="115" column="43" selection-start-line="115" selection-start-column="43" selection-end-line="115" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/csv-original/sh600058_2021-01-08.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-80101" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/csv-original/sh600058_2021-01-06.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-80057" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="265">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-07_t1_2_decision_buy.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="46" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/TTT_2021-01-07_t1_2_forecast.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/TTT_2021-01-08_t1_2_forecast.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600685_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600529_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600547_updated_2021-01-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600585_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600547_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600529_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600305_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600298_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600230_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600211_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_s h600685_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/defends.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6666" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1298">
+          <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#182#3727#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy_2070.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600058_updated_2021-01-08.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-holidays.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="95" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -114,10 +114,12 @@ tool_defend_patch.patch()
 
 # 601211, 601319, 601328, 601390, 601727
 stock_list = []
-stock_list.extend(['sh600030', 'sh600600', 'sh600648', 'sh600585', 'sh600529'])
-stock_list.extend(['sh600587', 'sh600685', 'sh600230', 'sh600655'])
-stock_list.extend(['sz002304', 'sh603589', 'sh600305', 'sh600058', 'sh600547', 'sz300778'])
-stock_list.extend(['sh600298', 'sh600211', 'sz002399', 'sz000729', 'sz002664'])
+stock_list.extend(['sh600030', 'sh600600', 'sh600648', 'sh600585', ])
+stock_list.extend([])
+stock_list.extend(['sh600587', 's h600685', 'sh600230', 'sh600655'])
+stock_list.extend(['sz002304', 'sh603589', 'sh600305', 'sh600058', 'sh600547', ])
+stock_list.extend(['sz300778','sh600298', 'sh600211', 'sz002399', 'sz000729', 'sz002664'])
+stock_list.extend(['sh600529'])
 print(stock_list)
 
 date_now = tool_day_off_filter.get_date_now()
@@ -157,7 +159,7 @@ for ticker in stock_list:
     t2_2_high = t2_high * .995
     day_1 = tool_day_off_filter.get_first_working_day(date_now, delta=1)
     day_2 = tool_day_off_filter.get_first_working_day(date_now, delta=2)
-    columes_buy = ['stock', 'act_day', 'act', 'target_price', 'sell_day', 'T2-sell', 'gain_percent',
+    columes_buy = ['stock', 'act_day', 'act', 'target_price', 'reach1', 'sell_day', 'T2-sell', 'reach2', 'gain_percent',
                    'act_low', 'act_high', 'buy', 'at_price', 'EPOCH_R']
     if not os.path.isfile(f'DDD_{day_1}_t1_2_decision_buy.csv'):
         df1 = pd.DataFrame(columns=columes_buy)
@@ -170,8 +172,10 @@ for ticker in stock_list:
                 'act_day': day_1,
                 'act': 'buy',
                 'target_price': t1_low,
+                'reach1': rch_1,
                 'sell_day': day_2,
                 'T2-sell': t2_2_high,
+                'reach2': rch2_2,
                 'gain_percent': round((t2_2_high - t1_low) / t1_low, 2),
                 'act_low': 0,
                 'act_high': 0,

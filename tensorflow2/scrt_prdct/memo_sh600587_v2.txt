@@ -1,0 +1,677 @@
+[[1000, 0.0, 1]]
+Vday_0 = 2020-11-16 
+Vday_0's adjclose = 16.07 
+T+1 2020-11-17 actual low at 15.75 
+T+1 2020-11-17 forecast low at 15.93 with 60.5 possibility 
+T+2 2020-11-18 forecast high at 16.24 with 72.93 
+T+2 2020-11-18 actual high at 15.97 
+above with spirits of 1 & 1  & 1
+T+2 2020-11-18 actual close at 15.85 
+on 2020-11-17 buy 1000 at 15.93 
+----profit in total is 0 
+----stock on hand's value is 15930.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 1]]
+working on [1000, 15.93, 1]on day2020-11-18
+what it the else I forget? 
+----profit in total is 0 
+----stock on hand's value is 15930.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 2]]
+Vday_0 = 2020-11-17 
+Vday_0's adjclose = 15.85 
+T+1 2020-11-18 actual low at 15.78 
+T+1 2020-11-18 forecast low at 15.58 with 63.12 possibility 
+T+2 2020-11-19 forecast high at 15.9 with 61.88 
+T+2 2020-11-19 actual high at 15.85 
+above with spirits of 1 & 1  & 1
+T+2 2020-11-19 actual close at 15.69 
+Good Margin but T1low is not reachable by 0.2. 
+working on [1000, 15.93, 2]on day2020-11-19
+BAD FORECAST on 2020-11-19 with supposed selling at 15.9 but failed by 0.05 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 2]]
+----profit in total is 0 
+----stock on hand's value is 15930.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 3]]
+Vday_0 = 2020-11-18 
+Vday_0's adjclose = 15.85 
+T+1 2020-11-19 actual low at 15.61 
+T+1 2020-11-19 forecast low at 15.66 with 62.76 possibility 
+T+2 2020-11-20 forecast high at 15.98 with 66.34 
+T+2 2020-11-20 actual high at 15.73 
+above with spirits of 1 & 1  & 1
+T+2 2020-11-20 actual close at 15.54 
+on 2020-11-19 buy 1000 at 15.66 
+----profit in total is 0 
+----stock on hand's value is 31590.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 3], [1000, 15.66, 1]]
+working on [1000, 15.93, 3]on day2020-11-20
+clearing on [1000, 15.93, 3]on day2020-11-19
+cant cut on 2020-11-20 at with the actual high at 15.73, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 4], [1000, 15.66, 1]]
+working on [1000, 15.66, 1]on day2020-11-20
+what it the else I forget? 
+----profit in total is 0 
+----stock on hand's value is 31590.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 5], [1000, 15.66, 2]]
+Vday_0 = 2020-11-19 
+Vday_0's adjclose = 15.69 
+T+1 2020-11-20 actual low at 15.46 
+T+1 2020-11-20 forecast low at 15.42 with 66.48 possibility 
+T+2 2020-11-23 forecast high at 15.77 with 72.55 
+T+2 2020-11-23 actual high at 15.65 
+above with spirits of 1 & 1  & 1
+T+2 2020-11-23 actual close at 15.57 
+Good Margin but T1low is not reachable by 0.04. 
+working on [1000, 15.93, 5]on day2020-11-23
+clearing on [1000, 15.93, 5]on day2020-11-20
+cant cut on 2020-11-23 at with the actual high at 15.65, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 6], [1000, 15.66, 2]]
+working on [1000, 15.66, 2]on day2020-11-23
+BAD FORECAST on 2020-11-23 with supposed selling at 15.77 but failed by 0.12 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 7], [1000, 15.66, 2]]
+----profit in total is 0 
+----stock on hand's value is 31590.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 7], [1000, 15.66, 3]]
+Vday_0 = 2020-11-20 
+Vday_0's adjclose = 15.54 
+T+1 2020-11-23 actual low at 15.41 
+T+1 2020-11-23 forecast low at 15.17 with 68.41 possibility 
+T+2 2020-11-24 forecast high at 15.5 with 72.41 
+T+2 2020-11-24 actual high at 15.73 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-11-24 actual close at 15.73 
+Good Margin but T1low is not reachable by 0.24. 
+working on [1000, 15.93, 7]on day2020-11-24
+clearing on [1000, 15.93, 7]on day2020-11-23
+cant cut on 2020-11-24 at with the actual high at 15.73, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 8], [1000, 15.66, 3]]
+working on [1000, 15.66, 3]on day2020-11-24
+clearing on [1000, 15.66, 3]on day2020-11-23
+cuttting price 15.71 
+on 2020-11-24 cutting stock 1000 of sh600587 at 15.71
+----profit in total is 50.0 
+----stock on hand's value is 31590.0 
+pop trade... 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 9]]
+----profit in total is 50.0 
+----stock on hand's value is 15930.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 9]]
+Vday_0 = 2020-11-23 
+Vday_0's adjclose = 15.57 
+T+1 2020-11-24 actual low at 15.51 
+T+1 2020-11-24 forecast low at 15.32 with 66.76 possibility 
+T+2 2020-11-25 forecast high at 15.56 with 56.28 
+T+2 2020-11-25 actual high at 15.75 
+above with spirits of 1 & 1  & 1
+T+2 2020-11-25 actual close at 15.47 
+Good Margin but T1low is not reachable by 0.19. 
+working on [1000, 15.93, 9]on day2020-11-25
+clearing on [1000, 15.93, 9]on day2020-11-24
+cant cut on 2020-11-25 at with the actual high at 15.75, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 10]]
+----profit in total is 50.0 
+----stock on hand's value is 15930.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 11]]
+Vday_0 = 2020-11-24 
+Vday_0's adjclose = 15.73 
+T+1 2020-11-25 actual low at 15.47 
+T+1 2020-11-25 forecast low at 15.68 with 46.21 possibility 
+T+2 2020-11-26 forecast high at 15.86 with 54.9 
+T+2 2020-11-26 actual high at 15.55 
+above with spirits of 1.005 & 1  & 1
+T+2 2020-11-26 actual close at 15.24 
+on 2020-11-25 buy 1000 at 15.68 
+----profit in total is 50.0 
+----stock on hand's value is 31610.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 11], [1000, 15.68, 1]]
+working on [1000, 15.93, 11]on day2020-11-26
+clearing on [1000, 15.93, 11]on day2020-11-25
+cant cut on 2020-11-26 at with the actual high at 15.55, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 12], [1000, 15.68, 1]]
+working on [1000, 15.68, 1]on day2020-11-26
+BAD FORECAST on 2020-11-26 with supposed selling at 15.86 but failed by 0.31 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 13], [1000, 15.68, 1]]
+----profit in total is 50.0 
+----stock on hand's value is 31610.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 13], [1000, 15.68, 2]]
+Vday_0 = 2020-11-25 
+Vday_0's adjclose = 15.47 
+T+1 2020-11-26 actual low at 15.21 
+T+1 2020-11-26 forecast low at 15.28 with 59.5 possibility 
+T+2 2020-11-27 forecast high at 15.62 with 65.7 
+T+2 2020-11-27 actual high at 15.38 
+above with spirits of 1 & 1  & 1
+T+2 2020-11-27 actual close at 15.23 
+on 2020-11-26 buy 1000 at 15.28 
+----profit in total is 50.0 
+----stock on hand's value is 46890.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 13], [1000, 15.68, 2], [1000, 15.28, 1]]
+working on [1000, 15.93, 13]on day2020-11-27
+clearing on [1000, 15.93, 13]on day2020-11-26
+cant cut on 2020-11-27 at with the actual high at 15.38, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 14], [1000, 15.68, 2], [1000, 15.28, 1]]
+working on [1000, 15.68, 2]on day2020-11-27
+BAD FORECAST on 2020-11-27 with supposed selling at 15.62 but failed by 0.24 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 15], [1000, 15.68, 2], [1000, 15.28, 1]]
+working on [1000, 15.28, 1]on day2020-11-27
+what it the else I forget? 
+----profit in total is 50.0 
+----stock on hand's value is 46890.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 15], [1000, 15.68, 3], [1000, 15.28, 2]]
+Vday_0 = 2020-11-26 
+Vday_0's adjclose = 15.24 
+T+1 2020-11-27 actual low at 15.13 
+T+1 2020-11-27 forecast low at 15.0 with 58.68 possibility 
+T+2 2020-11-30 forecast high at 15.36 with 66.94 
+T+2 2020-11-30 actual high at 15.23 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-11-30 actual close at 15.11 
+Good Margin but T1low is not reachable by 0.13. 
+working on [1000, 15.93, 15]on day2020-11-30
+clearing on [1000, 15.93, 15]on day2020-11-27
+cant cut on 2020-11-30 at with the actual high at 15.23, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 16], [1000, 15.68, 3], [1000, 15.28, 2]]
+working on [1000, 15.68, 3]on day2020-11-30
+clearing on [1000, 15.68, 3]on day2020-11-27
+cant cut on 2020-11-30 at with the actual high at 15.23, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 17], [1000, 15.68, 4], [1000, 15.28, 2]]
+working on [1000, 15.28, 2]on day2020-11-30
+BAD FORECAST on 2020-11-30 with supposed selling at 15.36 but failed by 0.13 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 17], [1000, 15.68, 5], [1000, 15.28, 2]]
+----profit in total is 50.0 
+----stock on hand's value is 46890.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 17], [1000, 15.68, 5], [1000, 15.28, 3]]
+Vday_0 = 2020-11-27 
+Vday_0's adjclose = 15.23 
+T+1 2020-11-30 actual low at 15.06 
+T+1 2020-11-30 forecast low at 15.0 with 54.55 possibility 
+T+2 2020-12-01 forecast high at 15.25 with 59.78 
+T+2 2020-12-01 actual high at 15.31 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-12-01 actual close at 15.25 
+Good Margin but T1low is not reachable by 0.06. 
+working on [1000, 15.93, 17]on day2020-12-01
+clearing on [1000, 15.93, 17]on day2020-11-30
+cant cut on 2020-12-01 at with the actual high at 15.31, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 18], [1000, 15.68, 5], [1000, 15.28, 3]]
+working on [1000, 15.68, 5]on day2020-12-01
+clearing on [1000, 15.68, 5]on day2020-11-30
+cant cut on 2020-12-01 at with the actual high at 15.31, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 19], [1000, 15.68, 6], [1000, 15.28, 3]]
+working on [1000, 15.28, 3]on day2020-12-01
+clearing on [1000, 15.28, 3]on day2020-11-30
+cant cut on 2020-12-01 at with the actual high at 15.31, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 19], [1000, 15.68, 7], [1000, 15.28, 4]]
+----profit in total is 50.0 
+----stock on hand's value is 46890.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 19], [1000, 15.68, 7], [1000, 15.28, 5]]
+Vday_0 = 2020-11-30 
+Vday_0's adjclose = 15.11 
+T+1 2020-12-01 actual low at 15.14 
+T+1 2020-12-01 forecast low at 14.94 with 50.14 possibility 
+T+2 2020-12-02 forecast high at 15.15 with 59.64 
+T+2 2020-12-02 actual high at 15.37 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-12-02 actual close at 15.35 
+Good Margin but T1low is not reachable by 0.2. 
+working on [1000, 15.93, 19]on day2020-12-02
+clearing on [1000, 15.93, 19]on day2020-12-01
+cant cut on 2020-12-02 at with the actual high at 15.37, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 20], [1000, 15.68, 7], [1000, 15.28, 5]]
+working on [1000, 15.68, 7]on day2020-12-02
+clearing on [1000, 15.68, 7]on day2020-12-01
+cant cut on 2020-12-02 at with the actual high at 15.37, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 21], [1000, 15.68, 8], [1000, 15.28, 5]]
+working on [1000, 15.28, 5]on day2020-12-02
+clearing on [1000, 15.28, 5]on day2020-12-01
+cuttting price 15.33 
+on 2020-12-02 cutting stock 1000 of sh600587 at 15.33
+----profit in total is 100.0 
+----stock on hand's value is 46890.0 
+pop trade... 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 21], [1000, 15.68, 9]]
+----profit in total is 100.0 
+----stock on hand's value is 31610.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 21], [1000, 15.68, 9]]
+Vday_0 = 2020-12-01 
+Vday_0's adjclose = 15.25 
+T+1 2020-12-02 actual low at 15.23 
+T+1 2020-12-02 forecast low at 15.26 with 45.73 possibility 
+T+2 2020-12-03 forecast high at 15.43 with 62.67 
+T+2 2020-12-03 actual high at 15.66 
+above with spirits of 1 & 1  & 1
+T+2 2020-12-03 actual close at 15.53 
+on 2020-12-02 buy 1000 at 15.26 
+----profit in total is 100.0 
+----stock on hand's value is 46870.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 21], [1000, 15.68, 9], [1000, 15.26, 1]]
+working on [1000, 15.93, 21]on day2020-12-03
+clearing on [1000, 15.93, 21]on day2020-12-02
+cant cut on 2020-12-03 at with the actual high at 15.66, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 22], [1000, 15.68, 9], [1000, 15.26, 1]]
+working on [1000, 15.68, 9]on day2020-12-03
+clearing on [1000, 15.68, 9]on day2020-12-02
+cant cut on 2020-12-03 at with the actual high at 15.66, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 23], [1000, 15.68, 10], [1000, 15.26, 1]]
+working on [1000, 15.26, 1]on day2020-12-03
+BEST TRADE on 2020-12-03 sell 1000 of sh600587 at 15.43 
+----profit in total is 269.99999999999994 
+pop trade... 
+----stock on hand's value is 46870.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 23], [1000, 15.68, 11]]
+----profit in total is 269.99999999999994 
+----stock on hand's value is 31610.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 23], [1000, 15.68, 11]]
+Vday_0 = 2020-12-02 
+Vday_0's adjclose = 15.35 
+T+1 2020-12-03 actual low at 15.35 
+T+1 2020-12-03 forecast low at 15.24 with 59.83 possibility 
+T+2 2020-12-04 forecast high at 15.52 with 68.5 
+T+2 2020-12-04 actual high at 15.59 
+above with spirits of 1.005 & 1  & 1
+T+2 2020-12-04 actual close at 15.46 
+Good Margin but T1low is not reachable by 0.11. 
+working on [1000, 15.93, 23]on day2020-12-04
+clearing on [1000, 15.93, 23]on day2020-12-03
+cant cut on 2020-12-04 at with the actual high at 15.59, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 24], [1000, 15.68, 11]]
+working on [1000, 15.68, 11]on day2020-12-04
+clearing on [1000, 15.68, 11]on day2020-12-03
+cant cut on 2020-12-04 at with the actual high at 15.59, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 25], [1000, 15.68, 12]]
+----profit in total is 269.99999999999994 
+----stock on hand's value is 31610.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 25], [1000, 15.68, 13]]
+Vday_0 = 2020-12-03 
+Vday_0's adjclose = 15.53 
+T+1 2020-12-04 actual low at 15.36 
+T+1 2020-12-04 forecast low at 15.4 with 58.87 possibility 
+T+2 2020-12-07 forecast high at 15.77 with 80.19 
+T+2 2020-12-07 actual high at 15.52 
+above with spirits of 1.005 & 1  & 1
+T+2 2020-12-07 actual close at 15.27 
+on 2020-12-04 buy 1000 at 15.4 
+----profit in total is 269.99999999999994 
+----stock on hand's value is 47010.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 25], [1000, 15.68, 13], [1000, 15.4, 1]]
+working on [1000, 15.93, 25]on day2020-12-07
+clearing on [1000, 15.93, 25]on day2020-12-04
+cant cut on 2020-12-07 at with the actual high at 15.52, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 26], [1000, 15.68, 13], [1000, 15.4, 1]]
+working on [1000, 15.68, 13]on day2020-12-07
+clearing on [1000, 15.68, 13]on day2020-12-04
+cant cut on 2020-12-07 at with the actual high at 15.52, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 27], [1000, 15.68, 14], [1000, 15.4, 1]]
+working on [1000, 15.4, 1]on day2020-12-07
+what it the else I forget? 
+----profit in total is 269.99999999999994 
+----stock on hand's value is 47010.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 27], [1000, 15.68, 15], [1000, 15.4, 2]]
+Vday_0 = 2020-12-04 
+Vday_0's adjclose = 15.46 
+T+1 2020-12-07 actual low at 15.26 
+T+1 2020-12-07 forecast low at 15.01 with 72.49 possibility 
+T+2 2020-12-08 forecast high at 15.44 with 76.75 
+T+2 2020-12-08 actual high at 15.32 
+above with spirits of 1 & 1  & 1
+T+2 2020-12-08 actual close at 15.11 
+Good Margin but T1low is not reachable by 0.25. 
+working on [1000, 15.93, 27]on day2020-12-08
+clearing on [1000, 15.93, 27]on day2020-12-07
+cant cut on 2020-12-08 at with the actual high at 15.32, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 28], [1000, 15.68, 15], [1000, 15.4, 2]]
+working on [1000, 15.68, 15]on day2020-12-08
+clearing on [1000, 15.68, 15]on day2020-12-07
+cant cut on 2020-12-08 at with the actual high at 15.32, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 29], [1000, 15.68, 16], [1000, 15.4, 2]]
+working on [1000, 15.4, 2]on day2020-12-08
+BAD FORECAST on 2020-12-08 with supposed selling at 15.44 but failed by 0.12 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 29], [1000, 15.68, 17], [1000, 15.4, 2]]
+----profit in total is 269.99999999999994 
+----stock on hand's value is 47010.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 29], [1000, 15.68, 17], [1000, 15.4, 3]]
+Vday_0 = 2020-12-07 
+Vday_0's adjclose = 15.27 
+T+1 2020-12-08 actual low at 15.1 
+T+1 2020-12-08 forecast low at 15.0 with 61.9 possibility 
+T+2 2020-12-09 forecast high at 15.24 with 71.25 
+T+2 2020-12-09 actual high at 15.22 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-12-09 actual close at 14.78 
+Good Margin but T1low is not reachable by 0.1. 
+working on [1000, 15.93, 29]on day2020-12-09
+clearing on [1000, 15.93, 29]on day2020-12-08
+cant cut on 2020-12-09 at with the actual high at 15.22, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 30], [1000, 15.68, 17], [1000, 15.4, 3]]
+working on [1000, 15.68, 17]on day2020-12-09
+clearing on [1000, 15.68, 17]on day2020-12-08
+cant cut on 2020-12-09 at with the actual high at 15.22, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 31], [1000, 15.68, 18], [1000, 15.4, 3]]
+working on [1000, 15.4, 3]on day2020-12-09
+clearing on [1000, 15.4, 3]on day2020-12-08
+cant cut on 2020-12-09 at with the actual high at 15.22, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 31], [1000, 15.68, 19], [1000, 15.4, 4]]
+----profit in total is 269.99999999999994 
+----stock on hand's value is 47010.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 31], [1000, 15.68, 19], [1000, 15.4, 5]]
+Vday_0 = 2020-12-08 
+Vday_0's adjclose = 15.11 
+T+1 2020-12-09 actual low at 14.78 
+T+1 2020-12-09 forecast low at 14.84 with 52.82 possibility 
+T+2 2020-12-10 forecast high at 15.27 with 67.54 
+T+2 2020-12-10 actual high at 15.05 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-12-10 actual close at 14.92 
+on 2020-12-09 buy 1000 at 14.84 
+----profit in total is 269.99999999999994 
+----stock on hand's value is 61850.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.93, 31], [1000, 15.68, 19], [1000, 15.4, 5], [1000, 14.84, 1]]
+working on [1000, 15.93, 31]on day2020-12-10
+clearing on [1000, 15.93, 31]on day2020-12-09
+cant cut on 2020-12-10 at with the actual high at 15.05, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 32], [1000, 15.68, 19], [1000, 15.4, 5], [1000, 14.84, 1]]
+working on [1000, 15.68, 19]on day2020-12-10
+clearing on [1000, 15.68, 19]on day2020-12-09
+cant cut on 2020-12-10 at with the actual high at 15.05, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 33], [1000, 15.68, 20], [1000, 15.4, 5], [1000, 14.84, 1]]
+working on [1000, 15.4, 5]on day2020-12-10
+clearing on [1000, 15.4, 5]on day2020-12-09
+cant cut on 2020-12-10 at with the actual high at 15.05, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.93, 33], [1000, 15.68, 21], [1000, 15.4, 6], [1000, 14.84, 1]]
+working on [1000, 14.84, 1]on day2020-12-10
+what it the else I forget? 
+----profit in total is 269.99999999999994 
+----stock on hand's value is 61850.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.93, 33], [1000, 15.68, 21], [1000, 15.4, 7], [1000, 14.84, 2]]
+Vday_0 = 2020-12-09 
+Vday_0's adjclose = 14.78 
+T+1 2020-12-10 actual low at 14.66 
+T+1 2020-12-10 forecast low at 14.55 with 45.19 possibility 
+T+2 2020-12-11 forecast high at 14.9 with 58.1 
+T+2 2020-12-11 actual high at 16.18 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-12-11 actual close at 15.76 
+Good Margin but T1low is not reachable by 0.11. 
+working on [1000, 15.93, 33]on day2020-12-11
+clearing on [1000, 15.93, 33]on day2020-12-10
+cuttting price 15.98 
+on 2020-12-11 cutting stock 1000 of sh600587 at 15.98
+----profit in total is 319.99999999999994 
+----stock on hand's value is 61850.0 
+pop trade... 
+stock as following:[[1000, 0.0, 1], [1000, 15.68, 21], [1000, 15.4, 7], [1000, 14.84, 2]]
+working on [1000, 15.68, 21]on day2020-12-11
+clearing on [1000, 15.68, 21]on day2020-12-10
+cuttting price 15.73 
+on 2020-12-11 cutting stock 1000 of sh600587 at 15.73
+----profit in total is 369.99999999999994 
+----stock on hand's value is 45920.0 
+pop trade... 
+stock as following:[[1000, 0.0, 1], [1000, 15.4, 7], [1000, 14.84, 2]]
+working on [1000, 15.4, 7]on day2020-12-11
+clearing on [1000, 15.4, 7]on day2020-12-10
+cuttting price 15.45 
+on 2020-12-11 cutting stock 1000 of sh600587 at 15.45
+----profit in total is 419.99999999999994 
+----stock on hand's value is 30240.0 
+pop trade... 
+stock as following:[[1000, 0.0, 1], [1000, 14.84, 2]]
+working on [1000, 14.84, 2]on day2020-12-11
+BEST TRADE on 2020-12-11 sell 1000 of sh600587 at 14.9 
+----profit in total is 480.00000000000045 
+pop trade... 
+----stock on hand's value is 14840.0 
+stock as following:[[1000, 0.0, 1]]
+----profit in total is 480.00000000000045 
+----stock on hand's value is 0.0 
+========================================================= 
+[[1000, 0.0, 1]]
+Vday_0 = 2020-12-10 
+Vday_0's adjclose = 14.92 
+T+1 2020-12-11 actual low at 14.93 
+T+1 2020-12-11 forecast low at 14.74 with 63.74 possibility 
+T+2 2020-12-14 forecast high at 15.11 with 63.19 
+T+2 2020-12-14 actual high at 16.06 
+above with spirits of 1 & 1  & 1
+T+2 2020-12-14 actual close at 15.72 
+Good Margin but T1low is not reachable by 0.19. 
+----profit in total is 480.00000000000045 
+----stock on hand's value is 0.0 
+========================================================= 
+[[1000, 0.0, 1]]
+Vday_0 = 2020-12-11 
+Vday_0's adjclose = 15.76 
+T+1 2020-12-14 actual low at 15.56 
+T+1 2020-12-14 forecast low at 15.47 with 67.99 possibility 
+T+2 2020-12-15 forecast high at 16.19 with 75.96 
+T+2 2020-12-15 actual high at 15.8 
+above with spirits of 1.005 & 1  & 1
+T+2 2020-12-15 actual close at 15.42 
+Good Margin but T1low is not reachable by 0.09. 
+----profit in total is 480.00000000000045 
+----stock on hand's value is 0.0 
+========================================================= 
+[[1000, 0.0, 1]]
+Vday_0 = 2020-12-14 
+Vday_0's adjclose = 15.72 
+T+1 2020-12-15 actual low at 15.36 
+T+1 2020-12-15 forecast low at 15.56 with 52.34 possibility 
+T+2 2020-12-16 forecast high at 15.96 with 59.89 
+T+2 2020-12-16 actual high at 15.5 
+above with spirits of 1 & 1  & 1
+T+2 2020-12-16 actual close at 15.13 
+on 2020-12-15 buy 1000 at 15.56 
+----profit in total is 480.00000000000045 
+----stock on hand's value is 15560.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.56, 1]]
+working on [1000, 15.56, 1]on day2020-12-16
+BAD FORECAST on 2020-12-16 with supposed selling at 15.96 but failed by 0.46 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.56, 1]]
+----profit in total is 480.00000000000045 
+----stock on hand's value is 15560.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.56, 2]]
+Vday_0 = 2020-12-15 
+Vday_0's adjclose = 15.42 
+T+1 2020-12-16 actual low at 15.12 
+T+1 2020-12-16 forecast low at 15.27 with 54.12 possibility 
+T+2 2020-12-17 forecast high at 15.53 with 69.78 
+T+2 2020-12-17 actual high at 15.35 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-12-17 actual close at 15.22 
+on 2020-12-16 buy 1000 at 15.27 
+----profit in total is 480.00000000000045 
+----stock on hand's value is 30830.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.56, 2], [1000, 15.27, 1]]
+working on [1000, 15.56, 2]on day2020-12-17
+BAD FORECAST on 2020-12-17 with supposed selling at 15.53 but failed by 0.18 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.56, 2], [1000, 15.27, 1]]
+working on [1000, 15.27, 1]on day2020-12-17
+what it the else I forget? 
+----profit in total is 480.00000000000045 
+----stock on hand's value is 30830.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.56, 3], [1000, 15.27, 2]]
+Vday_0 = 2020-12-16 
+Vday_0's adjclose = 15.13 
+T+1 2020-12-17 actual low at 15.0 
+T+1 2020-12-17 forecast low at 15.03 with 47.46 possibility 
+T+2 2020-12-18 forecast high at 15.39 with 59.26 
+T+2 2020-12-18 actual high at 15.26 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-12-18 actual close at 14.99 
+on 2020-12-17 buy 1000 at 15.03 
+----profit in total is 480.00000000000045 
+----stock on hand's value is 45860.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.56, 3], [1000, 15.27, 2], [1000, 15.03, 1]]
+working on [1000, 15.56, 3]on day2020-12-18
+clearing on [1000, 15.56, 3]on day2020-12-17
+cant cut on 2020-12-18 at with the actual high at 15.26, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.56, 4], [1000, 15.27, 2], [1000, 15.03, 1]]
+working on [1000, 15.27, 2]on day2020-12-18
+BAD FORECAST on 2020-12-18 with supposed selling at 15.39 but failed by 0.13 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.56, 5], [1000, 15.27, 2], [1000, 15.03, 1]]
+working on [1000, 15.03, 1]on day2020-12-18
+what it the else I forget? 
+----profit in total is 480.00000000000045 
+----stock on hand's value is 45860.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.56, 5], [1000, 15.27, 3], [1000, 15.03, 2]]
+Vday_0 = 2020-12-17 
+Vday_0's adjclose = 15.22 
+T+1 2020-12-18 actual low at 14.92 
+T+1 2020-12-18 forecast low at 15.08 with 61.18 possibility 
+T+2 2020-12-21 forecast high at 15.52 with 60.91 
+T+2 2020-12-21 actual high at 15.1 
+above with spirits of 1 & 1  & 1
+T+2 2020-12-21 actual close at 15.05 
+on 2020-12-18 buy 1000 at 15.08 
+----profit in total is 480.00000000000045 
+----stock on hand's value is 60940.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.56, 5], [1000, 15.27, 3], [1000, 15.03, 2], [1000, 15.08, 1]]
+working on [1000, 15.56, 5]on day2020-12-21
+clearing on [1000, 15.56, 5]on day2020-12-18
+cant cut on 2020-12-21 at with the actual high at 15.1, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.56, 6], [1000, 15.27, 3], [1000, 15.03, 2], [1000, 15.08, 1]]
+working on [1000, 15.27, 3]on day2020-12-21
+clearing on [1000, 15.27, 3]on day2020-12-18
+cant cut on 2020-12-21 at with the actual high at 15.1, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.56, 7], [1000, 15.27, 4], [1000, 15.03, 2], [1000, 15.08, 1]]
+working on [1000, 15.03, 2]on day2020-12-21
+clearing on [1000, 15.03, 2]on day2020-12-18
+cuttting price 15.08 
+on 2020-12-21 cutting stock 1000 of sh600587 at 15.08
+----profit in total is 530.0000000000005 
+----stock on hand's value is 60940.0 
+pop trade... 
+stock as following:[[1000, 0.0, 1], [1000, 15.56, 7], [1000, 15.27, 5], [1000, 15.08, 1]]
+working on [1000, 15.08, 1]on day2020-12-21
+what it the else I forget? 
+----profit in total is 530.0000000000005 
+----stock on hand's value is 45910.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.56, 7], [1000, 15.27, 5], [1000, 15.08, 2]]
+Vday_0 = 2020-12-18 
+Vday_0's adjclose = 14.99 
+T+1 2020-12-21 actual low at 14.84 
+T+1 2020-12-21 forecast low at 14.76 with 63.51 possibility 
+T+2 2020-12-22 forecast high at 15.11 with 62.0 
+T+2 2020-12-22 actual high at 15.66 
+above with spirits of 1 & 1  & 1
+T+2 2020-12-22 actual close at 15.34 
+Good Margin but T1low is not reachable by 0.08. 
+working on [1000, 15.56, 7]on day2020-12-22
+clearing on [1000, 15.56, 7]on day2020-12-21
+cuttting price 15.61 
+on 2020-12-22 cutting stock 1000 of sh600587 at 15.61
+----profit in total is 580.0000000000005 
+----stock on hand's value is 45910.0 
+pop trade... 
+stock as following:[[1000, 0.0, 1], [1000, 15.27, 5], [1000, 15.08, 2]]
+working on [1000, 15.27, 5]on day2020-12-22
+clearing on [1000, 15.27, 5]on day2020-12-21
+cuttting price 15.32 
+on 2020-12-22 cutting stock 1000 of sh600587 at 15.32
+----profit in total is 630.0000000000005 
+----stock on hand's value is 30350.0 
+pop trade... 
+stock as following:[[1000, 0.0, 1], [1000, 15.08, 2]]
+working on [1000, 15.08, 2]on day2020-12-22
+BEST TRADE on 2020-12-22 sell 1000 of sh600587 at 15.11 
+----profit in total is 659.9999999999998 
+pop trade... 
+----stock on hand's value is 15080.0 
+stock as following:[[1000, 0.0, 1]]
+----profit in total is 659.9999999999998 
+----stock on hand's value is 0.0 
+========================================================= 
+[[1000, 0.0, 1]]
+Vday_0 = 2020-12-21 
+Vday_0's adjclose = 15.05 
+T+1 2020-12-22 actual low at 15.0 
+T+1 2020-12-22 forecast low at 14.98 with 44.31 possibility 
+T+2 2020-12-23 forecast high at 15.19 with 62.55 
+T+2 2020-12-23 actual high at 15.39 
+above with spirits of 1 & 1  & 1
+T+2 2020-12-23 actual close at 15.2 
+Good Margin but T1low is not reachable by 0.02. 
+----profit in total is 659.9999999999998 
+----stock on hand's value is 0.0 
+========================================================= 
+[[1000, 0.0, 1]]
+Vday_0 = 2020-12-22 
+Vday_0's adjclose = 15.34 
+T+1 2020-12-23 actual low at 15.06 
+T+1 2020-12-23 forecast low at 15.23 with 55.69 possibility 
+T+2 2020-12-24 forecast high at 15.56 with 62.83 
+T+2 2020-12-24 actual high at 15.22 
+above with spirits of 1.005 & 1  & 1
+T+2 2020-12-24 actual close at 14.82 
+on 2020-12-23 buy 1000 at 15.23 
+----profit in total is 659.9999999999998 
+----stock on hand's value is 15230.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.23, 1]]
+working on [1000, 15.23, 1]on day2020-12-24
+BAD FORECAST on 2020-12-24 with supposed selling at 15.56 but failed by 0.34 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.23, 1]]
+----profit in total is 659.9999999999998 
+----stock on hand's value is 15230.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.23, 2]]
+Vday_0 = 2020-12-23 
+Vday_0's adjclose = 15.2 
+T+1 2020-12-24 actual low at 14.71 
+T+1 2020-12-24 forecast low at 14.99 with 63.29 possibility 
+T+2 2020-12-25 forecast high at 15.4 with 72.05 
+T+2 2020-12-25 actual high at 14.97 
+above with spirits of 1 & 1  & 1
+T+2 2020-12-25 actual close at 14.8 
+on 2020-12-24 buy 1000 at 14.99 
+----profit in total is 659.9999999999998 
+----stock on hand's value is 30220.0 
+stock as following:[[1000, 0.0, 1], [1000, 15.23, 2], [1000, 14.99, 1]]
+working on [1000, 15.23, 2]on day2020-12-25
+BAD FORECAST on 2020-12-25 with supposed selling at 15.4 but failed by 0.43 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.23, 2], [1000, 14.99, 1]]
+working on [1000, 14.99, 1]on day2020-12-25
+BAD FORECAST on 2020-12-25 with supposed selling at 15.4 but failed by 0.43 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.23, 3], [1000, 14.99, 1]]
+----profit in total is 659.9999999999998 
+----stock on hand's value is 30220.0 
+========================================================= 
+[[1000, 0.0, 1], [1000, 15.23, 3], [1000, 14.99, 2]]
+Vday_0 = 2020-12-24 
+Vday_0's adjclose = 14.82 
+T+1 2020-12-25 actual low at 14.71 
+T+1 2020-12-25 forecast low at 14.64 with 47.67 possibility 
+T+2 2020-12-28 forecast high at 14.74 with 71.1 
+T+2 2020-12-28 actual high at 14.88 
+above with spirits of 0.995 & 1  & 1
+T+2 2020-12-28 actual close at 14.41 
+Good Margin but T1low is not reachable by 0.07. 
+working on [1000, 15.23, 3]on day2020-12-28
+clearing on [1000, 15.23, 3]on day2020-12-25
+cant cut on 2020-12-28 at with the actual high at 14.88, try any selling?
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.23, 4], [1000, 14.99, 2]]
+working on [1000, 14.99, 2]on day2020-12-28
+BAD FORECAST on 2020-12-28 with supposed selling at 14.74 but failed by -0.14 
+list the stock in pool...stock as following:[[1000, 0.0, 1], [1000, 15.23, 5], [1000, 14.99, 2]]
+----profit in total is 659.9999999999998 
+----stock on hand's value is 30220.0 
+========================================================= 

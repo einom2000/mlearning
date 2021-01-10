@@ -1,0 +1,77 @@
+Vday_0 = 2020-11-20 
+Vday_0's adjclose = 91.15 
+T+1 2020-11-23 actual low at 89.3 
+T+1 2020-11-23 forecast low at 85.02 with 62.01 possibility & 85.45 with 71.01 
+T+2 2020-11-24 actual high at 95.0 
+T+2 2020-11-24 forecast high at 90.0 with 60.67 possibility & 89.55 with 71.95 
+T+2 2020-11-24 actual close at 94.0 
+Vday_0 = 2020-11-23 
+Vday_0's adjclose = 93.1 
+T+1 2020-11-24 actual low at 90.8 
+T+1 2020-11-24 forecast low at 85.38 with 66.85 possibility & 85.81 with 75.97 
+T+2 2020-11-25 actual high at 96.8 
+T+2 2020-11-25 forecast high at 93.68 with 69.8 possibility & 93.21 with 78.52 
+T+2 2020-11-25 actual close at 87.79 
+Vday_0 = 2020-11-24 
+Vday_0's adjclose = 94.0 
+T+1 2020-11-25 actual low at 86.15 
+T+1 2020-11-25 forecast low at 86.07 with 59.65 possibility & 86.5 with 70.78 
+T+2 2020-11-26 actual high at 89.4 
+T+2 2020-11-26 forecast high at 91.95 with 59.12 possibility & 91.49 with 71.85 
+T+2 2020-11-26 actual close at 87.93 
+Vday_0 = 2020-11-25 
+Vday_0's adjclose = 87.79 
+T+1 2020-11-26 actual low at 83.95 
+T+1 2020-11-26 forecast low at 86.34 with 54.29 possibility & 86.77 with 66.35 
+T+2 2020-11-27 actual high at 90.38 
+T+2 2020-11-27 forecast high at 91.8 with 62.33 possibility & 91.34 with 74.26 
+T+2 2020-11-27 actual close at 89.19 
+Vday_0 = 2020-11-26 
+Vday_0's adjclose = 87.93 
+T+1 2020-11-27 actual low at 86.11 
+T+1 2020-11-27 forecast low at 88.64 with 55.36 possibility & 89.08 with 69.97 
+T+2 2020-11-30 actual high at 91.1 
+T+2 2020-11-30 forecast high at 91.17 with 59.38 possibility & 90.71 with 72.52 
+T+2 2020-11-30 actual close at 91.0 
+Vday_0 = 2020-11-27 
+Vday_0's adjclose = 89.19 
+T+1 2020-11-30 actual low at 87.33 
+T+1 2020-11-30 forecast low at 87.38 with 55.76 possibility & 87.82 with 69.03 
+T+2 2020-12-01 actual high at 91.24 
+T+2 2020-12-01 forecast high at 91.45 with 48.53 possibility & 90.99 with 64.08 
+T+2 2020-12-01 actual close at 91.1 
+Vday_0 = 2020-11-30 
+Vday_0's adjclose = 91.0 
+T+1 2020-12-01 actual low at 88.51 
+T+1 2020-12-01 forecast low at 85.73 with 58.85 possibility & 86.16 with 69.17 
+T+2 2020-12-02 actual high at 91.98 
+T+2 2020-12-02 forecast high at 91.5 with 61.13 possibility & 91.04 with 71.98 
+T+2 2020-12-02 actual close at 90.98 
+Vday_0 = 2020-12-01 
+Vday_0's adjclose = 91.1 
+T+1 2020-12-02 actual low at 89.88 
+T+1 2020-12-02 forecast low at 85.39 with 48.86 possibility & 85.82 with 63.86 
+T+2 2020-12-03 actual high at 94.33 
+T+2 2020-12-03 forecast high at 91.31 with 63.86 possibility & 90.85 with 74.03 
+T+2 2020-12-03 actual close at 93.21 
+Vday_0 = 2020-12-02 
+Vday_0's adjclose = 90.98 
+T+1 2020-12-03 actual low at 90.08 
+T+1 2020-12-03 forecast low at 87.21 with 62.52 possibility & 87.65 with 72.96 
+T+2 2020-12-04 actual high at 97.04 
+T+2 2020-12-04 forecast high at 93.32 with 70.68 possibility & 92.85 with 77.38 
+T+2 2020-12-04 actual close at 96.23 
+Vday_0 = 2020-12-03 
+Vday_0's adjclose = 93.21 
+T+1 2020-12-04 actual low at 92.44 
+T+1 2020-12-04 forecast low at 89.52 with 50.07 possibility & 89.97 with 66.27 
+T+2 2020-12-07 actual high at 99.45 
+T+2 2020-12-07 forecast high at 93.09 with 67.47 possibility & 92.62 with 76.31 
+T+2 2020-12-07 actual close at 98.52 
+Vday_0 = 2020-12-04 
+Vday_0's adjclose = 96.23 
+T+1 2020-12-07 actual low at 95.86 
+T+1 2020-12-07 forecast low at 92.63 with 58.23 possibility & 93.09 with 70.68 
+T+2 2020-12-08 actual high at 99.36 
+T+2 2020-12-08 forecast high at 99.28 with 62.12 possibility & 98.78 with 72.42 
+T+2 2020-12-08 actual close at 98.2 
