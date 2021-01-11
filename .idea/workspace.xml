@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d2352cb-0e00-4df2-a8ae-efdbd274ed79" name="Default" comment="&#10;111">
-      <change afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mlearning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mlearning.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-08_t1_2_decision_buy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-08_t1_2_decision_buy.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/data/sh600600_2021-01-08.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/data/sh600600_2021-01-08.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/results/defend_2021-01-08_sh600600-sh-1-sc-1-sbd-0-huber_loss-adam-LSTM-seq-50-step-1-layers-2-units-256.h5" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/results/defend_2021-01-08_sh600600-sh-1-sc-1-sbd-0-huber_loss-adam-LSTM-seq-50-step-1-layers-2-units-256.h5" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tool_defend.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tool_defend.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="109" column="25" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+            <state relative-caret-position="242">
+              <caret line="105" selection-start-line="105" selection-end-line="105" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#182#3727#0" />
@@ -34,35 +34,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hunts.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/hunts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="23" />
+      <file leaf-file-name="DDD_stock_list.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="528">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DDD_2021-01-11_t1_2_decision_buy.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv">
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DDD_2021-01-11_t1_2_decision_buy.csv" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv">
           <provider selected="true" editor-type-id="csv-text-editor">
             <state relative-caret-position="462">
               <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="tool_quickview.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py">
+      <file leaf-file-name="DDD_2021-01-08_t1_2_decision_buy.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-08_t1_2_decision_buy.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="22">
+              <caret line="1" column="89" lean-forward="true" selection-start-line="1" selection-start-column="89" selection-end-line="1" selection-end-column="89" />
+            </state>
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tool_decision_keyin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_decision_keyin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="350">
+              <caret line="147" column="28" lean-forward="true" selection-start-line="147" selection-start-column="28" selection-end-line="147" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -160,7 +172,6 @@
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_decision_keyin.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-05_t1_2_decision_buy.csv" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-06_t1_2_decision_buy.csv" />
-        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-07_t1_2_decision_buy.csv" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_copy.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv" />
@@ -168,20 +179,22 @@
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_test.py" />
         <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py" />
+        <option value="$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1073" />
-    <option name="y" value="231" />
-    <option name="width" value="700" />
-    <option name="height" value="589" />
+    <option name="x" value="1069" />
+    <option name="y" value="230" />
+    <option name="width" value="704" />
+    <option name="height" value="592" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,19 +211,12 @@
               <item name="mlearning" type="b2602c69:ProjectViewProjectNode" />
               <item name="mlearning" type="462c0819:PsiDirectoryNode" />
               <item name="tensorflow2" type="462c0819:PsiDirectoryNode" />
-              <item name="LTSM" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mlearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mlearning" type="462c0819:PsiDirectoryNode" />
-              <item name="tensorflow2" type="462c0819:PsiDirectoryNode" />
               <item name="scrt_prdct" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -244,7 +250,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tool_test">
+  <component name="RunManager" selected="Python.tool_decision_keyin">
     <configuration name="KNN" type="PythonConfigurationType" factoryName="Python">
       <module name="mlearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -420,10 +426,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.tool_defend" />
         <item itemvalue="Python.tool_test" />
         <item itemvalue="Python.tool_quickview" />
         <item itemvalue="Python.tool_defend_value-3" />
-        <item itemvalue="Python.tool_defend" />
         <item itemvalue="Python.tool_copy" />
       </list>
     </recent_temporary>
@@ -438,13 +444,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557986112833</updated>
-    </task>
-    <task id="LOCAL-00067" summary="&#10;111">
-      <created>1575617474949</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1575617474950</updated>
     </task>
     <task id="LOCAL-00068" summary="&#10;111">
       <created>1575619838609</created>
@@ -782,23 +781,30 @@
       <option name="project" value="LOCAL" />
       <updated>1610090855091</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="&#10;111">
+      <created>1610248407790</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1610248407791</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2193" height="1538" extended-state="6" />
+    <frame x="-8" y="-8" width="2046" height="1217" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32161275" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30563948" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="LuaJ" order="3" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5107239" side_tool="true" weight="0.83013296" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48927614" weight="0.5023652" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4995847" weight="0.32946634" />
       <window_info anchor="bottom" id="Python Console" order="9" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48927614" visible="true" weight="0.42743105" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3295562" />
-      <window_info id="Favorites" order="2" side_tool="true" weight="0.32954547" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49971315" weight="0.39262062" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32954547" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="ExcelReader" order="11" weight="0.32923368" />
@@ -846,8 +852,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600058_updated_2021-01-04.png" />
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2020-12-31.png" />
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600648_updated_2020-12-31.png" />
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600648_updated_2021-01-04.png" />
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2021-01-04.png" />
@@ -872,172 +876,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600058_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600587_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600585_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600600_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600058_updated_2021-01-05.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600587_updated_2021-01-05.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600585_updated_2021-01-05.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600600_updated_2021-01-05.png" />
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-28_t1_2_decision_buy.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="64" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="64" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-31_t1_2_decision_buy.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2020-12-31_t1_2_decision_buy.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="44">
           <caret line="10" column="73" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="73" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-04_t1_2_decision_buy.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-04_t1_2_decision_buy.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="220">
           <caret line="10" column="97" selection-start-line="10" selection-start-column="97" selection-end-line="10" selection-end-column="97" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600648_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_decision_keyin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-06_t1_2_decision_buy.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600648_updated_2021-01-05.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-06_t1_2_decision_buy.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="20">
           <caret line="36" column="58" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="58" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-08_t1_2_decision_buy.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="440">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-05_t1_2_decision_buy.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="352">
           <caret line="16" column="59" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="59" />
         </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_copy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
           <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_patch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2332">
-          <caret line="115" column="43" selection-start-line="115" selection-start-column="43" selection-end-line="115" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/csv-original/sh600058_2021-01-08.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="-80101" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/csv-original/sh600058_2021-01-06.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/csv-original/sh600058_2021-01-06.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="-80057" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="265">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-07_t1_2_decision_buy.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="484">
           <caret line="22" column="46" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="46" />
         </state>
       </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/TTT_2021-01-07_t1_2_forecast.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/TTT_2021-01-08_t1_2_forecast.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600685_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600529_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600547_updated_2021-01-05.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600685_updated_2021-01-05.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600030_updated_2021-01-05.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600529_updated_2021-01-05.png" />
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600547_updated_2021-01-05.png" />
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1074,43 +1020,26 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy_2070.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="88">
           <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="95" />
         </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_sh600058_updated_2021-01-08.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-holidays.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="242">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/hunts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="23" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_test.py">
@@ -1123,22 +1052,76 @@
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_quickview.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
-          <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+          <caret line="42" column="83" selection-start-line="42" selection-start-column="83" selection-end-line="42" selection-end-column="83" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/hunts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_patch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2530">
+          <caret line="115" column="43" selection-start-line="115" selection-start-column="43" selection-end-line="115" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend_value-2.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_defend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="109" column="25" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+        <state relative-caret-position="242">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#182#3727#0" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_stock_list.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-08_t1_2_decision_buy.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="89" lean-forward="true" selection-start-line="1" selection-start-column="89" selection-end-line="1" selection-end-column="89" />
+        </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/tool_decision_keyin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="147" column="28" lean-forward="true" selection-start-line="147" selection-start-column="28" selection-end-line="147" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow2/scrt_prdct/DDD_2021-01-11_t1_2_decision_buy.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
   </component>
