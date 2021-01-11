@@ -53,7 +53,7 @@ def patch():
 
     df1['act_low_dif'] = round((df1['target_price'] - df1['act_low']), 2)
     df1.loc[df1['target_price'] >= df1['act_low'], 'at_price'] = df1['target_price']
-    df1.loc[df1['target_price'] >= df1['act_low'], 'buy'] = 0
+    # df1.loc[df1['target_price'] >= df1['act_low'], 'buy'] = 0
     print(df1.to_string())
     now = str(datetime.datetime.now())[:19]
     now = now.replace(":", "_")
