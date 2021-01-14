@@ -1,6 +1,0 @@
-forecast_day,days_in_future,T+2_highest,LOSS,MAE,Reachabilityhighest * 99.5%Reachability_2
-2021-01-06,1,14.595952,0.00011333834117976949,11.383673450611532,64.9914.5270.03
-forecast_day,days_in_future,T+2_highest,LOSS,MAE,Reachabilityhighest * 99.5%Reachability_2
-2021-01-07,1,14.197128,0.0001364040799671784,11.384256489165129,61.0114.1367.11
-forecast_day,days_in_future,T+2_highest,LOSS,MAE,Reachabilityhighest * 99.5%Reachability_2
-2021-01-08,1,13.96567,0.00013026151282247156,11.375439265929163,61.5413.969.5

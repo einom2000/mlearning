@@ -1,8 +1,0 @@
-forecast_day,days_in_future,T+2_highest,LOSS,MAE,Reachabilityhighest * 99.5%Reachability_2
-2021-01-05,1,17.923767,9.487887291470543e-05,15.997740564523264,66.4517.8372.73
-forecast_day,days_in_future,T+2_highest,LOSS,MAE,Reachabilityhighest * 99.5%Reachability_2
-2021-01-06,1,17.40233,9.660056093707681e-05,15.960888054398819,56.2817.3265.37
-forecast_day,days_in_future,T+2_highest,LOSS,MAE,Reachabilityhighest * 99.5%Reachability_2
-2021-01-07,1,17.371233,9.486554336035624e-05,16.008468462293965,69.717.2876.19
-forecast_day,days_in_future,T+2_highest,LOSS,MAE,Reachabilityhighest * 99.5%Reachability_2
-2021-01-08,1,16.69045,9.86809391179122e-05,15.948793257586656,50.8716.6161.04
